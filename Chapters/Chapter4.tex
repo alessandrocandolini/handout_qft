@@ -1,0 +1,237 @@
+
+%*******************************************************
+% Chapter 4
+%*******************************************************
+
+
+\myChapter[Funzioni contenenti funzioni esponenziali]{Primitive di funzioni che contengono funzioni esponenziali e
+logaritmiche} 
+%\minitoc\mtcskip
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{\uexp^{x}}{1+\uexp^{x}} \udiff{x} \eqspace ,\qquad
+\int \frac{1}{1+\uexp^{x}} \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Il primo integrale \`e immediato. Riconosciamo infatti al numeratore la derivata
+della funzione al denominatore, quindi usando la solita
+\begin{displaymath}
+\int \frac{1}{f(x)}f^{\prime}(x) \udiff{x} = \log \Modul{f(x)} + c \eqspace, \qquad
+c\in\R \eqspace, 
+\end{displaymath}
+con $f(x) = 1+ \uexp^{x}$ e quindi $f^{\prime}(x)  = \uexp^{x}$ si ha
+\begin{displaymath}
+\int \frac{\uexp^{x}}{1+\uexp^{x}} \udiff{x} = \log \Modul {1+\uexp^{x}} + c
+\eqspace, \qquad c \in \R \eqspace .
+\end{displaymath}
+\par 
+Lo stesso argomento non funziona per il secondo integrale, perch\'e al
+numeratore c'\`e $1$ invece di $\uexp^{x}$ (e 1 non \`e la derivata del
+denominatore).  Un modo standard di procedere \`e quello di usare il metodo di
+sostituzione, si pone ad esempio 
+\begin{displaymath}
+t = \uexp^{x} \eqspace, 
+\end{displaymath}
+quindi 
+\begin{displaymath}
+x = \log t \eqspace ,
+\end{displaymath}
+ e la regola mnemonica
+\begin{displaymath}
+\udiff{x} = \frac{1}{t} \udiff{t} \eqspace, 
+\end{displaymath}
+per cui
+\begin{displaymath}
+\int \frac{1}{1+\uexp^{x}} \udiff{x} = \int \frac{1}{1+t} \frac{1}{t} \udiff{t}
+\eqspace .
+\end{displaymath}
+Quest'ultimo integrale si pu\`o svolgere notando che (procedimento di
+scomposizione in fratti semplici) 
+\begin{displaymath}
+\frac{1}{t (1+t)} =  \frac{1}{t} - \frac{1}{1+t} 
+\eqspace ,
+\end{displaymath}
+ da cui 
+\begin{eqnarray*}
+\int \frac{1}{t(1+t)} \udiff{t} &=& \left( \int \frac{1}{t}
+\udiff{t} - \int \frac{1}{t+1} \udiff{t} \right) \\
+&=& \log \Modul{t} - \log \Modul{t+1} + c \eqspace, \qquad c\in\R
+\eqspace .
+\end{eqnarray*}
+Si ha pertanto
+\begin{displaymath}
+\int \frac{1}{1+\uexp^{x}} \udiff{x} = \log \Modul{\uexp^{x}} - \log \Modul{1+
+\uexp^{x}} + c = x - \log \left( 1+ \uexp^{x} \right) + c\eqspace, \qquad c
+\in\R \eqspace .
+\end{displaymath}
+C'\`e un modo pi\`u veloce di calcolare questo integrale senza usare il metodo
+di sostituzione, basta riscrivere la funzione integranda in questo modo:
+\begin{eqnarray*}
+\frac{1}{1+\uexp^{x}} &=& \frac{1 +\uexp^{x} - \uexp^{x}}{1+\uexp^{x} } \\
+&=& \frac{1+ \uexp^{x}}{1+ \uexp^{x}} - \frac{\uexp^{x}}{1+\uexp^{x}} \\
+&=& 1 - \frac{\uexp^{x}}{1+\uexp^{x}} \eqspace, 
+\end{eqnarray*}
+da cui in maniera diretta 
+\begin{displaymath}
+\int\frac{1}{1+\uexp^{x}} \udiff{x} = \int \left( 1 -
+\frac{\uexp^{x}}{1+\uexp^{x}} \right) \udiff{x} = x - \log \Modul{1+\uexp^{x}} +
+c\eqspace, \qquad c\in\R\eqspace .
+\end{displaymath}
+\end{Solution}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{1}{\uexp^{x} + \uexp^{-x}} \udiff{x}  \eqspace, \qquad 
+\int \frac{\uexp^{x}}{1+\uexp^{2x}} \udiff{x}
+\eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Anche in questo caso il metodo standard potrebbe essere quello di procedere per
+sostituzione
+\begin{displaymath}
+ t = \uexp^{x} \eqspace, \qquad x = \log t \eqspace, \qquad \udiff{x} =
+\frac{1}{t} \udiff{t} \eqspace ,
+\end{displaymath}
+quindi 
+\begin{eqnarray*}
+\int \frac{1}{\uexp^{x} + \uexp^{-x}}\udiff{x} &=& \int \frac{1}{t + \frac{1}{t}}
+\frac{1}{t} \udiff{t} \\
+&=& \int \frac{t}{t^{2} + 1 } \frac{1}{t} \udiff{t} \\
+&=& \int \frac{1}{1+t^{2}} \udiff{t} \\
+&=& \arctan t + c \eqspace , \qquad c\in\R \eqspace, \\
+&=& \arctan \uexp^{x} + \eqspace, \qquad c \in \R \eqspace .
+\end{eqnarray*}
+Allo stesso risultato si poteva giungere anche senza usare il metodo di
+sostituzione, infatti riscrivendo la funzione integranda come
+\begin{displaymath}
+\frac{1}{\uexp^{x} + \uexp^{-x}} = \frac{1}{\uexp^{-x} \left( \uexp^{2x} + 1
+\right)} = \frac{\uexp^{x}}{1+ \left( \uexp^{x} \right)^{2}} \eqspace, 
+\end{displaymath}
+e ricordando
+\begin{displaymath}
+\int \frac{1}{1+\left[ f(x)\right]^{2}} f^{\prime}(x) \udiff{x} = \arctan f(x) +
+c\eqspace, \qquad c \in\R \eqspace, 
+\end{displaymath}
+si ha direttamente 
+\begin{eqnarray*}
+\int \frac{1}{\uexp^{x} + \uexp^{-x}} \udiff{x}  &=& 
+\int\frac{\uexp^{x}}{1+ \left( \uexp^{x} \right)^{2}} \udiff{x} \\
+&=& \arctan \uexp^{x} + c\eqspace , \qquad c\in\R \eqspace .
+\end{eqnarray*}
+Questo risponde anche alla seconda parte dell'esercizio.
+\end{Solution}
+%\begin{homework}
+%Calcolare
+%\begin{displaymath}
+%\int \frac{\uexp^{x}-1}{\uexp^{x}+1} \udiff{x} \eqspace .
+%\end{displaymath}
+%\end{homework}
+\begin{Exercise}
+Ricordiamo che non \`e possibile esprimere
+\begin{displaymath}
+\int \uexp^{-x^{2}} \udiff{x}
+\end{displaymath}
+in termini di funzioni elementari.%
+\footnotemark
+%\begin{comment}
+La funzione $\uexp^{-x^{2}}$ \`e la funzione
+``a campana'' di Gauss, o Gaussiana, \`e molto importante in parecchi contesti
+anche applicativi, \eg,
+fisica, ingegneria, statistica, etc. Le sue primitive sono scrivibili in termini di
+funzioni speciali, in particolare usando la \emph{error function}:
+\begin{displaymath}
+\int \uexp^{-x^{2}} \udiff{x} = \frac{\sqrt{\pi}}{2} \erf x + c \eqspace ,
+\qquad c\in\R \eqspace.
+\end{displaymath}
+%\end{comment}
+Il grafico delle funzioni $\uexp^{-x^{2}}$ e $\erf x$  sono in
+\figurename~\ref{fig:plot_gauss}.
+\par
+Non \`e invece difficile calcolare (farlo per esercizio) i seguenti
+\begin{displaymath}
+\int x \uexp^{-x^{2}} \udiff{x}  \eqspace, \qquad 
+\int x^{3} \uexp^{-x^{2}} \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\footnotetext{Questo fatto \`e spesso menzionato, pi\`u raramente ne viene riportata la
+dimostrazione.
+Al riguardo, si pu\`o consultare, \eg, il capitolo~8 di G.~Boros, V.~H.~Moll,
+\emph{Irresistible Integrals. Symbolics, Analysis and Experiments in the
+Evaluation of Integrals}, Cambridge Univ. Press, Cambridge (2004), e le
+referenze all'interno.}
+\begin{figure}
+\centering
+%\subfigure[][]{\includegraphics{plot_gauss1}}
+%\subfigure[][]{\includegraphics{plot_gauss2}}
+\caption{Plot delle funzioni $\uexp^{-x^{2}}$ (la curva a campana di Gauss) e
+$\erf x $ (la error function) per valori reali di $x$.\label{fig:plot_gauss}}
+\end{figure}
+\begin{Solution}
+Il primo integrale \`e immediato, essendo infatti
+\begin{displaymath}
+\deriv{}{x} \uexp^{-x^{2}} = -2x \uexp^{-x^{2}} \eqspace, 
+\end{displaymath}
+si trova che
+\begin{displaymath}
+\int x \uexp^{-x^{2}} \udiff{x} = -\frac{1}{2} \uexp^{-x^{2}} + c \eqspace ,
+\qquad c\in\R \eqspace .
+\end{displaymath}
+Per quanto riguarda il secondo integrale, si proceda per parti nel modo
+seguente:
+\begin{eqnarray}
+\int x^{3} \uexp^{-x^{2}} \udiff{x} &=& \int \underbrace{x^{2}}_{g}
+\underbrace{x \uexp^{-x^{2}}}_{f^{\prime}} \udiff{x} \label{eq:parti}\\
+&=& \underbrace{x^{2}}_{g} \underbrace{ \left( - \frac{1}{2} \uexp^{ -x^{2}}
+\right)}_{f} - \int \underbrace{\left( -\frac{1}{2} \uexp^{-x^{2}} \right)}_{f}
+\underbrace{2x}_{g'} \udiff{x} \nonumber \\
+&=& -\frac{1}{2} x^{2} \uexp^{-x^{2}}  + \int  x \uexp^{-x^{2}} \udiff{x}
+\nonumber \\
+&=& - \frac{1}{2} \uexp^{-x^{2}} \left( x^{2} +1 \right) + c \eqspace ,\qquad
+c\in\R \eqspace .\nonumber 
+\end{eqnarray}
+\end{Solution}
+\begin{homework}
+Avrei potuto scegliere
+\begin{displaymath}
+f^{\prime}(x) = \uexp^{-x^{2}}  \eqspace, \qquad g(x) = x^{3} \eqspace, 
+\end{displaymath}
+oppure
+\begin{displaymath}
+g(x)  = \uexp^{-x^{2}}  \eqspace, \qquad f^{\prime}(x)= x^{3} \eqspace, 
+\end{displaymath}
+nella Eq.~\eqref{eq:parti}?
+\end{homework}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \log x \udiff{x} \eqspace, \qquad 
+%\int \log \frac{x-1}{x+1} \udiff{x}\eqspace , \qquad 
+\int \frac{1}{x\log^{4} x } \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Procediamo per parti:
+\begin{eqnarray*}
+\int \log x \udiff{x} &=& \int \underbrace{1}_{f^{\prime}} \underbrace{\log x }_{g}
+\udiff{x} \\
+&=& \underbrace{x}_{f} \underbrace{\log x }_{g} - \int \underbrace{\frac{1}{x}
+}_{g'} \underbrace{x \vphantom{\frac{1}{x}}}_{f} \udiff{x} \\
+&=& x \log x - \int 1 \udiff{x} \\
+&=& x \log x - x + c \eqspace, \qquad c \in\R \eqspace .
+\end{eqnarray*}
+Il secondo integrale \`e immediato, usando
+\begin{displaymath}
+\int  \left[ f(x)\right] ^{\alpha } f^{\prime}(x) \udiff{x} = \frac{\left[
+f(x)\right]^{\alpha+1}}{\alpha +1 } +  c \eqspace , \qquad c\in\R \eqspace, 
+\end{displaymath}
+valida per ogni $\alpha \in\R$, $\alpha \neq -1$, si ha
+\begin{displaymath}
+\int \frac{1}{x} \log^{-4} x \udiff{x} = \frac{\log^{-4+1} x}{-4+1} + c 
+= - \frac{1}{3\log^{3} x } + c \eqspace , \qquad c\in\R \eqspace. 
+\end{displaymath}
+\end{Solution}
+
+

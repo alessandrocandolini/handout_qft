@@ -1,0 +1,2166 @@
+
+%*******************************************************
+% Chapter 1
+%*******************************************************
+
+\myChapter[Feynman's space-time approach to quantum mechanics]{Feynman's overall space-time approach to non-relativistic quantum mechanics}
+\label{chp:fundamentals} 
+
+%\minitoc\mtcskip
+
+\begin{quoting}
+   \openquote I would also like to emphasize that by this time I was becoming
+   used to a physical point of view different from the most costumary point of
+   view. In the costumary view, things are discussed as a function of time in
+   very great detail.  For example, you have the field at this moment, a
+   differential equation gives you the field at the next moment and so on; a
+   method, which I shall call the Hamilton method, the time differential method.
+   We have, instead [the action] a thing that describes the character of the
+   path throughout all of space and time. The behavior of nature is determined
+   by saying her whole space-time path has a certain character.~\closequote
+   \begin{signature}
+       R.~F.~Feynman \\
+       \emph{The development of the space-time view of quantum 
+	  electrodynamics}, \\
+       Nobel Lecture, December~11, 1965.
+       \textcite{Brown_ed:2000}.
+    \end{signature}
+\end{quoting}
+
+\section{Introduction}
+
+\lettrine{T}{he} \emph{operator} formulation of non-relativistic quantum
+mechanics is based on the mathematical machinery of 
+Hilbert spaces%
+\footnote{%
+   Originally, quantum mechanics was developed in two seemingly different ways,
+   namely, the ``matrix mechanics'' of Heisenberg, Born and Jordan and the
+   ``wave mechanics'' of Schr\"odinger. It was von~Neumann, in its cornerstone
+   book \emph{Mathematical foundations of Quantum mechanics}, who revealed
+   how
+   Hilbert spaces provide the rigorous mathematical 
+   framework underlying both formulations. For an exposition of the 
+   tools of functional analysis involved in the operatorial approach of
+   non-relativistic quantum mechanics refer to,
+   \eg, the original book of \textcite{Neumann:1955} or~\textcite{Reed.Simon:1980}
+   (and the other volumes). A recent textbook is that of~\textcite{Teschl:2009}.
+   Although the use of Hilbert space is not generally questioned by newcomer
+   students
+   and is usually taken quite for granted, the reasons why from a physical perspective 
+   one eventually resolves in using the apparatus of linear operator in Hilbert space remains
+   somewhat
+   hidden.
+   The use of Hilbert spaces can be \emph{in}duced from physical insights
+   in a way suggested by
+ Schwinger in its 
+ lucid and deep lectures of quantum mechanics, see \textcite{Schwinger:2001}.}.
+The (pure) physical states of a quantum system are represented by normalized
+vectors (referred to as state vectors) belonging to a separable
+ complex Hilbert
+space, while the physical observables of the system are represented mathematically by
+(densely-defined) linear self-adjoint operators (often, unbounded ones) acting
+on the Hilbert space of state vectors. In this framework,
+the dynamics (in absence of measurement proceeses) is rules by a family of unitary linear operators related to the
+Hamiltonian operator of the quantum system (see \cref{chap:evolution}).
+According to Feynman's words and for reasons which will become clearer in a
+while, this approach will be referred to as \emph{time-differential},
+\emph{Hamiltonian} approach. On the contrary, Feynman's approach will happear to
+be a \emph{global space-time} and \emph{Lagrangian} approach. Furthermore, from the
+mathematical point of view, instead of von Neumann's spectral theory of linear
+self-adjoint operators (usually, unbounded) in Hilbert spaces one has to deal with
+Feynman's \emph{path integrals} (\ie, integration in functional spaces).
+
+\section{Review of the quantum time-evolution operator}
+\label{chap:evolution}
+
+\index{Time evolution operator}
+
+\lettrine{T}{ime-differential} approach means that the dynamics is ruled by a
+differential equation in time, which allows us to compute the state of the
+system at a given time starting from the knowledge of the state at a previous
+time (\emph{initial} conditions).
+On the contrary, a space-time overall approach means that 
+the time-evolution is determined by the whole space-time history.
+%
+Let us work in the Schr\"odinger picture, where the time dependence is
+completely carried by state vectors.  The evolution forward in time of every
+(pure) state of a (closed) quantum mechanical system, in absence of measurement
+processes, is \emph{implemented} through the action of the (linear) quantum
+time-evolution operator $\hat{U}(\tend, \tstart)$ on the state vectors.
+$\hat{U}(\tend, \tstart)$ maps the state vector $\ket{\psi(\tstart)}$ describing
+the state of a quantum system at the initial time $\tstart$ to
+$\ket{\psi(\tend)}$ which describes the state at the later time $\tend$,
+assuming  that no measurements have been  performed on the system between
+$\tstart$ and $\tend$.  In other words, $\hat{U}(\tend, \tstart)$ pushes the
+state forward in time:
+%\begin{dmath}[label={intro:U}]
+\begin{equation}\label{eq:intro:U}
+   \ket{\psi(\tend)} = \hat{U}(\tend, \tstart) \ket{\psi(\tstart)}
+   \condition*{\tend\geq\tstart} \; .
+\end{equation}
+\Cref{eq:intro:U} tells that the time-evolution of a quantum states is
+\emph{deterministic}: the knowledge of $\ket{\psi(\tstart)}$ at the initial time
+$\tstart$ implies the knowledge of $\ket{\psi(\tend)}$ at any subsequent time
+$\tend$ (if no measurements occurred from $\tstart$ to $\tend$) The standard
+interpretation of state vectors in ordinary quantum mechanics is however a
+\emph{probabilistic} one (Born interpretation), \ie, in general one is not
+able/allowed
+to extract from $\ket{\psi(\tend)}$ deterministic predictions on the outcomes of
+a measurement process performed on this state. One is only allowed to 
+predict the \emph{probability} of a certain outcome. In the standard
+interpretation of quantum
+mechanics, this probability is not a matter of our ignorance and should instead
+be understood as intrinsic
+(\ie, not epistemic).
+
+Now, two major points:
+\begin{itemize}
+   \item general physical considerations constrain the kind of mathematical
+      operators we can use for $\hat{U}$. In other words, physics implies
+      restrictions on the properties of $\hat{U}$ for any system.
+     (As we sall see, $\hat{U}$ must be unitary, etc.)
+   \item the exact form of $\hat{U}$ must depend on the particular system we
+      are investigating and the interactions which this system undergoes.
+\end{itemize}
+
+The explicit \graffito{Schr\"odinger equation} form of $\hat{U}(\tend, \tstart)$
+depends of course on
+the interactions that a particular system undergoes. Informations about the
+interactions is usually encoded in an observable which is called the quantum Hamiltonian
+operator $\hat{H}$.
+$\hat{H}$ determines
+$\hat{U}(\tend, \tstart)$ (and so the evolution forward in time of the quantum
+system) via the following time-differential (operator) equation 
+\begin{dmath}[label={intro:Ueq}]
+   i\hslash \pderiv{\hat{U}(\tend, \tstart) }{\tend} = 
+   \hat{H}(\tend) \hat{U}(\tend,\tstart)
+\end{dmath},
+which is the time-dependent Schr\"odinger equation for the time-evolution
+operator, together with the initial condition 
+\begin{dmath}[label={intro:Ut0}]
+   \hat{U}(\tstart, \tstart) = \IdentityMatrix 
+\end{dmath}.
+In \cref{eq:intro:Ueq}, $i$ denotes (as usual) the imaginary unit and $\hslash$ is
+a real parameter which has dimensions of an action and which will be later
+identified with the Plank's constant $h$ divided by $2\pi$.%
+\footnote{$\hbar$ appears in the Heisenberg canonical commutation relations.}
+$\hat{H}$  in
+general may depend explicitly on time (\eg, a time-dependent Hamiltonian appears
+when you study the interaction of a charge particle with an external electric or
+magnetic field which is not constant in time).
+
+So, let us summarize the main steps to compute the time evolution of a quantum
+system:
+\begin{enumerate}
+   \item\label{item:evolution:H} Provide the quantum Hamiltonian operator of the
+      system;
+   \item\label{item:evolution:U} once $\hat{H}$ is given, solve
+      \cref{eq:intro:Ueq,eq:intro:Ut0} for this $\hat{H}$ to get $\hat{U}(\tend,
+      \tstart)$;
+   \item\label{item:evolution:applyU} once you have calculated $\hat{U}(\tend,
+      \tstart)$, you are able to compute the state vector $\ket{\psi(\tend)}$ at
+      every time $\tend \geq \tstart$ by just applying $\hat{U}(\tend, \tstart)$
+      to the initial state $\ket{\psi(\tstart)}$ according to
+      \cref{eq:intro:Ueq}.
+\end{enumerate}
+
+Brief comparison with the evolution in time of \graffito{Comparison with
+   Hamiltonian dynamics} an Hamiltonian dynamical system in classical mechanics.
+At any time, the state of the system is fully specified by a point in the phase
+space of the system.  Let $( \vec{q}', \vec{p}')$ the point representing the
+state at the initial time $\tstart$.  The state $(\vec{q}'', \vec{p}'')$
+describing the system at the later time $\tend\geq \tstart$ is obtained by
+applying the Hamiltonian flux to $(\vec{q}_{0}, \vec{p}_{0})$.  The Hamiltonian
+flux is obtained by solving the Hamilton's equations of motion.  These equations
+involve the Hamiltonian function of the system.
+
+Ad \cref{item:evolution:H}.  \graffito{How to write down the Hamiltonian of a
+   quantum system; quantization} Strictly speaking, $\hat{H}$ should be
+inferred by experimental data in principle.  Nevertheless, it might happen
+that classical mechanics provides guidelines to write down the quantum
+Hamiltonian operator.  This is somewhat a strange procedure, which goes under
+the name of ``quantization''.  There is a number of ways
+to start with a classical system and then to construct a quantized version of
+it.  In this section, we will briefly recall the so-called ``canonical
+quantization'', which starts from the classical Hamiltonian. We shall see in the
+following sections that path integrals provide a different way to quantize a
+classical system, starting from the action functional.  There are other 
+quantization procedures.
+
+\begin{remark}
+
+   Do not forget that the interplay between classical and quantum mechanics is a
+   fashinating but still open topic.  There are classical theories which still
+   lack a quantum description (best example is quantum gravity), there are
+   classical theories with multiple quantum versions (\eg, when operator
+   ordering problems are encountered) and  quantum theories without classical
+   analogue. 
+   
+   %Quantization and de-quantization lead to interesting but
+   %unresolved questions; for example, what does classical mechanics can teach
+   us about quantum mechanics? 
+
+
+\end{remark}
+
+Ad.~\cref{item:evolution:U}.  \graffito{Explicit formulas for the quantum
+   evolution operator} For time-independent quantum Hamiltonian operators, an
+explicitly formula for $\hat{U}(\tend, \tstart)$ is known, namely,
+\begin{dmath}[label={intro:U:exp}]
+   \hat{U}(\tend , \tstart) = \E^{ - \frac{i}{\hslash} \hat{H} (\tend-\tstart) }
+\end{dmath},
+which can be obtained by formally integrating \cref{eq:intro:Ueq} and which can
+be rigorously proven for all self-adjoint $\hat{H}$.  In this  case,
+$\hat{U}(\tend, \tstart)$ indeed depends only on the difference $\tend-\tstart$,
+so $\hat{U}(\tend, \tstart) = \hat{U}(\tend-\tstart)$ and $\hat{U}$ becomes  a
+(strongly-continuous) one-parameter  group of (unitary) linear operators and the
+quantum Hamiltonian is the generator of such group.
+
+
+In the general case of time-dependent Hamiltonians, one may still obtain a
+formal expression in terms of the Dyson's series:
+\begin{dmath}[label={intro:U:Texp}]
+   \hat{U}(\tend, \tstart) = \torder\Exp{ - \frac{i}{\hslash}
+      \Int{\hat{H}(\tau)}{\tau, \tstart, \tend}}
+\end{dmath},
+where $\torder$ is Dyson's time-ordering symbol. 
+\Cref{eq:intro:U:Texp} reduces to \cref{eq:intro:U:exp} when $\hat{H}$ does not
+depend explicitly on time.  \Cref{eq:intro:U:Texp} is explain in many textbooks
+on quantum mechanics; from  a mathematical point of view, one uses the Neumann
+expansion, for a rigorous treatment see, \eg,
+\textcite[\S~X.12]{Reed.Simon:1975}.
+
+
+Let us discuss
+\graffito{Main properties of the quantum evolution operator}
+some of the main properties of $\hat{U}$:
+\begin{itemize}
+   \item From a mathematical point of view, these properties follow from
+      \cref{eq:intro:Ueq};
+   \item From a physical point of view, it is natural to ascribe these
+      properties to $\hat{U}$ from the very beginning; some authors in fact motivate
+      \cref{eq:intro:Ueq} starting from these properties.
+\end{itemize}
+Among these properties are:
+\begin{description}
+   \item[Unitarity:]
+This means that
+\begin{dmath*}[compact]
+   \adj{\hat{U}} (\tend, \tstart) \hat{U} (\tend, \tstart) =
+   \hat{U} (\tend, \tstart) \adj{\hat{U}} (\tend, \tstart) = \IdentityMatrix
+\end{dmath*}.
+This is required for
+      consistency  with 
+the
+probabilistic interpretation of $\ket{\psi(t)}$. In fact, it ensures probability
+conservation in time.
+%\paragraph{Composition property}
+   \item[Composition property:]
+The evolution from $\tstart$ to $\tend$ should be equivalent to the evolution
+from $\tstart$ to some intermediate time $t$ plus the evolution from $t$ to
+$\tend$:
+\begin{dmath}[label={intro:U:cl}]
+      \hat{U}(\tend, \tstart) = \hat{U} (\tend, t) \hat{U} (t, \tstart)
+      \condition*{\tend>t>\tstart}
+   \end{dmath},
+   in absence of measuremens from $\tstart$ to $\tend$.
+This property means that time-evolution has no memory: the evolution
+from time $t$ to
+time $\tend$ depends only on the state of the system at time $t$ (in absence of
+measurement processes).
+\end{description}
+\begin{remark}
+   \Cref{eq:intro:U:cl}  will play a key role in \cref{sec:PI construction}.
+\end{remark}
+
+%The relevant Hilbert space associated to a physical system is an abstract one,
+%\ie, it is identified up to
+%an isomorphism.
+%Usually, for practical calculations an explicit realization of the Hilbert space
+%is considered. For the case
+%of a single neutral  spinless particle moving in one dimension, without any additional
+%constrain and no other internal degrees of freedom (this is the case we will
+%consider in these notes), an appropriate realization
+%is provided by the Hilbert space $\Ltwo$ of all
+%Lebesgue square-integrable \emph{complex}-valued functions%
+%\footnote{Actually, functions are regarded as the same if they are almost everywhere
+%the same, \ie, we identify functions which differ only on a set of zero Lebesgue measure. More
+%properly, one should consider the Hilbert space of equivalence class of such
+%functions.}
+%on $\R$ (or on a subset of it), endowed with the usual scalar
+%product $\braket{f|g} = \int_{\R} f\conj{g}$ (this is the so-called coordinate 
+%representation).
+%In this case, the state $\ket{\psi(t)}$
+%is realized  by a square integrable function $\psi(t,x)$ and
+%Eq.~\eqref{eq:intro:Ueq} reads
+%\begin{equation} 
+%i\hslash \pderiv{\psi(t,x)}{t} = \hat{H} \psi(t, x) \eqspace .
+%\end{equation}
+%\par
+
+\section{Path integral representation of the Feynman's kernel}
+
+\label{sec:PI construction}
+
+\index{Kernel}
+
+\lettrine{I}{n} this section, the Feynman's formulation of one-particle
+non-relativistic quantum mechanics
+will be developed starting from the matrix elements in configuration space of
+the quantum time-evolution operator (we will construct a path integral
+representation of it, for a particular class of Hamiltonian operators).
+Historically, Feynman's came up with the path integral formulation in a
+completely different way, then he proved the equivalence with the usual
+formulation. We strongly invite to read Feynman's original
+paper.\footcite{Feynman:1948}
+
+%No attempt will be made at mathematical rigour, and in fact  we will present the
+%derivation using the usual language of physicists, \ie, Dirac's ket-bra (formal)
+%calculus, which (in infinite-dimensional Hilbert spaces) lack of mathematical
+%rigour. However, in the following sections we will try to put in evidence the
+%subtle points of the derivation.
+
+We shall focus on \graffito{The setting} the simplest quantum system: one
+\emph{spinless} particle, having no other internal
+degrees of freedom, moving in one dimension without constrains on the motion.
+Several generalizations are possible: two and three-dimensional cases,
+spherical 
+coordinates, etc%
+\footnote{For a comprehensive treatment refer to, \eg,
+   \cite{Grosche.Steiner:1998,Kleinert:2009}.}.
+\begin{approfondimento}
+   Notice that this leaves out even some simple quantum mechanical systems such as the
+   infinite square well (\ie, a particle in a box).
+   The reader might be wonder of that, because the Schr\"odinger equation 
+   is easily solvable in this case.
+   Its path integral treatment instead is difficult to handle. 
+   We shall show a trick to approach infinite potential well and other quantum
+   systems in a restricted domain by
+   advocating the image-point method. A proof of the applicability of the
+   method relies on
+   supersymmetric quantum mechanics, so this point will be discussed later.
+   The solution of a spinless particle in a central Coulomb potentials by means
+   of path integrals is also possible, and it will be discussed, but also in
+   this case special care is needed.
+   The extension to spin poses some problems (eventually, spin is a
+   relativistic effect) and we will discuss further the role of spin in a later
+   chapter.
+\end{approfondimento}
+
+
+Remember that the algebra of the quantum
+operators is (almost, see remark below) fixed by  the so-called Born, Heisenberg
+and Jordan canonical commutation relations, namely
+\begin{dmath}[label={ccr}]
+   \commutator{\hat{q}}{\hat{p}}= i\hslash 
+\end{dmath},
+where $\hslash = \nicefrac{h}{2\pi}$ and $h$ is the Planck's constant and
+$\hat{q}$ and $\hat{p}$ are the quantum mechanical position and momentum
+operators.
+
+It is costumary to introduce ``eigenstates'' of position and momentum operators:
+\begin{dmath*}
+   \hat{q} \ket{q} = q \ket{q} 
+\end{dmath*}
+and
+\begin{dmath*}
+   \hat{p} \ket{p} = p \ket{p} 
+\end{dmath*}.
+\begin{approfondimento}
+   Brief mathematical interlude.
+   The operators $\hat{q}$ and
+$\hat{p}$ have continuous spectrum and cannot be bounded. It can be shown that
+this is necessary in order 
+\cref{eq:ccr} to hold.
+To avoid such (rather technical)
+difficulties coming from working with unbounded operators, at a more rigorous
+mathematical 
+level would be that of replacing \cref{eq:ccr} with teh so-called 
+Weyl's commutation relations; refer, \eg, to \cite{Zeidler:2009c}.
+The eigenvectors of $\hat{q}$ and $\hat{p}$ should be understood in a
+generalized (improper) sense. 
+von Neumann's spectral theory of (possibly unbounded) densily-defined linear
+operators in Hilbert space is a mathematically rigorous approach.
+\end{approfondimento}
+
+
+The \graffito{Definition of the Feynman's kernel/propagator}  main character of
+the story is
+\begin{dmath}[label={intro:Ksimple}]
+   \propagator{\tend}{\qend}{\tstart}{\qstart} 
+   = 
+   \Braket{ \qend| \hat{U} (\tend,\tstart) | \qstart}
+   \condition*{\tend \geq \tstart}
+\end{dmath},
+which is called the ``Feynman's kernel'' or ``propagator''. (Do not confuse it
+with the propagator appearing in quantum field theories.)
+Often, a slightly modified version of \cref{eq:intro:Ksimple} is used:
+\begin{dmath}[label={intro:K}]
+   \propagator{\tend}{\qend}{\tstart}{\qstart} 
+   = 
+   \Braket{ \qend| \hat{U} (\tend,\tstart) | \qstart}
+   \vartheta\left( \tend -\tstart \right)
+\end{dmath},
+where $\vartheta$ is the Heaviside step function defined by 
+\begin{dmath*}
+   \vartheta( t) = 
+   \begin{cases}
+      1  & \textrm{if $t \geq 0$ }  \\
+      0  & \textrm{if $t<0$ }
+   \end{cases}
+\end{dmath*}
+for all $t\in\R$.
+\Cref{eq:intro:K} ensures that 
+$\propagator{\tend}{\qend}{\tstart}{\qstart}$ is zero for every $\tend <
+\tstart$. We shall use this latter definition of the propagator.
+
+The \graffito{Meaning of the propagator} meaning of the 
+$\propagator{\tend}{\qend}{\tstart}{\qstart}$  is:
+\begin{itemize}
+   \item Mathematical interpretation: Matrix elements of the time-evolution
+      operator in the basis of eigenstates of the position operator;%
+      \footnote{According to the previous remark, this ``basis'' has to be
+	 understood in a ``generalized'' sense. The rigorous approach would be
+	 that of introducing the spectral family of projectors, etc}
+      remember that any operator is fixed once you have prescribed its matrix
+      elements with respect to some basis.
+   \item Physical interpretation: Probability \emph{amplitude} 
+      between the localized states (eigenstates of the position operator)
+      $\ket{\qstart}$ and $\ket{\qend}$, \ie, probability amplitude for a
+      particle located at $\qstart$ at initial time $\tstart$ to be found at
+      $\qend$ at a later time $\tend$; see \cref{fig:multiple paths}.
+\end{itemize}
+
+From a mathematical point of view,
+$\propagator{\tend}{\qend}{\tstart}{\qstart}$ is also a \emph{Green's function}
+of the Schr\"odinger equation in configuration space. Let us discuss this
+point.
+
+The Green function is not unique, because you can also add to it a solution of
+the homogeneus differential equation.
+
+
+This implies that our approch is nothing but a traditional responsive approach
+to partial differential equation. The propagator can be used as a kernel to
+construct by convolution solutions of inhomogeneus differential problems.
+
+\begin{figure}
+   \centering
+   \asyinclude[inline=true]{./Asymptote/feynman.asy}
+   %\includegraphics{feynman}
+   \caption{From a physical point of view, the Feynman's kernel is the answer
+      to the following simple question: if a particle is measured at a position $\qstart$ at time
+      $\tstart$ what is the probability \emph{amplitude} that it will be found
+      at some other position $\qend$ at a later time $\tend$? It is the
+      position representation of the Schr\"odinger time-evolution operator. We shall see that
+      according to Feynman's formulation of quantu mechanics the kernel can be
+      computed by summing contributions coming from all possible paths in the
+      confguration space joining
+      $(\tstart, \qstart)$ with $(\tend, \qend)$.\label{fig:multiple paths}}
+\end{figure}
+
+
+
+The main point is that it is possible to construct an integral representation of
+the Feynman's kernel in term  of path integrals.
+The \graffito{Computing the kernel in the standard way} computation of the
+kernel using the operatorial formulation of quantum mechanics is as follows:
+\begin{itemize}
+   \item You need $\hat{H}$ and you have first to solve \cref{eq:intro:Ueq};
+   \item Once you have found explicitly the time-evolution operator, compute
+      its matrix elements. Often, it might become easier to compute this matrix
+      elements by fixing a particular realization of the Hilbert space.
+\end{itemize}
+In this section, we shall see that we can compute the same kernel in a
+completely different way, without having to solve any differential equation,
+and even without knowledge of $\hat{H}$! We can compute it through a
+representation in terms of path integrals which involves the action functional
+of the corresponding classical system.
+
+
+
+The \graffito{First step: Discretization} first step to construct the path integral representation of the kernel is to discretize the the time interval between $\tstart$ and
+$\tend$
+into a ``large'' number, say $\n$, of steps, which for simplicity are chosen to be
+equidistant, \ie, each of them have the same length $\Delta t $ given by
+\begin{dmath*}
+\Delta t  = \frac{\tend - \tstart}{\n} 
+\end{dmath*},
+so that  we can define  the intermediate discrete times (\ie, an equidistant
+time lattice)
+\begin{dmath*}
+   t_{k} = t' +  k \Delta t \condition*{\nto{k}{1}{\n-1}}
+\end{dmath*}.
+It is useful to introduce also the notations $t_{0} = t'$ and $ t_{\n}
+= t''$.
+
+Using \graffito{From finite-time kernel to small-time kernel} the foundamental
+composition law \cref{eq:intro:U:cl}, we can write
+\begin{dmath*}
+\hat{U}(t'', t') = \hat{U}(t'', t_{\n-1}) \hat{U}(t_{\n-1}, t_{\n-2}) \cdots
+\hat{U}(t_{2}, t_{1} ) \hat{U}(t_{1}, t') \eqspace ,
+\end{dmath*}
+or
+\begin{dmath*}
+\hat{U}(t'', t') = \prod_{k=1}^{\n} \hat{U} (t_{k}, t_{k-1}) 
+\end{dmath*}.
+Thus,
+\begin{dmath*}
+\braket{q''|\hat{U}(t'',t')|q'} = \Braket{q'' | \prod_{k=1}^{\n} \hat{U}(t_{k},
+t_{k-1})| q'}  
+\end{dmath*}.
+Inserting $\n-1$ resolutions of the identity, which formally read
+\begin{dmath*}
+\Int{\ket{q} \bra{q}}{q,\R} = \IdentityMatrix
+\end{dmath*},
+between each of the $n$ terms in the product above, we get
+\begin{dmath}[label={Uprod}, frame]
+\braket{q''|\hat{U}(t'',t')| q'}  =
+\int \prod_{k=1}^{\n-1} \udiff{q_{k}}  \prod_{k=1}^{\n}  \braket{ q_{k}
+| \hat{U}(t_{k} , t_{k-1})|q_{k-1}} 
+\end{dmath}
+with the additional notations $\ket{q_{0}} = \ket{q'} $ and $\ket{q_{\n}} =
+\ket{q''}$.  Notice that the initial and finale positions $q_{0}=q'$ and
+$q_{\n}=q''$ are \emph{not} integrated over.
+
+\Cref{eq:Uprod} holds in general. Now, we consider the special case in
+which  the
+Hamiltonian operator takes the standard form 
+\begin{dmath}[label={H}]
+\hat{H} = \frac{\hat{p}^{2}}{2m} + \hat{V} (\hat{q}) 
+\end{dmath},
+where
+$m$ is the mass of the particle and 
+$\hat{q}$ and $\hat{p}$ are the quantum
+mechanical position and momentum operators as before.
+$\hat{V}(\hat{q})$ is some time-\emph{in}dependent local%
+\footnote{Local means that  $\braket{q_{1} | \hat{V}(\hat{q})|q_{2}}$ has
+support restricted to $q_{1} = q_{2}$. For example, spin dependent potentials
+are not of this type.} interaction potential.
+More general classes of Hamiltonian operators will be not consider in this note.
+In the case of \cref{eq:H}, the propagator of the $k$\ordth{} sub-interval (the
+short-time kernel), using \cref{eq:intro:U:exp}, is
+\begin{dmath*}
+\Braket{q_{k} | \hat{U}(t_{k}, t_{k-1}) | q_{k-1}} =
+ \Braket{q_{k} | \E^{-\frac{i}{\hslash} \hat{H} (t_{k} - t_{k-1}) } | q_{k-1}}
+=
+\Braket{ q_{k} | \E^{- \frac{i}{\hslash} \Delta t \left(
+	 \frac{\hat{p}^{2}}{2m}+
+\hat{V}(\hat{q}) \right) } | q_{k-1}} 
+\end{dmath*}.
+At this point, it would be nice if it were possible to write something like
+\begin{dmath*}
+   \E^{- \frac{i}{\hslash} \Delta t \left( \frac{\hat{p}^{2}}{2m} +  \hat{V}(\hat{q})
+      \right)} = 
+   \E^{- \frac{i}{\hslash} \Delta t  \frac{\hat{p}^{2}}{2m}}
+   \E^{- \frac{i}{\hslash} \Delta t \hat{V}(\hat{q})}
+\end{dmath*}.
+Unfortunately, in general this is not the case.
+Remember that in general
+\begin{dmath*}
+\E^{\hat{A}+\hat{B}} = \E^{\hat{A}} \E^{\hat{B}} 
+\end{dmath*}
+does \emph{not} hold when $\hat{A}$ and $\hat{B}$ does \emph{not} commute.
+An explicit expression for $\exp \left( \hat{A}+\hat{B}\right)$ is known in the form of 
+Baker-Campbell-Hausdorff formula
+\begin{dmath*}
+\E^{A+B} = \E^{\hat{C}} 
+\end{dmath*},
+where the first terms of $\hat{C}$ are given by 
+%\begin{dmath*}
+%\hat{C} = \hat{A} + \hat{B} + \frac{1}{2} [ \hat{A} , \hat{B} ] + \frac{1}{12}
+%\left[ \hat{A} , [\hat{A}, \hat{B}] \right] - \frac{1}{12} \left[ \hat{B} , [
+%\hat{A}, \hat{B} ] \right] + \ldots 
+%\end{dmath*}.
+%At this point, what does mean ``$\ldots$'' could be not clear!
+%But the key facts
+%are: 1) $\ldots$ is made up of commutators of commutators and so, in particular
+%all terms can be proven to be zero when $[\hat{A}, \hat{B}] = 0$ as expected;
+%2)
+%in our present case the other terms will happer to be negligible in the limit $\Delta t\rightarrow0$.
+%Thus,
+
+
+%\begin{digression}[Baker-Campbell-Hausdorff formula]
+%Here we sketch an heuristic proof  of the Baker-Campbell-Hausdorff formula.
+%This formula is important in mathematics since it links lie groups and lie
+%algebras.
+%The simplest  case is the so-called Weyl formula:
+%\begin{dmath}
+%   \E^{\hat{X}} \E^{\hat{Y}} = \E^{ \hat{X} + \hat{Y} + \frac{1}{2}
+%      \commutator{\hat{X}}{\hat{Y}}}
+%\end{dmath},
+%which is valid when $\commutator{\hat{X}}{\hat{Y}} = c\IdentityMatrix$, where $c$ is a
+%constant.
+%Consider the operator-valued function
+%\begin{dmath}
+%   \hat{F}(t) = \E^{t\hat{X}} \E^{t\hat{B}}  
+%\end{dmath}.
+%The derivative is 
+%\begin{dmath}
+%   \D{\hat{F}(t)}{t} = \hat{X} \E^{t\hat{X}} \E^{t\hat{Y}} + 
+%   \E^{t\hat{X}} \hat{Y} \E^{t\hat{Y}} 
+%\end{dmath}.
+%The more general cas
+%\end{digression}
+
+\section{Free particle}
+
+The Lagrangian of the free particle is 
+\begin{dmath*}
+   \Lagrangian (q, \dot{q} ) = \frac{1}{2} m \dot{q}^{2}
+\end{dmath*}
+and the action functional is
+\begin{dmath*}
+   S[q(\tau)] = \Int{ \frac{1}{2} m \dot{q}^{2}(\tau) }{ \tau, \tstart, \tend}
+\end{dmath*}
+with \emph{non}-homogeneous Dirichlet boundary conditions on the continuous paths $q(t)$ fixed:
+\begin{dmath*}
+   \begin{sistema}
+   q(\tstart) = \qstart\\
+   q(\tend) = \qend
+\end{sistema}
+\end{dmath*}
+The path integral representation of the kernel is given by
+\begin{dmath}[label={particella libera}]
+K(x'', t''|x',t') =
+\pathint{%
+   \E^{\frac{i}{\hbar} \Int{\frac{1}{2} m \dot{x}^{2}}{t, t', t''} }}
+{x(t), x(t')=x', x(t'')=x''}  =
+\lim \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} x_{k} \E^{ \frac{i}{\hbar}
+\sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
+\right)^{2} \varepsilon }  
+\end{dmath}
+The multiple integral is
+\begin{dmath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
+\right)^{2} \varepsilon }  = 
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\frac{m}{2\varepsilon}
+\sum_{k=1}^{N} \left(  x_{k} - x_{k-1} \right)^{2} } \eqspace .
+\end{dmath}
+\section{Path integral treatment of harmonic potential}
+\begin{advanced}
+\section{Path integral treatment of Coulomb potential}
+\section{Path integral treatment of finite square well potential}
+\end{advanced}
+\section{WKB from a path integral perspective}
+\section{What's the use of all this?}
+
+\endinput
+
+
+
+
+
+
+\begin{remark}
+\`E importante rilevare che questo \`e un comunissimo integrale multiplo in
+$\R^{N-1}$ del tipo che si incontra nei corsi introduttivi di analisi, non c'\`e
+nulla di nuovo nel risolverlo, la novit\`a (\ie, il path integral) si ottiene
+solo nel momento in cui si considera il passaggio al limite. 
+\end{remark}
+It is helpful to absorbe the coefficients via a preliminary redefinition of the
+integration variables:
+\begin{dmath*}
+y_{k} = \left( \frac{m}{2\hbar \varepsilon} \right)^{\frac{1}{2}} x_{k}
+\end{dmath*}
+Let us also introduce analogous notations for the endpoints:
+$x_{0} =x'$ and $x_{N} = x''$m bring in mind however that we are not
+integrating over initial and final positions.
+
+With this change of variables
+\begin{dmath*}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\frac{m}{2\varepsilon}
+\sum_{k=1}^{N} \left(  x_{k} - x_{k-1} \right)^{2} } = 
+\left( \frac{m}{2\hbar\varepsilon} \right)^{-\frac{N-1}{2}} 
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i
+\sum_{k=1}^{N} \left(  y_{k} - y_{k-1} \right)^{2} } \eqspace .
+\end{dmath*}
+This is a multi-dimensional Gaussian integral
+Si tratta di un integrale multiplo Gaussiano, anche se certamente il fatto che le
+variabili di integrazione $y_{k}$ siano accoppiate complica la faccenda, ci sono
+vari modi per calcolare questo integrale.
+Il modo standard di calcolarlo (disaccoppiare le $y_{k}$ diagonalizzando la forma quadratica a esponente) verr\`a
+affrontato nella prossima sezione, prima presentiamo il metodo probabilmente pi\`u
+diretto, ovvero:
+si considera qualche esempio esplicito ($N=2$, $N=3$\ldots), si 
+identifica un pattern
+generale e si dimostra per induzione che il pattern \`e verificato.
+
+Consideriamo $N=2$.  L'integrale che ci interessa calcolare \`e
+\begin{displaymath}
+\int_{\R} \uexp^{ i \left[ \left(y_{1} - y_{0} \right)^{2}  +
+\left( y_{2} - y_{1} \right)^{2} \right] }  \udiff{y_{1}} \eqspace .
+\end{displaymath}
+Il modo per risolverlo \`e quello standard: si completa il quadrato a esponente,
+ovvero si riscrive l'esponente come
+\begin{eqnarray*}
+( y_{1} - y_{0} )^{2} + (y_{2} - y_{1} )^{2} 
+&=& 2 y_{1} ^{2} - 2 y_{1} (y_{0} + y_{2} ) + y_{0}^{2} + y_{2}^{2} \\
+&=& 2 \left[ y_{1}^{2} - y_{1} ( y_{0} + y_{2} ) + \frac{y_{0}^{2} +
+y_{2}^{2}}{2} \right] \\
+&=& 2 \left[ \left( y_{1} - \frac{y_{0} + y_{2} }{2} \right)^{2} - \left(
+\frac{y_{0}+y_{2}}{2} \right)^{2} + \frac{y_{0}^{2} + y_{2}^{2}}{2} \right] \\
+&=& 2 \left( y_{1} - \frac{y_{0}+ y_{2} }{2} \right)^{2} + \frac{1}{2} \left(
+ 2 y_{0}^{2}  + 2y_{2}^{2} - y_{0}^{2} - y_{2}^{2} - 2y_{0}y_{2} \right) \\
+&=& 2 \left( y_{1} - \frac{y_{0}+ y_{2} }{2} \right)^{2} + \frac{1}{2}
+\left(y_{2} - y_{0} \right)^{2} \eqspace .
+\end{eqnarray*}
+Quindi
+\begin{displaymath}
+\int_{\R} \uexp^{ i \left[ \left(y_{1} - y_{0} \right)^{2}  +
+\left( y_{2} - y_{0} \right)^{2} \right] }  \udiff{y_{1}} = 
+\uexp^{ \frac{i}{2} \left( y_{2} - y_{0} \right)^{2}} \int_{\R} 
+\uexp^{i \left( y_{1} - \frac{y_{0} + y_{2} }{2} \right)^{2} }\udiff{y_{1}} = 
+\left( \frac{i\pi}{2} \right)^{\frac{1}{2}}  \uexp^{ \frac{i}{2} \left( y_{2} -
+y_{0} \right)} \eqspace ,
+\end{displaymath}
+avendo fatto uso dell'integrale di Fresnel, Eq.~\eqref{eq:fresnel}. 
+%(\`E
+%necessario un cambio di variabili ausiliario, $t = y_{1} - \frac{1}{2}(y_{0} +
+%y_{2})$, ma lo Jacobiano della trasformazione \`e $1$ e il cambio di variabili
+%non ha effetto sugli 
+%estremi di integrazione perch\'e stiamo integrando su tutto $\R$.)
+\par
+Consideriamo ora il caso $N=3$. In questo caso abbiamo $2$ integrazioni sulle
+posizioni intermedie $y_{1}$ e $y_{2}$,
+l'integrale da calcolare \`e
+\begin{displaymath}
+\int_{\R^{2}} \udiff{y_{1}} \udiff{y_{2}} \uexp^{ i \left[ \left(y_{1} - y_{0}
+\right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( y_{3} - y_{2}
+\right)^{2} \right]}  \eqspace .
+\end{displaymath}
+Integriamo prima rispetto a $y_{1}$ (usando il risultato precedentemente
+ottenuto):
+\begin{eqnarray*}
+\int_{\R^{2}} \udiff{y_{1}} \udiff{y_{2}} \uexp^{ i \left[ \left(y_{1} - y_{0}
+\right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( y_{3} - y_{2}
+\right)^{2} \right]}   &=&
+\int_{\R} \udiff{y_{2}} \uexp^{ i \left( y_{3} - y_{2} \right)^{2}} 
+\underbrace{\int_{\R}
+\udiff{y_{1}} \uexp^{ i \left[ \left( y_{1} - y_{0} \right)^{2} + \left( y_{2} -
+y_{1} \right)^{2} \right]}}_{\left( \frac{i\pi}{2} \right)^{\frac{1}{2}} \uexp^{
+\frac{i}{2} \left( y_{2} - y_{0}\right)^{2}}}  \\
+&=& \left( \frac{i\pi} {2} \right)^{\frac{1}{2}} 
+\int_{\R} \udiff{y_{2}} \uexp^{
+i \left[ \left( y_{3} - y_{2} \right)^{2} + \frac{1}{2} \left( y_{2} - y_{0}
+\right)^{2}\right]}  \eqspace .
+\end{eqnarray*}
+Per calcolare quest'ultimo integrale, ricorriamo al solito metodo di
+completamento del  quadrato a esponente:
+\begin{eqnarray*}
+\left( y_{3} - y_{2} \right)^{2} + \frac{1}{2} \left( y_{2} - y_{0} \right)^{2}
+&=& \frac{3}{2} y_{2}^{2} - y_{2} \left( 2 y_{3} + y_{0} \right) + \frac{2y_{3}^{2} +
+y_{0}^{2}}{2}  \\
+&=& \frac{3}{2} \left [ y_{2}^{2} - 2 y_{2} \frac{ 2y_{3} + y_{0}}{3} +
+\frac{2y_{3}^{2} + y_{0}^{2}}{3} \right]  \\
+&=& \frac{3}{2} \left[ \left( y_{2} - \frac{2y_{3} + y_{0}}{3} \right)^{2} -
+\left( \frac{2y_{3} + y_{0}}{3} \right)^{2} + \frac{2y_{3}^{2} + y_{0}^{2}}{3}
+\right]  \\
+&=& \frac{3}{2} \left( y_{2} - \frac{2y_{3} + y_{0}}{3} \right)^{2}  +
+\frac{6y_{3}^{2} + 3y_{0}^{2} - 4y_{3}^{2} -y_{0}^{2} - 4 y_{0} y_{3}}{6}  \\
+&=& \frac{3}{2} \left( y_{2} - \frac{2y_{3} + y_{0} }{3} \right)^{2} + \frac{
+\left( y_{3} - y_{0}\right)^{2}}{3}  \eqspace ,
+\end{eqnarray*}
+per cui
+\begin{displaymath}
+\int_{\R} \udiff{y_{2}} \uexp^{
+i \left[ \left( y_{3} - y_{2} \right)^{2} + \frac{1}{2} \left( y_{2} - y_{0}
+\right)^{2}\right]}  = \uexp^{ \frac{i}{3} \left( y_{3} - y_{0} \right)^{2}}
+\int_{\R} \uexp^{ i \frac{3}{2} \left( y_{2} - \frac{2y_{3} + y_{0}}{3}
+\right)^{2}} \udiff{y_{2}} = \left( \frac{2i\pi}{3} \right)^{\frac{1}{2}} \uexp^{
+\frac{i}{3} \left( y_{3} - y_{0} \right)^{2}}  \eqspace ,
+\end{displaymath}
+e  quindi
+\begin{displaymath}
+\int_{\R^{2}} \udiff{y_{1}} \udiff{y_{2}} \uexp^{ i \left[ \left(y_{1} - y_{0}
+\right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( y_{3} - y_{2}
+\right)^{2} \right]}  = \left( \frac{i\pi}{2} \frac{2i\pi}{3}
+\right)^{\frac{1}{2}} \uexp^{ \frac{i}{3} \left( y_{3} - y_{0} \right)^{2}} =
+\left( \frac{(i\pi)^{2}}{3} \right)^{\frac{1}{2}} \uexp^{ \frac{i}{3} \left(
+y_{3} - y_{0} \right)^{2}} \eqspace .
+\end{displaymath}
+Questo \emph{suggerisce} che la formula generale sia
+\begin{equation}\label{eq:gaussianN}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \uexp^{ i \sum_{k=1}^{N} \left( y_{k} -
+y_{k-1} \right)^{2}} = \left( \frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2}}
+\uexp^{ \frac{i}{N} \left( y_{N} - y_{0} \right)^{2}} \eqspace .
+\end{equation}
+Dimostriamo la Eq.~\eqref{eq:gaussianN} per induzione su $N\in\N$. La formula \`e verificata per $N=2$ (e anche
+per $N=3$), proviamo che se vale per $N$ vale anche per $N+1$. 
+Si ha
+\begin{eqnarray*}
+\int_{\R^{N}} \prod_{k=1}^{N} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N+1} \left(
+y_{k} - y_{k-1}\right)^{2}} &=&
+\int_{\R^{N}} \prod_{k=1}^{N} \udiff{y_{k}} \uexp^{i \sum_{k=1}^{N} \left( y_{k}
+- y_{k-1} \right)^{2}} \uexp^{ i \left( y_{N+1} - y_{N} \right)^{2} } \\
+&=& \int_{\R} \udiff{y_{N}} \uexp^{ i \left( y_{N+1} - y_{N} \right)^{2}}
+\underbrace{%
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1} \right)^{2}}}_{%
+\left( \frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2}} \uexp^{ \frac{i}{N} \left(
+y_{N} - y_{0}\right)^{2}}} \\
+&=& \left( \frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2}} 
+\int_{\R} \udiff{y_{N}}
+\uexp^{ i \left[ \left( y_{N+1} - y_{N} \right)^{2} + \frac{1}{N} \left( y_{N} -
+y_{0} \right)^{2} \right] } \eqspace ,
+\end{eqnarray*}
+avendo fatto uso nel secondo passaggio dell'ipotesi di induzione. Il rimanente
+integrale Gaussiano singolo pu\`o essere calcolato con il metodo del
+completamento del quadrato a esponente. Si riscrive l'esponente nella forma
+equivalente
+\begin{eqnarray*}
+\left( y_{N+1} - y_{N} \right)^{2} + \frac{1}{N} \left( y_{N} - y_{0}
+\right)^{2} &=&
+\left( 1 + \frac{1}{N} \right) y_{N}^{2} -  2y_{N} \left( y_{N+1} + \frac{1}{N}
+y_{0} \right) + \frac{N y_{N+1}^{2} + y_{0}^{2}}{N} \\
+&=& \frac{N+1}{N} \left[ y_{N}^{2} - 2 y_{N} \frac{ N y_{N+1} + y_{0}}{N+1}
+ + \frac{N y_{N+1}^{2} + y_{0}^{2}}{N+1} \right] \\
+&=& \frac{N+1}{N} \left[ \left( y_{N} - \frac{N y_{N+1} + y_{0}}{N+1}
+\right)^{2} \right.\\
+&&{} -\left. \left( \frac{Ny_{N+1} + y_{0} }{N+1} \right)^{2} +
+\frac{Ny_{N+1}^{2} + y_{0}^{2}}{N+1} \right] \\
+%&=& \frac{N+1} {N} \left( y_{N} - \frac{Ny_{N+1} + y_{0}}{N+1} \right)^{2} \\
+%&&{}+
+%\frac{N(N+1) y_{N+1}^{2} + (N+1) y_{0}^{2} - N^{2} y_{N+1}^{2} -y_{0}^{2} - 2 N
+%y_{0} y_{N+1}}{N(N+1)}  \\
+&=& \frac{N+1} {N} \left( y_{N} - \frac{Ny_{N+1} + y_{0}}{N+1} \right)^{2} + 
+\frac{\left( y_{N+1}-y_{0}\right)^{2}}{N+1} \eqspace ,
+\end{eqnarray*}
+per cui
+\begin{eqnarray*}
+\int_{\R} \udiff{y_{N}}
+\uexp^{ i \left[ \left( y_{N+1} - y_{N} \right)^{2} + \frac{1}{N} \left( y_{N} -
+y_{0} \right)^{2} \right] } &=& 
+\uexp^{ \frac{i}{N+1} \left( y_{N+1} -
+y_{0}\right)^{2}} \int_{\R} \udiff{y_{N}} \uexp^{ i \frac{N+1}{N} \left( y_{N} -
+\frac{Ny_{N+1} + y_{0} }{N+1} \right)^{2}}  \\
+&=& \left( \frac{i N \pi}{N+1}
+\right)^{\frac{1}{2} } \uexp^{ \frac{i}{N+1} \left( y_{N+1} - y_{N} \right)^{2}}
+\eqspace, 
+\end{eqnarray*}
+e quindi
+\begin{eqnarray*}
+\int_{\R^{N}} \prod_{k=1}^{N} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N+1} \left(
+y_{k} - y_{k-1}\right)^{2}}&=&
+ \left( \frac{(i\pi)^{N-1}}{N} \frac{i\pi N}{N+1} \right)^{\frac{1}{2}} \uexp^{
+\frac{i}{N+1} \left( y_{N+1} - y_{0} \right)^{2}} \\
+&=& \left(
+\frac{(i\pi)^{N}}{N+1} \right)^{\frac{1}{2}} \uexp^{ \frac{i} {N+1} \left(
+y_{N+1} - y_{0}\right)^{2}}  \eqspace ,
+\end{eqnarray*}
+il che completa la dimostrazione della  Eq.~\eqref{eq:gaussianN}.
+\par
+Adesso inseriamo la Eq.~\eqref{eq:gaussianN}, che \`e un'espressione esatta per
+il nostro
+l'integrale Gaussiano $N$-dimensionale, 
+nella formula per il path integral della particella libera, 
+Eq.~\eqref{eq:particella libera}, ricordandoci di tenere conto del cambiamento di variabile da
+$x_{k}$ a $y_{k}$:
+\begin{eqnarray*}
+%\braket{x''|\hat{U} (t'', t')|x'} &=& 
+K(x'', t'' | x', t') &=&
+\plimit \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
+\right)^{2} \varepsilon }  \\
+&=& 
+\plimit \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+\left( \frac{m}{2\hbar\varepsilon}\right)^{- \frac{N-1}{2}}  \left(
+\frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2}}  \uexp^{\frac{i}{N}
+\frac{m}{2\hbar\varepsilon} \left( x_{N} - x_{0} \right)^{2}}\\
+&=& 
+\plimit  \left( \frac{m}{2\hbar \varepsilon} \right)^{\frac{N}{2}} \left( \frac{1}{i
+\pi } \right)^{\frac{N}{2}}  \left( \frac{m}{2\hbar\varepsilon} \right)^{-\frac{N}{2}}
+\left( \frac{m }{2\hbar \varepsilon}\right)^{\frac{1}{2}}  (i\pi)^{\frac{N}{2}}
+\left(i\pi N\right)^{-\frac{1}{2}}  \uexp^{ 
+\frac{im}{2\hbar N\varepsilon}
+\left( x_{N} - x_{0} \right)^{2}} \\
+&=&
+\plimit
+\left( \frac{m}{2\pi i \hbar N \varepsilon} \right)^{\frac{1}{2}} \uexp^{
+\frac{i}{\hbar} \frac{m}{2 N\varepsilon} \left( x_{N} - x_{0} \right)^{2}} \\
+&=& \left( \frac{m} {2\pi i \hbar (t''-t')} \right)^{\frac{1}{2}} \uexp^{
+\frac{i}{\hbar} \frac{m}{2} \frac{ \left( x_{N} - x_{0} \right)^{2}}{t'' -t'} }
+\eqspace .
+\end{eqnarray*}
+
+\section{Digressione sugli integrali Gaussiani multipli} 
+
+In questa sezione viene presentato un modo per automatizzare il calcolo di
+integrali Gaussiani in pi\`u dimensioni, come esempio illustrativo  mostreremo
+come il metodo 
+si applichi per ritrovare la Eq.~\eqref{eq:gaussianN}.  In questa sezione non
+ci sono quindi nuovi risultati per quanto concerne  il path integral in s\'e.
+Ci\`o non \`e del tutto superfluo comunque, ci sar\`a di aiuto per calcolare
+altri path integral pi\`u complicati (\eg, oscillatore armonico), inoltre \`e
+un'occasione per rinfrescare alcune tecniche standard per gestire in modo
+sistematico il calcolo di integrali Gaussiani in pi\`u variabili.
+
+Consideriamo ancora una volta l'integrale 
+\begin{equation}\label{eq:gN}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{i \sum_{k=1}^{N}  \left(
+y_{k} - y_{k-1} \right)^{2}} \eqspace .
+\end{equation}
+A esponente riconosciamo una forma quadratica nelle $y_{0}, y_{1}, \ldots,
+y_{N}$, che pu\`o essere riscritta in forma matriciale.
+Vediamo alcuni casi particolari ($N=2$ e $N=3$) prima di procedere a svolgere le
+considerazioni per $N\in\N$ arbitrario.
+\par
+Per $N=2$, l'integrale come gi\`a abbiamo visto \`e
+\begin{displaymath}
+\int_{\R} \uexp^{ i  \left[ \left( y_{1} - y_{0} \right)^{2} + \left( y_{2} -
+y_{0} \right)^{2} \right] } \udiff{y_{1}}  
+= \int_{\R} \uexp^{i \left[  2  y_{1}^{1}  -2 y_{1} y_{0} - 2 y_{1} y_{2} + y_{0}^{2}
++ y_{2} ^{2}\right]} \eqspace .
+\end{displaymath}
+Introducendo il vettore tridimensionale
+\begin{displaymath}
+\ket{y} = \begin{pmatrix} 
+y_{0} \\ y_{1} \\ y_{2} 
+\end{pmatrix}
+\end{displaymath}
+(la notazione di Dirac familiare ai fisici \`e molto comoda anche in questo contesto puramente algebrico, 
+in luogo della pi\`u usuale notazione $\vec{y}$)
+e la matrice $\hat{A}_{2}$ di dimensioni  $3\times3$  data da
+\begin{displaymath}
+\hat{A}_{2}  =  \begin{pmatrix} 1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1
+\end{pmatrix}
+\eqspace ,
+\end{displaymath}
+l'integrale si pu\`o riscrivere come
+\begin{displaymath}
+\int_{\R} \udiff{y_{1}} \uexp^{ i \braket{y| \hat{A}_{2} y} } \eqspace .
+\end{displaymath}
+\begin{remark}
+L'indice $2$  a pedice di $\hat{A}_{2}$ \`e stato inserito per richiamare  che stiamo
+lavorando nel caso $N=2$, si noti tuttavia che $\hat{A}_{2}$ ha dimensioni $3\times 3$, \emph{non}
+$2\times2$.
+Per ora, avremmo anche potuto omettere l'informazione su $N$, ma sar\`a utile
+successivamente quando avremo bisogno di  stabilire una relazione di ricorrenza
+per  $\det
+\hat{A}_{N}$.
+Per non appesantire ulteriormente le notazioni, si \`e preferito invece non
+indicare esplicitamente $N$ anche in $\ket{y}$, anche se per uniformit\`a di
+notazioni sarebbe stato forse preferibile la notazione $\ket{y}_{N}$.
+\end{remark}
+Allo stesso modo, per $N=3$,
+l'integrale da calcolare \`e
+\begin{displaymath}
+\int_{\R} \uexp^{ i  \left[ \left( y_{1} - y_{0} \right)^{2} + \left( y_{2} -
+y_{0} \right)^{2} + \left( y_{3} - y_{2} \right)^{2}\right] } \udiff{y_{1}}  
+= \int_{\R} \uexp^{i \left[  2  y_{1}^{1}  +2y_{2}^{2} -2 y_{1} y_{0} - 2 y_{1} y_{2}
+-2y_{2} y_{3} + y_{0}^{2} 
++ y_{3} ^{2}\right]} \eqspace, 
+\end{displaymath}
+e introducendo il vettore $\ket{y}$ a quattro componenti  e la matrice
+$\hat{A}_{3}$ di dimensioni $4\times 4$ dati rispettivamente da
+\begin{displaymath}
+\ket{y} = \begin{pmatrix} 
+y_{0} \\ y_{1} \\ y_{2}  \\ y_{3}
+\end{pmatrix} \eqspace , \qquad 
+\hat{A}_{3}  =  \begin{pmatrix} 1 & -1 & 0  & 0 \\ -1 & 2 & -1 & 0 \\ 
+0 & -1 & 2 & -1  \\ 0 & 0 & -1 & 1 
+\end{pmatrix}
+\eqspace ,
+\end{displaymath}
+l'integrale pu\`o riscriversi come 
+\begin{displaymath}
+\int_{\R^{2} } \udiff{y_{1}} \udiff{y_{2}} \uexp^{ i \braket{y|\hat{A}_{3} y}}
+\eqspace .
+\end{displaymath}
+
+In generale, si introdurranno il vettore $\ket{y}$ $(N+1)$-dimensionale e la
+matrice $\hat{A}_{N}$ di dimensioni $(N+1)\times (N+1)$ dati da
+\begin{equation}\label{eq:|y>AN}
+\ket{y} = \begin{pmatrix} y_{0} \\ y_{1} \\ \vdots \\ y_{N-1} \\ y_{N}
+\end{pmatrix} \eqspace ,  \qquad 
+\hat{A}_{N} = \begin{pmatrix} 
+1      & -1     & 0      & 0      & \cdots & 0      & 0 \\
+-1     & 2      & -1     & 0      & \cdots & 0      & 0 \\
+0      & -1     & 2      & 1      & \cdots & 0      & 0  \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0      & 0      & 0      & 0      & \cdots & -1     & 1
+\end{pmatrix}
+\eqspace, 
+\end{equation}
+cos\`{\i} da  riscrivere l'integrale nella Eq.~\eqref{eq:gN} nella forma matriciale
+\begin{equation}\label{eq:gNmatrix}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \braket{ y |
+\hat{A}_{N}
+y}} \eqspace .
+\end{equation}
+Nella Eq.~\eqref{eq:gNmatrix}, le variabili su cui integriamo sono accoppiate
+(cio\`e compaiono termini misti, \eg, $y_{0} y_{1}$ etc.).  Il modo usuale di
+procedere a questo punto consiste nel diagonalizzare la matrice $\hat{A}_{N}$
+per mezzo di una trasformazione ortogonale, la trasformazione ortogonale \`e
+assorbita in un cambio di variabili, lo Jacobiano della trasformazione
+\`e uno, il cambio di variabili disaccoppia le variabili di
+integrazione e l'integrale nelle nuove variabili fattorizza nel prodotto di
+integrali unidimensionali, il cui calcolo \`e agevole.  Prima di approfondire
+pi\`u in
+dettaglio la procedura (forse gi\`a familiare), \`e bene  per\`o  mettere in
+evidenza un problema!
+
+Il problema, affatto banale, risiede nel fatto che nella Eq.~\eqref{eq:gNmatrix}
+\emph{non} si integra rispetto a  tutte le componenti di $\ket{y}$,
+bens\`{\i} solo su quelle intermedie (\ie, $y_{1}, y_{2} , \ldots, y_{N-1}$)
+escludendo invece la prima e l'ultima componente (\ie, $y_{0}$ e $y_{N}$).
+
+Come si pu\`o ovviare a questo inconveniente?  Ci sono diversi modi di
+procedere. In probabilit\`a e statistica capita spesso di dover integrare solo
+rispetto ad alcune delle variabili in gioco (\ie, marginalizzazione), e nel caso
+di distribuzioni di probabilit\`a Gaussiane questo conduce a integrali multipli
+come quello che stiamo considerando.  Un procedimento sistematico per tenere
+conto del fatto che stiamo integrando solo rispetto ad alcune variabili \`e
+descritto in Sez.~\ref{sec:marginalizzazione}.  Nel resto di questa sezione,
+vedremo un approccio pi\`u diretto.
+
+Supponiamo per un attimo che $y_{0} = y_{N} = 0$.
+Che cosa succede in questo caso particolare?
+Per $N=2$ l'integrale nella Eq.~\eqref{eq:gN} diventa
+\begin{displaymath}
+\int_{\R} \uexp^{i \left[ \left( y_{1} - y_{0} \right)^{2} + \left( y_{2} -
+y_{1} \right)^{2} \right]} \udiff{y_{1}} = \int_{\R} \uexp^{ i 2
+y_{1}^{2} } \udiff{y_{1}}
+\eqspace, 
+\end{displaymath}
+per $N=3$ diventa
+\begin{displaymath}
+\int_{\R^{2} } \uexp^{i \left[ \left( y_{1} - y_{0} \right)^{2} + \left( y_{2} -
+y_{1} \right)^{2} + \left( y_{3} - y_{2} \right)^{2} \right]} \udiff{y_{1}}
+\udiff{y_{2} }
+ = \int_{\R^{2} } \uexp^{ i \left[ 2y_{1}^{2} + 2y_{2}^{2} - 2 y_{1} y_{2}
+\right]} \udiff{y_{1}} \udiff{y_{2}} \eqspace, 
+\end{displaymath}
+e in generale  troviamo che 
+la forma quadratica a esponente non contiene $y_{0}$ e $y_{N}$ (che sono
+zero) e possiamo scriverla in forma matriciale  $\braket{b | \hat{B}_{N} b}$, dove
+\begin{equation}\label{eq:|b>BN}
+\ket{b} = \begin{pmatrix} y_{1} \\ y_{2} \\ \vdots \\ y_{N-1} \end{pmatrix}
+\eqspace,  \qquad 
+\hat{B}_{N} = 
+\begin{pmatrix}  
+2      & -1     & 0      & 0      & \cdots & 0      & 0 \\
+-1     & 2      & -1     & 0      & \cdots & 0      & 0 \\
+0      & -1     & 2      & -1     & \cdots & 0      & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \cdots & \cdots \\
+0      & 0      & 0      & 0      & \cdots & -1     & 2
+\end{pmatrix} 
+\eqspace .
+\end{equation}
+Si noti che $\ket{b}$ \`e un vettore $(N-1)$-dimensionale che  ora contiene solo le $N-1$ variabili 
+ $y_{1}, \ldots, y_{N-1}$ rispetto alle quali stiamo integrando, e
+$\hat{B}_{N}$  \`e
+la sotto-matrice di $\hat{A}_{N}$ avente dimensioni $(N-1)
+\times (N-1)$ ottenuta eliminando da $\hat{A}_{N}$ la prima e l'ultima riga e la
+prima e l'ultima colonna.
+
+In generale per\`o, non \`e vero che $y_{0} = y_{N} = 0$, come procedere?
+Il trucco \`e quello di riscrivere  la traiettoria $x(t)$ come
+\begin{equation}\label{eq:eta}
+x(t) = \eta(t) + x' +  \frac{x'' -x'}{t''-t'} (t-t') \eqspace, 
+\end{equation}
+dove $\eta(t)$ soddisfa le condizioni $\eta(t') = \eta(t'') = 0$.
+Si vede che $x(t)$ soddisfa automaticamente le corrette condizioni al
+contorno $x(t') =x'$ e $x(t'') = x''$.
+
+\begin{remark}
+
+La Eq.~\eqref{eq:eta} ha una chiara interpretazione fisica.  Significa $x(t) =
+\xc(t) + \eta(t) $ dove $\xc(t)$ \`e la ``traiettoria'' classica, cio\`e la
+soluzione classica del moto.  Per ora, dal punto di vista dei calcoli questo
+fatto non \`e particolarmente rilevante, ma ci torneremo quando tratteremo
+l'oscillatore armonico.
+
+\end{remark}
+
+Allora,
+\begin{displaymath}
+\dot{x}(t) = 
+\dot{\eta}(t) + \frac{x''-x'}{t''-t'}  = \dot{\eta(t)}  + v \eqspace, 
+\end{displaymath}
+dove per comodit\`a \`e stata introdotta la notazione
+\begin{displaymath}
+ v = \frac{x''-x'}{t''-t'} \eqspace .
+\end{displaymath}
+%(Il simbolo \`e quello usato per la velocit\`a, anche dimensionalmente $v$ \`e
+%una velocit\`a, e la sua interpretazione fisica dovrebbe essere chiara: \`e la
+%velocit\`a associata al moto classico della particella, ma per evitare
+%fraintendimenti \`e meglio pensare a $v$ semplicemente come a una costante.
+Il termine cinetico della Lagrangiana (l'unico termine presente nel caso della
+particella libera) diventa
+\begin{displaymath}
+\mathcal{L} \left( x, \dot{x} , t \right) = \frac{1}{2} m \dot{x}^{2} =
+\frac{1}{2} m \dot{\eta}^{2}  + m  \dot{\eta} v + \frac{1}{2} m v^{2}  \eqspace, 
+\end{displaymath}
+e il funzionale azione diventa
+\begin{displaymath}
+S[x(t) ] = \int_{t'}^{t''} \frac{1}{2} m \dot{x}^{2} (t) \udiff{t}  
+=  \underbrace{\int_{t'}^{t''}  \frac{1}{2} m  \dot{\eta}^{2} (t)
+\udiff{t}}_{S[\eta(t)]}
++ \underbrace{\int_{t'}^{t''} m v \dot{\eta} (t) \udiff{t} }_{\eta(t'') -
+\eta(t') = 0 } + \frac{1}{2} m v^{2} (t''-t) \eqspace .
+\end{displaymath}
+Quindi  $S[x(t)] = S[\eta(t)] + \frac{1}{2}mv^{2} (t''-t')$ e il path integral
+si pu\`o riscrivere  come integrazione su tutti  i cammini ciclici $\eta(t)$
+soddisfacenti $\eta(t') = \eta(t'') = 0$:
+\begin{displaymath}
+K(x'', t''|x',t') = \int_{x(t')=x'}^{x(t'')=x''}  \udp{x(t)} \uexp^{
+\frac{i}{\hbar} S[x(t)]} = 
+\uexp^{\frac{i}{\hbar} \frac{m}{2}\frac{(x''-x')^{2}}{t''-t} } 
+\int_{\eta(t')=0}^{\eta(t'') = 0 } \udp{\eta(t)}
+\uexp^{\frac{i}{\hbar} S[\eta(t)] } 
+\eqspace ,
+\end{displaymath}
+e usando la definizione su lattice del path integral 
+%(nota: il cambio di
+%viariabili da $x(t)$ e $\eta(t)$ ha Jacobiano uno, questo si pu\`o vedere dalla 
+%definizione di path integral come limite del caso $N$-dimensionale)
+%\begin{eqnarray*}
+\begin{displaymath}
+\int_{\eta(t')=0}^{\eta(t'') = 0 } \udp{\eta(t)}
+\uexp^{\frac{i}{\hbar} S[\eta(t)] } 
+%\braket{x''| \hat{U} (t'', t') | x'}  
+%K(x'', t''|x', t') 
+%&=& \plimit   \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+%\int_{\R^{N-1}} \prod_{k=1}^{N} \uexp^{ \frac{i}{\hbar} \left [ 
+%\sum_{k=1}^{N}  \frac{1}{2} \left( \frac{\eta_{k} - \eta_{k-1}}{\varepsilon}
+%\right)^{2}  + \frac{1}{2} m v^{2} \right] \varepsilon }  \\
+%&=& \plimit   \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+%\int_{\R^{N-1}} \prod_{k=1}^{N} \uexp^{ \frac{i}{\hbar} \frac{m}{2\varepsilon}
+%\sum_{k=1}^{N} \left( \eta_{k} - \eta_{k-1} \right)^{2} } \uexp^{
+%\frac{i}{\hbar} \frac{m}{2} v^{2} \varepsilon N }\\
+= \plimit   \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{\eta_{k}} 
+\uexp^{ \frac{i}{\hbar} \frac{m}{2\varepsilon}
+\sum_{k=1}^{N} \left( \eta_{k} - \eta_{k-1} \right)^{2} }  \eqspace .
+\end{displaymath}
+Con il solito cambio di variabile, 
+\begin{displaymath}
+y_{k} = \left( \frac{m}{2\hbar \varepsilon} \right)^{\frac{1}{2}}  \eta_{k}
+\eqspace ,
+\end{displaymath}
+abbiamo
+\begin{eqnarray*}
+%\braket{x''| \hat{U} (t'', t') | x'}  
+%K(x'', t''|x', t')
+\int_{\eta(t')=0}^{\eta(t'') = 0 } \udp{\eta(t)}
+\uexp^{\frac{i}{\hbar} S[\eta(t)] } 
+&=&
+\plimit  \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}} \left(
+\frac{m}{2\hbar\varepsilon } \right)^{- \frac{N-1}{2}}  
+  \int_{\R^{N-1}} \prod_{k=1}^{N-1}
+\udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left( y_{k} - y_{k-1} \right)^{2}}
+\\
+&=& \plimit (i \pi)^{-\frac{N}{2}}  \left( \frac{m}{2\hbar \varepsilon}
+\right)^{\frac{1}{2}} 
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1}\right)^{2}} \eqspace, 
+\end{eqnarray*}
+e ci riconduciamo a calcolare il
+ solito integrale multiplo 
+\begin{displaymath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1} \right)^{2}} \eqspace,  
+\end{displaymath}
+con $y_{0} = y_{N} = 0$.  
+A questo punto, introducendo  $\ket{b}$ e $\hat{B}_{N}$
+dati dalla Eq.~\eqref{eq:|b>BN},
+la forma quadratica a esponente si pu\`o effettivamente riscrivere in forma
+matriciale come 
+$\braket{b | \hat{B}_{N} b} $ e
+\begin{displaymath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1} \right)^{2}} =
+ %\int_{\R^{N-1} } \prod_{k=1}^{N-1} \udiff{y_{k}}
+ \int_{\R^{N-1} } \udiff{b} 
+\uexp^{ i \braket{b | \hat{B}_{N} b}}  \eqspace .
+%= \left( \frac{(i\pi)^{N-1}}{\det
+%\hat{B}_{N}} \right)^{\frac{1}{2}} \eqspace, 
+\end{displaymath}
+(L'integrazione in $\udiff{b}$ \`e una scrittura abbreviata per intendere
+l'integrazione rispetto a tutte le $N-1$ componenti del vettore $\ket{b}$,
+ovvero $\udiff{b} = \prod_{k=1}^{N-1} \udiff{y_{k}}$.)
+
+La matrice $\hat{B}_{N}$ \`e reale, simmetrica (per costruzione) e non singolare (\ie,
+$\det\hat{B}_{N} \neq 0$, come vedremo tra poco), quindi pu\`o essere
+diagonalizzata per mezzo di una trasformazione ortogonale, \ie, 
+esiste una matrice ortogonale $\hat{O}$ tale che  $\hat{B}_{N} =
+\ltrans{\hat{O}} \hat{D} \hat{O}$  ($\ltrans{\hat{O}}$ denota la matrice
+trasposta di $\hat{O}$) e la matrice $\hat{D}$ \`e diagonale i cui
+elementi sulla 
+diagonale sono gli autovalori di $\hat{B}_{N}$.%
+\footnote{Quando si considera integrali Gaussiani multipli del tipo
+$\int_{\R^{N}} \uexp^{ - \braket{ b | \hat{B} b} } \udiff{b}$
+\`e necessario anche richiedere che $\hat{B}$ sia definita positiva,  
+per poter assicurare la convergenza dell'integrale.}
+La matrice $\hat{O}$ pu\`o essere assorbita in un cambio di variabili $\ket{b}
+\rightarrow \ket{b'} = \hat{O} \ket{b} $ il cui determinante \`e uno ($\det
+\hat{O}^{-1} = 1$
+perch\'e la matrice $\hat{O}$ \`e ortogonale) e  si ottiene
+\begin{equation}\label{eq:pl}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1} \right)^{2}} = 
+\int_{\R^{N-1} } \udiff{b'}  
+\uexp^{ i \braket{b' | D  b'}}   
+= \left( \frac{(i\pi)^{N-1}}{\det
+\hat{B}_{N}} \right)^{\frac{1}{2}} \eqspace, 
+\end{equation}
+dal momento che l'integrale 
+$(N-1)$-dimensionale 
+fattorizza in $N-1$ integrali di Fresnel, al numeratore
+compare  un
+fattore 
+$(i\pi)^{\frac{1}{2}}$  per ciascuno degli $N-1$ integrali
+mentre al denominatore c'\`e (sotto radice quadrata) il prodotto degli autovalori della matrice $\hat{B}_{N}$,
+cio\`e il suo determinante (che \`e uguale al prodotto degli autovalori).
+
+Rimane il problema di calcolare $\det \hat{B}_{N}$.
+Preliminarmente, osserviamo che $\det \hat{B}_{2} = \det (2)
+= 2$ e $ \det \hat{B}_{3} = \det \begin{psmallmatrix} 2 & -1
+\\ -1 & 2 \end{psmallmatrix} = 4 -1 = 3$.
+Stabiliremo adesso una relazione di ricorrenza per $\det \hat{B}_{N}$.
+Illustriamo la procedura sulla matrice $\hat{B}_{4}$ poi generalizziamo al caso
+$\hat{B}_{N}$ con $N$ generico.
+Per $\hat{B} _{4}$ sviluppando il determinante lungo la prima riga si trova 
+\begin{displaymath}
+\det \hat{B}_{4} =
+\det \begin{pmatrix} 
+2 & -1 & 0 & 0  \\
+-1 & 2 & -1 & 0 \\
+0 & -1 & 2 & -1 \\
+0 & 0 & -1 & 2 
+\end{pmatrix} = 
+2 \det 
+\underbrace{%
+\begin{pmatrix} 
+2 & -1 & 0 \\ 
+-1 & 2 & -1 \\
+0 & -1 & 2 
+\end{pmatrix}
+}_{\hat{B}_{3}}   + 
+\det \begin{pmatrix} 
+-1 & -1 & 0 \\
+0 & 2 & -1 \\
+0 & -1 & 2 
+\end{pmatrix}  \eqspace, 
+\end{displaymath}
+e, sviluppando lungo la prima colonna per calcolare il determinante di
+quest'ultima matrice, si trova infine $\det \hat{B}_{4}  = 2
+\det{B}_{3} - \det \hat{B}_{2} = 6 -2 = 4$.
+
+In generale, si ottiene la relazione di ricorrenza
+\begin{equation}\label{eq:recursive detBN}
+\det \hat{B}_{N} = 2 \det \hat{B}_{N-1} - \det \hat{B}_{N-2}  \eqspace ,
+\end{equation}
+per ogni $N\geq 3$.
+La Eq.~\eqref{eq:recursive detBN}
+\`e una equazione  ricorsiva lineare omogenea del secondo ordine a coefficienti
+costanti nell'incognita
+$\det \hat{B}_{N}$,  l'equazione algebrica caratteristica associata $\lambda^{2}
+- 2\lambda +1 =0 $ ammette un'unica radice $\lambda =1$ con molteplicit\`a due e
+quindi la soluzione generale della Eq.~\eqref{eq:recursive detBN} \`e $\det
+\hat{B}_{N} = c_{1} +
+c_{2} N$, le costanti di integrazione $c_{1}$ e $c_{2}$ sono fissate
+dalle condizioni iniziali assegnate $\det \hat{B}_{2} = 2
+$ e $\det\hat{B}_{3}=3$, da cui 
+$c_{1} + 2 c_{2} = 2$ e $c_{1} + 3c_{2} = 3$, da cui $c_{2} = 1 $ e $c_{1} = 0
+$. 
+La soluzione \`e quindi $\det \hat{B}_{N} = N$.
+
+Sostituendo $\det\hat{B}_{N} = N$, si trova infine
+\begin{displaymath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1} \right)^{2}} = \left( \frac{(i\pi)^{N-1}}{N}
+\right)^{\frac{1}{2}} \eqspace, 
+\end{displaymath}
+e sostituendo ritroviamo il path integral della particella libera:
+\begin{eqnarray*}
+%\braket{x''| \hat{U} (t'', t') | x'}  
+K(x'', t'' | x', t')
+&=& \plimit (i \pi)^{-\frac{N}{2}}  \left( \frac{m}{2\hbar \varepsilon}
+\right)^{\frac{1}{2}} \uexp^{ \frac{i}{\hbar} \frac{m}{2} v^{2} \varepsilon N}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left(
+y_{k} - y_{k-1}\right)^{2}} \\
+&=&
+\plimit (i\pi)^{-\frac{N}{2}} \left( \frac{m}{2\hbar\varepsilon N}
+\right)^{\frac{1}{2}} (i\pi)^{\frac{N}{2}} (i\pi)^{-\frac{1}{2}}  \uexp^{
+\frac{i}{\hbar}  \frac{m}{2} v^{2} \varepsilon N}  \\
+&=& \left( \frac{m}{2\pi i \hbar (t'' - t')} \right)^{\frac{1}{2}} 
+\uexp^{ \frac{i}{\hbar} \frac{m}{2} \left( \frac{x_{k} - x_{k-1}}{t''-t'}
+\right)^{2} (t''-t') } \\
+&=& \left( \frac{m}{2\pi i \hbar (t'' - t')} \right)^{\frac{1}{2}} 
+\uexp^{ \frac{i}{\hbar} \frac{m}{2} \frac{\left( x_{k} -
+x_{k-1}\right)^{2}}{t''-t'}} \eqspace,
+\end{eqnarray*}
+in accordo con il risultato precedentemente trovato alla sezione precedente.
+
+
+
+\subsection{Marginalizzazione di integrali gaussiani
+multipli\label{sec:marginalizzazione}}
+
+Questa \`e una procedura utile pure in altri contesti (\eg, probabilit\`a  e
+statistica), anche se pu\`o sembrare pesante per il fatto che a un certo punto ci
+costringer\`a a invertire una matrice quadrata tridiagonale
+$(N-1)$-dimensionale, il che non \`e esattamente piacevole! 
+
+
+
+
+Ritorniamo alla matrice $\hat{A}_{N}$ e  al vettore $\ket{y}$ dati dalla
+Eq.~\eqref{eq:|y>AN}, e riscriviamoli isolando le componenti
+che non vogliamo integrare. Conviene utilizzare a questo punto per\`o le usuali
+ notazioni algebriche per indicare i vettori, piuttosto che la notazione di
+Dirac che abbiamo usato fin qui:
+\begin{displaymath}
+\ket{y} = \vec{y} =  \begin{pmatrix} \vec{u} \\ \vec{v} \\ \vec{w} \end{pmatrix}
+\eqspace ,  \qquad 
+\hat{A}  = 
+\begin{pmatrix} 
+\hat{D}_{1}      & \hat{U}          & \hat{V} \\
+\ltrans{\hat{U}} & \hat{B}          & \hat{W} \\
+\ltrans{\hat{V}} & \ltrans{\hat{W}} & \hat{D}_{2}
+\end{pmatrix} \eqspace .
+\end{displaymath}
+Nel nostro caso,  $\vec{u} $ e $\vec{w}$ sono vettori  unidimensionali, ma la
+trattazione che faremo ora \`e completamente generale e si applica anche al caso
+in cui $\vec{u}$ e $\vec{w}$ abbiano pi\`u componenti.  La trattazione che
+faremo \`e del tutto generale, anche per questo motivo,
+e per non appesantire troppo le notazioni, abbiamo momentaneamente eliminato il
+ pedice $N$.
+
+Si ha
+%%\begin{eqnarray*}
+%%\ltrans{\vec{y}} \hat{A} \vec{y} &=& 
+%%\begin{pmatrix} \ltrans{\vec{u}} & \ltrans{\vec{v}} & \ltrans{\vec{w}}
+%%\end{pmatrix} 
+%%\begin{pmatrix} 
+%%\hat{D}_{1}      & \hat{U}          & \hat{V} \\
+%%\ltrans{\hat{U}} & \hat{B}          & \hat{W} \\
+%%\ltrans{\hat{V}} & \ltrans{\hat{W}} & \hat{D}_{2}
+%%\end{pmatrix} 
+%%\begin{pmatrix} \vec{u} \\ \vec{v} \\ \vec{w} \end{pmatrix} 
+%%%\\ &=&
+%%= 
+%%\begin{pmatrix} \ltrans{\vec{u}} & \ltrans{\vec{v}} & \ltrans{\vec{w}}
+%%\end{pmatrix} 
+%%\begin{pmatrix} 
+%%\hat{D}_{1} \vec{u}  +  \hat{U} \vec{v}         \hat{V} \vec{w} \\
+%%\ltrans{\hat{U}} \vec{u} + \hat{B}     \vec{v}     +\hat{W} \vec{w} \\
+%%\ltrans{\hat{V}} \vec{u} + \ltrans{\hat{W}} \vec{v} + \hat{D}_{2}\vec{w} 
+%%\end{pmatrix}  \\
+%%&=& 
+%%\ltrans{\vec{u}} \hat{D}_{1}  \vec{u} + 
+%%\ltrans{\vec{u}} \hat{U} \vec{v} + 
+%%\ltrans{\vec{u}} \hat{V} \vec{w} 
+%%%\\ &&{}
+%%+ 
+%%\ltrans{\vec{v}} \ltrans{\hat{U}} \vec{u} + 
+%%\ltrans{\vec{v}} \hat{B} \vec{v} +
+%%\ltrans{\vec{v}} \hat{W} \vec{w} 
+%%%\\ &&{}
+%%+
+%%\ltrans{\vec{w}} \ltrans{\hat{V}} \vec{u} + 
+%%\ltrans{\vec{w}} \ltrans{\hat{W}} \vec{v} + 
+%%\ltrans{\vec{w}} \hat{D}_{2} \vec{w} \eqspace .
+%%\end{eqnarray*}
+%%\end{comment}
+\begin{displaymath}
+\ltrans{\vec{y}} \hat{A} \vec{y} =
+\ltrans{\vec{u}} \hat{D}_{1}  \vec{u} + 
+\ltrans{\vec{u}} \hat{U} \vec{v} + 
+\ltrans{\vec{u}} \hat{V} \vec{w} 
+%\\ &&{}
++ 
+\ltrans{\vec{v}} \ltrans{\hat{U}} \vec{u} + 
+\ltrans{\vec{v}} \hat{B} \vec{v} +
+\ltrans{\vec{v}} \hat{W} \vec{w} 
+%\\ &&{}
++
+\ltrans{\vec{w}} \ltrans{\hat{V}} \vec{u} + 
+\ltrans{\vec{w}} \ltrans{\hat{W}} \vec{v} + 
+\ltrans{\vec{w}} \hat{D}_{2} \vec{w} \eqspace .
+\end{displaymath}
+Consideriamo un'integrazione
+rispetto alle sole componenti di $\vec{v}$ (la indicheremo
+con $\udiff{\vec{v}}$) del tipo
+\begin{equation}
+\int_{\R^{\dim \vec{v}}} %\prod_{k=1}^{N-1} \udiff{y_{k}} 
+\udiff{\vec{v}}
+\uexp^{i \ltrans{\vec{y}}
+\hat{A} \vec{y}}  %&=&
+=
+\uexp^{ i \left[  \ltrans{\vec{u}} \hat{D}_{1} \vec{u} + \ltrans{\vec{u}}
+\hat{V} \vec{w} + \ltrans{\vec{w}} \ltrans{\hat{V}} \vec{u}  + \ltrans{\vec{w}}
+\hat{D}_{2} \vec{w} \right]}  
+%\nonumber \\
+%&&{}\times 
+%%\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} 
+\int_{\R^{\dim \vec{v}}} \udiff{\vec{v}}
+\uexp^{ i \left[ 
+\ltrans{\vec{u}} \hat{U} \vec{v} + 
+\ltrans{\vec{v}} \ltrans{\hat{U}} \vec{u} + 
+\ltrans{\vec{v}} \hat{B} \vec{v} +
+\ltrans{\vec{v}} \hat{W} \vec{w} +
+\ltrans{\vec{w}} \ltrans{\hat{W}} \vec{v} 
+\right]} \eqspace . \label{eq:gNmatrix temp}
+\end{equation}
+A questo punto usiamo il solito trucco del completamento del quadrato a
+esponente, anche se qui \`e complicato dal fatto che stiamo lavorando in pi\`u
+dimensioni.
+Si tratta di riscrivere l'esponente nella forma
+\begin{displaymath}
+\ltrans{\left( \vec{v} - \vec{v}_{0} \right)} \hat{B} \left( \vec{v} -
+\vec{v}_{0} \right) + C \eqspace ,
+\end{displaymath}
+dove il vettore $\vec{v}_{0}$ e la costante $C$ sono da trovare.
+Espandendo la scrittura sopra si trova
+\begin{displaymath}
+\ltrans{\left( \vec{v} - \vec{v}_{0} \right)} \hat{B} \left( \vec{v} -
+\vec{v}_{0} \right) + C = 
+\ltrans{\vec{v}} \hat{B} \vec{v} - \ltrans{\vec{v}} \hat{B} \vec{v}_{0} -
+\ltrans{\vec{v}_{0}} \hat{B} \vec{v} + \ltrans{\vec{v}_{0}} \hat{B} \vec{v}_{0}
++ C \eqspace ,
+\end{displaymath}
+e affinch\'e sia uguale all'esponente nell'integrale occorre che sia
+un'identit\`a in $\vec{v}$ e cio\`e
+\begin{eqnarray*}
+- \ltrans{\vec{v}_{0}} \hat{B} &=& 
+\ltrans{\vec{u}} \hat{U} + \ltrans{\vec{w}} \ltrans{\hat{W}} \eqspace , \\
+- \hat{B} \vec{v}_{0} &=& 
+\ltrans{\hat{U}} \vec{u} + \hat{W} \vec{w} \eqspace , \\
+\ltrans{\vec{v}_{0}} \hat{B} \vec{v}_{0} + C &=& 0 \eqspace .
+\end{eqnarray*}
+Assumendo che la sotto-matrice $\hat{B}$ sia invertibile (del resto, il nostro
+scopo \`e diagonalizzarla, quindi la richiesta non \`e restrittiva!)  si ricava
+immediatamente dalle relazioni sopra
+\begin{eqnarray*}
+\ltrans{\vec{v}_{0}} &=& - \left( \ltrans{\vec{u}} \hat{U} + \ltrans{\vec{w}}
+\ltrans{\hat{W}} \right) \hat{B}^{-1} \eqspace ,\\
+\vec{v}_{0} &=& - \hat{B}^{-1} \left( \ltrans{\hat{U}} \vec{u} + \hat{W} \vec{w}
+\right) \eqspace , \\
+C &=& - \ltrans{\vec{v}_{0}} \hat{B} \vec{v}_{0} \\
+&=& 
+- \left( \ltrans{\vec{u}} \hat{U} + \ltrans{\vec{w}} \ltrans{W} \right)
+\hat{B}^{-1} \underbrace{\hat{B} \hat{B}^{-1}}_{\openone} \left( 
+\ltrans{\hat{U}}\vec{u} +\hat{W} \vec{w} \right) \\
+&=& 
+- \left( \ltrans{\vec{u}} \hat{U} + \ltrans{\vec{w}} \ltrans{W} \right)
+\hat{B}^{-1} \left( 
+\ltrans{\hat{U}}\vec{u} +\hat{W} \vec{w} \right)  \eqspace .
+\end{eqnarray*} 
+Allora   la Eq.~\eqref{eq:gNmatrix temp} diventa
+\begin{eqnarray}
+%\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} 
+\int_{\R^{\dim \vec{v}}} \udiff{\vec{v}}
+\uexp^{i \ltrans{\vec{y}}
+\hat{A} \vec{y}}  &=&
+\uexp^{ i \left[  \ltrans{\vec{u}} \hat{D}_{1} \vec{u} + \ltrans{\vec{u}}
+\hat{V} \vec{w} + \ltrans{\vec{w}} \ltrans{\hat{V}} \vec{u}  + \ltrans{\vec{w}}
+\hat{D}_{2} \vec{w} + C\right]}  
+%\\
+%&&{}\times 
+\int_{\R^{\dim \vec{v}}} \udiff{\vec{v}}
+\uexp^{ i \ltrans{\left( \vec{v}
+- \vec{v}_{0} \right)} \hat{B} \left( \vec{v} - \vec{v}_{0} \right)} \nonumber \\
+&=&
+\uexp^{ i \left[  \ltrans{\vec{u}} \hat{D}_{1} \vec{u} + \ltrans{\vec{u}}
+\hat{V} \vec{w} + \ltrans{\vec{w}} \ltrans{\hat{V}} \vec{u}  + \ltrans{\vec{w}}
+\hat{D}_{2} \vec{w} + C\right]}  
+\left( \frac{(i\pi)^{\dim \vec{v}} }{\det B} \right)^{\frac{1}{2}} \eqspace ,
+\label{eq:detB}
+\end{eqnarray}
+usando un cambio di variabili con una trasformazione ortogonale (reale) il cui
+Jacobiano \`e uno e che diagonalizzi la matrice $\hat{B}$ (la traslazione di
+vettore $\vec{v}_{0}$ \`e irrilevante siccome gli estremi di integrazione sono
+estesi a tutto l'asse reale per ciascuna variabile di integrazione), allora
+l'integrale fattorizza nel prodotto di $\dim \vec{v}$ integrali di Fresnel
+indipendenti (abbiamo disaccoppiato le variabili di integrazione).
+
+Vediamo subito un'applicazione al calcolo dell'integrale Eq.~\eqref{eq:gN} per
+$N=3$, prima di dedicarci al caso generale.
+La matrice $\hat{A}$ l'abbiamo gi\`a scritta, \`e 
+\begin{displaymath}
+\hat{A}  =  \begin{pmatrix} 1 & -1 & 0  & 0 \\ -1 & 2 & -1 & 0 \\ 
+0 & -1 & 2 & -1  \\ 0 & 0 & -1 & 1 
+\end{pmatrix}
+\eqspace ,
+\end{displaymath}
+quindi le sotto-matrici sono
+\begin{displaymath}
+\hat{D}_{1} = \hat{D}_{2} = \begin{pmatrix} 1 \end{pmatrix} \eqspace, \quad 
+\hat{V} =\begin{pmatrix} 0 \end{pmatrix} \eqspace, \quad 
+\hat{U} = \begin{pmatrix} 1 & 0 \end{pmatrix} 
+\eqspace, \quad 
+\hat{W} = \begin{pmatrix} 0 \\ -1 \end{pmatrix} \eqspace ,\quad 
+\hat{B} = \begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix} \eqspace ,
+\end{displaymath}
+e 
+\begin{displaymath}
+\vec{u} = \begin{pmatrix} y_{0} \end{pmatrix} \eqspace ,\qquad
+\vec{v} = \begin{pmatrix} y_{1} \\ y_{2} \end{pmatrix} \eqspace, \qquad 
+\vec{w} = \begin{pmatrix} y_{3} \end{pmatrix} \eqspace .
+\end{displaymath}
+La matrice $\hat{B}$ ha determinante $\det \hat{B} = 4 -1 = 3$ (diverso da zero,
+quindi effettivamente \`e non singolare) e la sua matrice inversa (ne abbiamo
+bisogno per calcolare la costante $C$) \`e 
+\begin{displaymath}
+\hat{B}^{-1} = \frac{1}{3} \begin{pmatrix}  2 & 1 \\ 1 & 2 \end{pmatrix}
+\eqspace.
+\end{displaymath}
+\begin{Exercise}
+Provare che la matrice inversa di $\hat{B} = \begin{psmallmatrix} 2 & -1 \\ -1 &
+2 \end{psmallmatrix}$ \`e $\hat{B}^{-1} =\frac{1}{3} \begin{psmallmatrix} 2 & 1
+\\ 1 & 2 \end{psmallmatrix} $.
+\end{Exercise}
+\par
+Applichiamo la Eq.~\eqref{eq:detB}:
+\begin{eqnarray*}
+\int_{R} \udiff{y_{1}} \udiff{y_{2}} \uexp^{ i \ltrans{\vec{y}} \vec{A} \vec{y}}
+&=& 
+\uexp^{ i \left[ y_{0}^{2} + y_{3}^{2} - \frac{1}{3} \begin{psmallmatrix}  y_{0} &
+y_{3}  \end{psmallmatrix} \begin{psmallmatrix} 2 & 1 \\ 1 & 2 \end{psmallmatrix}
+\begin{psmallmatrix} y_{0} \\ y_{3} \end{psmallmatrix} \right]}
+\left( \frac{(i\pi)^{2}}{3} \right)^{\frac{1}{2}} \\
+&=& \uexp^{i \left[ y_{0}^{2} + y_{3}^{2} - \frac{1}{3} y_{0}^{2} - \frac{1}{3}
+y_{3}^{2} - \frac{2}{3} y_{0} y_{3} \right]} \left( \frac{(i\pi)^{2}}{3}
+\right)^{\frac{1}{2}} \\
+&=& \uexp^{ \frac{i}{3} \left( y_{3} -y_{0}\right)^{2}} \left(
+\frac{(i\pi)^{2}}{3} \right)^{\frac{1}{2}} \eqspace .
+\end{eqnarray*}
+Il risultato che avevamo  gi\`a ottenuto!
+
+Proviamo ora a usare questo metodo per derivare il risultato
+Eq.~\eqref{eq:gaussianN}.
+In ogni caso, continua a essere vero che 
+\begin{displaymath}
+\hat{D}_{1} = \hat{D}_{2} = \begin{pmatrix} 1 \end{pmatrix} \eqspace, \quad 
+\hat{V} =\begin{pmatrix} 0 \end{pmatrix} \eqspace .
+\end{displaymath}
+La matrice $\hat{U}$ \`e ora una matrice riga $[1\times (N-1)]$-dimensionale la cui prima
+\emph{entry} \`e $-1$ e tutte le altre sono zero,  mentre la matrice $\hat{W}$
+\`e una matrice colonna $[(N-1)\times 1 ]$-dimensionale di cui solo l'ultima
+\emph{entry} \`e non-nulla, e vale $-1$, simbolicamente scriviamo
+\begin{displaymath}
+\hat{U} = \underbrace{\begin{pmatrix} -1 & 0 & 0 & \cdots & 0
+\end{pmatrix}}_{N-1 \, \textrm{entries}} \eqspace, \qquad  
+\ltrans{\hat{W}}= 
+\underbrace{\begin{pmatrix} 0 & 0 & 0 &\cdots &  -1 \end{pmatrix}}_{N-1 \,
+\textrm{entries}} \eqspace .
+\end{displaymath}
+Siccome $\hat{V} = 0$, 
+ i termini $\ltrans{\vec{u}} \hat{V} \vec{w}$ e  $\ltrans{\vec{w}} \ltrans{V}
+\vec{u}$ sono nulli a esponente, inoltre $\ltrans{\vec{u}} \hat{D}_{1} \vec{u} =
+y_{0}^{2}$ e $\ltrans{\vec{w}} \hat{D}_{2} \vec{w} = y_{N}^{2}$.
+La matrice $\hat{B}$ non \`e altro in questo caso che la matrice $\hat{B}_{N}$
+gi\`a incontrata alla sezione precedente, Eq.~\eqref{eq:|b>BN}, e abbiamo gi\`a
+dimostrato  che tale matrice \`e reale, simmetrica, non singolare e  $\det
+\hat{B}_{N} = N$.
+Rimane da calcolare, per poter usare la Eq.~\eqref{eq:detB}, la costante 
+\begin{eqnarray*}
+C &=&
+- \left( \ltrans{\vec{u}} \hat{U} + \ltrans{\vec{w}} \ltrans{W} \right)
+\hat{B}^{-1} \left( 
+\ltrans{\hat{U}}\vec{u} +\hat{W} \vec{w} \right)  \\
+&=& 
+- \begin{pmatrix}  y_{0} & 0 & \cdots & y_{N} \end{pmatrix} \hat{B}^{-1} 
+\begin{pmatrix} y_{0} \\ 0 \\  \vdots \\ y_{N} \end{pmatrix} \eqspace .
+\end{eqnarray*}
+Apparentemente, l'operazione sembra senza speranza, perch\'e richiede di
+invertire la matrice $\hat{B}_{N}$!
+Ma se guardiamo attentamente, non abbiamo bisogno di tutti gli elementi della
+matrice $\hat{B}_{N}^{-1}$.
+Se indichiamo con $\hat{\Lambda} = \hat{B}_{N}^{-1}$, 
+\begin{eqnarray*}
+C &=&
+- \begin{pmatrix}  y_{0} & 0 & \cdots & y_{N} \end{pmatrix} \begin{pmatrix}
+\Lambda_{1, 1} & \Lambda_{1, 2}  & \cdots & \lambda_{1, N-1} \\
+\Lambda_{2, 1} & \Lambda_{2, 2}  & \cdots & \lambda_{2, N-1} \\
+\vdots & \vdots & \ddots & \vdots  \\
+\Lambda_{N-1, 1} & \Lambda_{N-1, 2} & \cdots & \Lambda_{N-1, N-1} 
+\end{pmatrix} 
+\begin{pmatrix} y_{0} \\ 0 \\  \vdots \\ y_{N} \end{pmatrix}  \\
+&=& -  \left[ 
+\Lambda_{1,1} y_{0}^{2} + \left( \Lambda_{1, N-1} + \Lambda_{N-1, 1} \right)
+y_{0} y_{N} + \Lambda_{N-1, N-1} y_{N}^{2} \right] \eqspace .
+\end{eqnarray*}
+Osserviamo come \`e fatta la matrice $\hat{B}_{N}$ e proviamo a calcolare
+$\Lambda_{1,1}$,
+$\Lambda_{1,N-1}$,
+$\Lambda_{N-1,1}$,
+$\Lambda_{N-1, N-1}$.
+
+Il coefficiente $\Lambda_{1,1} $ si trova calcolando il complemento algebrico
+dell'elemento di posto $1,1$ della matrice $\hat{B}_{N}$, diviso per $\det
+\hat{B}_{N}$. Tale complemento algebrico vale $\det\hat{B}_{N-1}$ (\`e uguale al
+minore complementare). Lo stesso ragionamento si applica a $\Lambda_{N-1, N-1}$.
+Quindi, $\Lambda_{1,1} = \Lambda_{N-1, N-1} = \det \hat{B}_{N-1} / \det \hat{B}
+_{N} = (N-1) / N$.
+
+Il coefficiente $\Lambda_{1, N-1}$ sar\`a invece uguale al complemento algebrico
+dell'elemento di posto $1,N-1$ della matrice $\hat{B}_{N}$, diviso per $\det
+\hat{B}_{N}$.
+Quanto vale questo complemento algebrico?
+Sar\`a uguale a $(-1)^{N-1+1} = (-1)^{N}$ volte il minore complementare
+dell'elemento di posto $1,N-1$ di $\hat{B}_{N}$, e il minore complementare
+(sviluppando $N-2$ volte lungo la prima colonna) \`e $(-1)^{N-2}$, quindi 
+$\Lambda_{1, N-1} = \Lambda_{N-1,1} = (-1)^{2N-2} / \det \hat{B}_{N} = 1 / N$.
+
+Quindi,
+\begin{displaymath}
+C = - \frac{1}{N} \left[ (N-1 ) \left( y_{0}^{2} + y_{N}^{2} \right) + 2  y_{0}
+y_{1} \right]  \eqspace ,
+\end{displaymath}
+quindi per la Eq.~\eqref{eq:detB} si  ha
+\begin{eqnarray*}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} 
+\udiff{y_{k}} \uexp^{i \sum_{k=1}^{N} \left( y_{k} - y_{k-1} \right)^{2}} &=& 
+\left( \frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2}} \uexp^{ i \left[ y_{0}^{2} +
+y_{N}^{2} - \frac{N-1}{N} y_{0}^{2} - \frac{N-1}{N} y_{N}^{2} - 2 \frac{1}{N}
+y_{0} y_{N} \right]} \\
+&=&
+\left( \frac{(i\pi)^{N-1}}{N} \right)^{\frac{1}{2} } 
+\uexp^{ \frac{i}{N} \left( y_{N} - y_{0}\right)^{2} } \eqspace .
+\end{eqnarray*}
+Questo \`e il risultato che, in modo pi\`u immediato, avevamo gi\`a ottenuto
+nella Eq.~\eqref{eq:gaussianN} della sezione precedente.
+%\section{Lagrangiane quadratiche e oscillatore armonico}
+%\section{Approssimazione di fase stazionaria per il path integral e metodo WKB}
+\section{Regolarizzazione $\zeta$ e determinanti funzionali}
+In questa sezione calcoliamo il path integral della particella libera con un
+metodo pi\`u avanzato, che ci permette di introdurre l'importante nozione di determinante
+funzionale. 
+Per approfondire questi aspetti, si pu\`o consultare, \eg, \citet{steiner}.
+
+\section{Oscillatore armonico}
+Il punto di partenza \`e la rappresentazione a path integral del propagatore:
+\begin{displaymath}
+K(x'', t'' | x' ,t') = \int_{x(t') = x'}^{x(t'') =x''} \udp{x(t)} \uexp^{
+\frac{i}{\hbar} S[x(t)] } \eqspace, 
+\end{displaymath}
+dove il funzionale azione \`e l'integrale temporale della Lagrangiana
+\begin{displaymath}
+S[x(t) ] = \int_{t'}^{t'' } \mathcal{L} (x, \dot{x}  ,t) \udiff{t}
+\eqspace, 
+\end{displaymath}
+e la Lagrangiana dell'oscillatore armonico unidimensionale di frequenza $\omega$
+e massa $m$ \`e
+\begin{displaymath}
+\mathcal{L} (x, \dot{x} , t) = \frac{1}{2} m \dot{x}^{2} (t) - \frac{1}{2} m^{2}
+\omega^{2} x^{2} (t)\eqspace .
+\end{displaymath}
+Il path integral \`e esteso a tutti i cammini $x(t)$ soddisfacenti le condizioni
+al contorno $x(t') = x'$
+e $x(t'')=x''$.
+\par
+Per calcolare il path integral, riscriviamo  $x(t)$ nel modo seguente:
+\begin{displaymath}
+x(t) = \xc(t) + \eta(t) \eqspace, 
+\end{displaymath}
+dove $\xc(t)$ \`e la soluzione della equazione classica del moto (\ie,
+equazione di Euler-Lagrange) con condizioni al contorno di Dirichlet assegnate:
+\begin{equation}\label{eq:xceq}
+\ddot{\xc} (t) + \omega_{2} \xc (t) = 0 \eqspace, \qquad \xc(t') = x'\eqspace ,\quad
+\xc(t'') =x'' \eqspace ,
+\end{equation}
+e per costruzione $\eta(t)$ si annulla nei punti estremi:
+$\eta(t') = \eta(t'') = 0$.
+Allora $S[x(t)] = S[\xc(t) + \eta(t)]$ con
+\begin{eqnarray*}
+S[\xc(t) + \eta(t)] &=& 
+ \underbrace{ \int_{t'}^{t''} \left( \frac{1}{2} m \dot{\xc}^{2} (t) -
+\frac{1}{2} m\omega^{2} \xc^{2} (t) \right) \udiff{t} }_{S[\xc(t)]} + \underbrace{
+\int_{t'}^{t''} \left( \frac{1}{2} m \dot{\eta}^{2} (t) - \frac{1}{2} m  \omega^{2}
+\eta^{2} (t) \right) \udiff{t} } _{S[\eta(t)]}  \\
+&&{}+ 
+m \int_{t'}^{t''}  \dot{\xc} (t) \dot{\eta} (t) \udiff{t} - m\omega^{2} \int_{t'}^{t''}
+\xc (t) \eta (t) \udiff{t} \eqspace .
+\end{eqnarray*}
+Eseguendo un'integrazione per parti sul terzo integrale si ottiene
+\begin{displaymath}
+\int_{t'}^{t''} \dot{\xc}(t) \dot{\eta}(t)  \udiff{t} = 
+\underbrace{\dot{\xc(t)} \eta(t)  \bigg|_{t'}^{t''} }_{0} - \int_{t'}^{t''} \ddot{\xc}(t) \eta(t)
+\udiff{t} = -\int_{t'}^{t''} \ddot{\xc}(t) \eta(t) \udiff{t} \eqspace, 
+\end{displaymath}
+[il termine di superficie \`e nullo perch\'e $\eta(t') = \eta(t'') =0 $]
+e quindi
+\begin{displaymath}
+S[\xc(t) + \eta(t)] =  S[\xc(t)] + S[\eta(t)] - m \underbrace{\int_{t'}^{t''}  \left(
+\ddot{\xc}(t) + \omega^{2} \xc(t) \right) \eta(t) \udiff{t} }_{0}  = S[\xc(t)] +
+S[\eta(t)] \eqspace, 
+\end{displaymath}
+dove abbiamo usato il fatto che $\xc(t)$ soddisfa l'equazione classica del moto,
+Eq.~\eqref{eq:xceq}.
+\begin{remark}
+C'\`e un motivo pi\`u generale per il quale potevamo aspettarci che  il termine
+lineare in $\eta(t)$ debba annullarsi essendo $\xc(t)$ la triettoria classica, ed \`e quello di
+ricordare che  la
+derivata funzionale di $S[x(t)]$ calcolata sulla traiettoria classica 
+\`e nulla. 
+Espanderemo meglio questo argomento  trattando Lagrangiane quadratiche e metodo
+semi-classico.
+\end{remark}
+\par
+Cambiamo variabili nel path integral, la traslazione ha Jacobiano uno e  il
+propagatore \`e
+\begin{displaymath}
+K(x'', t'' | x', t') = \uexp^{ \frac{i}{\hbar} S[\xc(t)]} 
+\int_{\eta(t') =
+0}^{\eta(t'') = 0} \udp{\eta(t)} \uexp^{ \frac{i}{\hbar} S[\eta(t)]} \eqspace .
+\end{displaymath}
+Il problema \`e ricondotto quindi a calcolare:
+1) l'azione $S[\xc(t)]$ lungo la traiettoria classica $\xc(t)$, 
+e 2) il path integral
+\begin{displaymath}
+\int_{\eta(t') =
+0}^{\eta(t'') = 0} \udp{\eta(t)} \uexp^{ \frac{i}{\hbar} S[\eta(t)]} \eqspace ,
+\end{displaymath}
+dove ora l'integrazione \`e esteso a tutti e soli i cammini ciclici $\eta(t)$
+soddisfacenti $\eta(t')  = \eta(t'') = 0$.
+
+Eseguiamo  il calcolo esplicito di $S[\xc(t)]$ in questa sezione.  (Si noti che
+questo  calcolo di per s\'e non ha molto  a che vedere con il path integral,
+anzi, non ha  proprio a che vedere con la meccanica quantistica!) Per calcolare
+il  path integral presenteremo diverse strategie (\ie, metodo matriciale, metodo
+delle serie di Fourier) nelle sotto-sezioni successive.
+
+Si \`e gi\`a detto che la traiettoria classica $\xc(t)$ \`e soluzione del
+problema di valori al contorno  Eq.~\eqref{eq:xceq}.
+La Eq.~\eqref{eq:xceq} come noto pu\`o essere risolta esattamente, la soluzione
+generale \`e del tipo
+\begin{displaymath}
+\xc(t) = A \sin \omega t + B \cos \omega t \eqspace, 
+\end{displaymath}
+e imponendo le condizioni al contorno
+\begin{eqnarray*}
+\xc(t')  =  A \sin \omega t' + B \cos \omega t' \eqspace,  \\
+\xc(t'')  =  A \sin \omega t'' + B \cos \omega t''  \eqspace,
+\end{eqnarray*}
+o in forma matriciale
+\begin{displaymath}
+\underbrace{%
+\begin{pmatrix} 
+\sin \omega t' & \cos \omega t' \\
+\sin \omega t'' & \cos \omega t'' 
+\end{pmatrix} }_{\hat{\Lambda}}
+\begin{pmatrix}
+A \\ B\end{pmatrix} = \begin{pmatrix} x' \\ x'' \end{pmatrix} \eqspace, 
+\end{displaymath}
+la matrice $\hat{\Lambda}$ ha determinante
+\begin{displaymath}
+\det\hat{\Lambda} = \sin \omega t' \cos \omega t'' - \sin \omega t''
+\cos \omega t' = -\sin \omega (t'' - t') \eqspace, 
+\end{displaymath}
+che \`e diverso da zero a patto che 
+$\omega (t'' -t') \neq k \pi $ per ogni  $k\in\Z$, che significa in termini del
+periodo di oscillazione 
+$T  = 2\pi / \omega $ che 
+$(t'' - t') \neq  k T / 2 $, cio\`e la finestra temporale tra il tempo iniziale
+$t'$ e il tempo finale $t''$ \emph{non} deve avere lunghezza $t''-t'$ che sia un
+multiplo intero del \emph{semi}-periodo $T/2$.
+In tal caso, la matrice \`e invertibile e  la matrice inversa \`e
+\begin{displaymath}
+\hat{\Lambda}^{-1} = -
+\frac{1}{\sin \omega (t''-t') }  
+\begin{pmatrix} \cos \omega t'' & - \cos \omega
+t' \\ -\sin \omega t'' & \sin \omega t' \end{pmatrix}  \eqspace .
+\end{displaymath}
+Quindi
+\begin{eqnarray*}
+\begin{pmatrix} A\\B\end{pmatrix} &=& -
+\frac{1}{\sin \omega(t''-t')} 
+\begin{pmatrix} \cos \omega t'' & - \cos \omega
+t' \\ -\sin \omega t'' & \sin \omega t' \end{pmatrix}  \begin{pmatrix} x' \\ x''
+\end{pmatrix} \\
+&=&
+\frac{1}{\sin \omega(t''-t')} 
+\begin{pmatrix} 
+x' \cos \omega t'' -x'' \cos \omega t' \\
+-x' \sin \omega t'' + x'' \sin \omega t'  
+\end{pmatrix} \eqspace .
+\end{eqnarray*}
+L'azione $S[\xc(t)]$ \`e per definizione
+\begin{displaymath}
+S[\xc(t)] = \int_{t'}^{t''} \left( \frac{1}{2}m \dot{\xc}^{2} (t) - \frac{1}{2}
+m \omega^{2}  \xc^{2}(t) \right) \udiff{t} = \frac{1}{2} m \int_{t'}^{t''}
+\left( \dot{\xc}^{2} (t) - \omega^{2} \xc^{2}(t) \right) \udiff{t} \eqspace .
+\end{displaymath}
+Siccome
+\begin{eqnarray*}
+\xc(t) &=& A \sin \omega t + B \cos \omega t \eqspace, \\
+\xc^{2} (t) &=& A^{2} \sin^{2} \omega t + B^{2} \cos^{2} \omega t + 2 A B \sin
+\omega  t \cos \omega t \eqspace , \\
+\dot{\xc} (t) &=& A \omega \cos \omega t - B \omega \sin \omega t \eqspace, \\
+\dot{\xc}^{2}(t) &=& 
+A^{2} \omega^{2} \cos^{2} \omega t + B^{2} \omega^{2} \sin^{2} \omega t - 2 AB
+\omega^{2} \sin\omega t \cos \omega t  \eqspace, 
+\end{eqnarray*}
+si ha
+\begin{eqnarray*}
+\dot{\xc}^{2} (t) - \omega^{2} \xc^{2}(t) 
+&=& \omega^{2} \left[ \left( A^{2} - B^{2} \right) \left( \cos^{2} \omega t -
+\sin^{2} \omega t \right) - 4 A B \sin \omega t \cos \omega t \right] \\
+&=& \omega^{2} \left[ \left( A^{2} - B^{2} \right) \cos 2 \omega t -   
+2 A B \sin 2\omega t \right] \eqspace .
+\end{eqnarray*}
+Per calcolare l'azione occorre valutare  il seguente integrale:
+\begin{eqnarray*}
+\int_{t'}^{t''} \left( \dot{\xc}^{2} (t) - \omega^{2} \xc^{2}(t) \right)
+\udiff{t} &=& 
+\omega^{2}  \left\{ \left( A^{2} - B^{2} \right) \int_{t'}^{t''} \cos 2\omega t
+\udiff{t}  - 2 AB \int_{t'}^{t''} \sin 2\omega t \udiff{t} \right\}
+\\
+&=&\omega^{2} \frac{1}{2\omega}  \left\{ \left( A^{2} - B^{2} \right) \left. \sin
+2\omega t \right|_{t'}^{t''} + 2 AB \left. \cos 2 \omega t   \right|_{t'}^{t''}
+\right\}
+\end{eqnarray*}
+Usando le formule di prostaferesi,
+\begin{eqnarray*}
+\left. \sin 2\omega t \right|_{t'}^{t''} &=& 2 \sin \omega (t''-t') \cos \omega
+(t''+t') \eqspace, \\
+\left. \cos 2\omega t \right|_{t'}^{t''} &=& -2 \sin \omega (t''-t') \sin \omega
+(t''+t') \eqspace, 
+\end{eqnarray*}
+e quindi
+\begin{displaymath}
+\int_{t'}^{t''} \left( \dot{\xc}^{2} (t) - \omega^{2} \xc^{2}(t) \right)
+\udiff{t} =
+\omega \sin \omega (t'' -t') \left\{ \left( A^{2} - B^{2} \right) \cos \omega
+(t'' + t')  -2 AB \sin \omega (t''+t') \right\}
+\end{displaymath}
+Rimangono da valutare esplicitamente i coefficienti $A^{2} - B^{2}$ e $ 2AB$.
+Notiamo che possiamo fattorizzare un termine $1/ \sin^{2} \omega (t''-t')$ in
+fronte. Per evitare confusione con le notazioni, chiamiamo 
+$\tilde{A} = -A \sin \omega (t''-t') $ e analogamente per  $\tilde{B}$.
+Si ha
+\begin{eqnarray*}
+\tilde{A} &=& x' \cos \omega t'' - x'' \cos \omega t' \eqspace, \\
+\tilde{B} &=& -x' \sin \omega t'' + x'' \sin \omega t' \eqspace, \\
+\tilde{A}^{2} &=& 
+\left( x'\right)^{2} \cos^{2} \omega t + \left( x''\right)^{2} \cos^{2} \omega
+t' - 2 x' x'' \cos \omega t'' \cos \omega t ' \eqspace, \\
+\tilde{B}^{2} &=& 
+\left( x'\right)^{2} \sin^{2} \omega t'' + \left( x''\right)^{2} \sin^{2} \omega
+t' - 2x'x'' \sin \omega t'' \sin \omega t' \eqspace,
+\end{eqnarray*}
+e quindi
+\begin{eqnarray*}
+\tilde{A}^{2} - \tilde{B}^{2} &=&
+\left( x'\right)^{2} \cos 2\omega t'' + \left( x''\right) \cos 2 \omega t' -
+2x'x'' \cos \omega (t'+t'') \eqspace, \\
+ 2 \tilde{A} \tilde{B} &=& - \left( x'\right)^{2} \sin 2 \omega t''  -
+\left( x''\right)^{2} \sin 2 \omega t ' +  2 x'x'' \sin \omega
+(t'+t'') \eqspace ,
+\end{eqnarray*}
+per cui
+\begin{eqnarray*}
+\left( \tilde{A}^{2} - \tilde{B}^{2}\right) \cos \omega (t''+t')  &=&
+\left( x'\right)^{2} \cos 2\omega t'' \cos \omega (t''+t') + \left( x''\right)
+\cos 2 \omega t' \cos \omega (t''+t') \\
+&&{} -
+2x'x'' \cos^{2} \omega (t''+t') \eqspace, \\
+ 2 \tilde{A} \tilde{B} \sin \omega (t''+t') &=& - \left( x'\right)^{2} \sin 2
+\omega t'' \sin \omega (t''+t') - 
+\left( x''\right)^{2} \sin  2 \omega t ' \sin  2 \omega (t''+ t') \\
+&&{}  +  2 x'x'' \sin^{2} \omega
+(t'+t'') \eqspace ,
+\end{eqnarray*}
+Svolgendo i calcoli (e usando le formule di addizione del seno e del coseno,
+oltre all'identit\`a fondamentale) si trova
+\begin{displaymath}
+\left( \tilde{A}^{2} - \tilde{B}^{2} \right) \cos \omega (t''+t') -2 \tilde{A}
+\tilde{B} \sin \omega (t''+t') =  \left( \left( x'\right)^{2} + \left(
+x''\right)^{2} \right) \cos \omega (t'' -t') -2 x'x'' \eqspace ,
+\end{displaymath}
+e l'azione lungo la traiettoria classica risulta essere
+\begin{displaymath}
+S[\xc(t)] = \frac{m\omega}{2} \frac{1}{\sin \omega(t''-t')} \left[ 
+\left( \left( x'\right)^{2} + \left( x''\right)^{2} \right) \cos \omega (t''-t')
+- 2x'x'' \right] \eqspace .
+\end{displaymath}
+\subsection{Metodo matriciale}
+Usando la forma esplicita del path integral si ha
+\begin{eqnarray*}
+\int_{\eta(t') = 0}^{\eta(t'') = 0} \udp{\eta(t)} \uexp^{\frac{i}{\hbar}
+S[\eta(t)]} &=&
+\plimit 
+\left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{1}{2}} \int_{\R^{N-1}}
+\prod_{k=1}^{N-1} \udiff{\eta_{k}} 
+\uexp^{ \frac{i}{\hbar} \varepsilon \sum_{k=1}^{N} \left[
+\frac{1}{2} m \left(  \frac{\eta_{k} - \eta_{k-1}}{\varepsilon} \right)^{2} -
+\frac{1}{2} m \omega^{2} \eta_{k}^{2} \right]} \\
+&=& \plimit 
+\left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{1}{2}} \int_{\R^{N-1}}
+\prod_{k=1}^{N-1} \udiff{\eta_{k}} 
+\uexp^{ \frac{i}{\hbar} \frac{m}{2\varepsilon} \sum_{k=1}^{N} \left[ \left(
+\eta_{k} - \eta_{k-1} \right)^{2} - \omega^{2} \varepsilon^{2} \eta_{k}^{2}
+\right]} \eqspace ,
+\end{eqnarray*}
+con $\eta_{0} = \eta_{N} = 0$.
+Conviene (ma non \`e necessario) effettuare il solito cambio di variabili
+\begin{displaymath}
+y_{k} =   \left( \frac{m}{2\hbar \varepsilon} \right)^{\frac{1}{2}} \eta_{k}
+\eqspace ,
+\end{displaymath}
+che assorba i coefficienti.
+Allora,
+\begin{eqnarray*}
+\int_{\eta(t') = 0}^{\eta(t'') = 0} \udp{\eta(t)} \uexp^{\frac{i}{\hbar}
+S[\eta(t)]}
+&=& \plimit 
+\left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}} \int_{\R^{N-1}}
+\prod_{k=1}^{N-1} \udiff{\eta_{k}} 
+\uexp^{ \frac{i}{\hbar} \frac{m}{2\varepsilon} \sum_{k=1}^{N} \left[ \left(
+\eta_{k} - \eta_{k-1} \right)^{2} - \omega^{2} \varepsilon^{2} \eta_{k}^{2}
+\right]} \\
+%&=& \plimit
+%\left( \frac{m}{2\pi i \hbar  \varepsilon} \right)^{\frac{N}{2} } \left(
+%\frac{m}{2\hbar \varepsilon} \right)^{ - \frac{N-1} {2} } 
+%\int_{\R^{N-1}}
+%\prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left[ \left( y_{k} -
+%y_{k-1} \right)^{2} - \omega^{2} \varepsilon^{2} y_{k}^{2} \right]} \\
+&=& 
+\plimit ( i \pi) ^{ - \frac{N}{2}} \left( \frac{m}{2\hbar
+\varepsilon}\right)^{\frac{1}{2}} 
+\int_{\R^{N-1}}
+\prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left[ \left( y_{k} -
+y_{k-1} \right)^{2} - \omega^{2} \varepsilon^{2} y_{k}^{2} \right]} \eqspace ,
+\end{eqnarray*}
+e il problema si \`e ridotto al calcolo dell'integrale multiplo
+\begin{equation}\label{eq:ao gN}
+\int_{\R^{N-1}}
+\prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left[ \left( y_{k} -
+y_{k-1} \right)^{2} - \omega^{2} \varepsilon^{2} y_{k}^{2} \right]} \eqspace ,
+\end{equation}
+con $y_{0}  = y_{N} = 0$.
+\par
+Introducendo  il vettore $N-1$-dimensionale $\ket{b}$ e la matrice $\hat{B}_{N}$
+di dimensioni $(N-1) \times (N-1)$ dati da
+\begin{displaymath}
+\ket{b} = \begin{pmatrix} y_{1} \\ y_{2} \\ \vdots \\ y_{N-1} \end{pmatrix}
+\eqspace,  \qquad 
+\hat{B}_{N} = 
+\begin{pmatrix}  
+2      & -1     & 0      & 0      & \cdots & 0      & 0 \\
+-1     & 2      & -1     & 0      & \cdots & 0      & 0 \\
+0      & -1     & 2      & -1     & \cdots & 0      & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \cdots & \cdots \\
+0      & 0      & 0      & 0      & \cdots & -1     & 2
+\end{pmatrix}  -  \varepsilon^{2} \omega^{2} \openone \eqspace, 
+\end{displaymath}
+la forma quadratica a esponente nell'integrando 
+pu\`o scriversi in forma matriciale come 
+$\braket{b| \hat{B}_{N} b}$ e in maniera del tutto analoga a quanto svolto per la
+particella libera [ovvero, diagonalizzazione della forma quadratica
+$\braket{b|\hat{B}_{N}b}$, cfr. Eq.~\eqref{eq:pl}] si trova
+\begin{displaymath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N} \left[ \left(
+y_{k} - y_{k-1} \right)^{2} - \varepsilon^{2} \omega^{2} y_{k}^{2} \right] }
+%=\int_{\R^{N-1} } \udiff{b'}  
+%\uexp^{ i \braket{b' | D  b'}}   
+= \left( \frac{(i\pi)^{N-1}}{\det
+\hat{B}_{N}} \right)^{\frac{1}{2}} \eqspace,
+\end{displaymath}
+e quindi
+\begin{eqnarray}
+\int_{\eta(t') = 0}^{\eta(t'') = 0}  \udp{\eta(t)} \uexp^{\frac{i}{\hbar}
+S[\eta(t)]} &=&
+\plimit ( i \pi) ^{ - \frac{N}{2}} \left( \frac{m}{2\hbar
+\varepsilon}\right)^{\frac{1}{2}} 
+\left( \frac{(i\pi)^{N-1}}{\det \hat{B}_{N}} \right)^{\frac{1}{2}} \nonumber \\
+&=&
+\plimit  \left( \frac{ m }{2\pi i \hbar \varepsilon \det \hat{B}_{N}}
+\right)^{\frac{1}{2}} \eqspace .\label{eq:ao int}
+\end{eqnarray}
+L'unica differenza rispetto alla particella libera sta nel fatto che \`e
+cambiata la matrice $\hat{B}_{N}$, e dobbiamo calcolare quanto vale
+$\det \hat{B}_{N}$ nel caso dell'oscillatore armonico.
+
+Apparentemente, la situazione non sembra molto diversa da quella gi\`a
+incontrata nel caso della particella libera.
+Anche in questo caso, \`e possibili stabilire una relazione ricorsiva per
+$\hat{B}_{N}$, analoga alla Eq.~\eqref{eq:recursive detBN}, anche se in questo
+caso la ricorsione appare pi\`u complicata. 
+Sviluppando  il calcolo di $\det \hat{B}_{N}$ lungo la prima riga di
+$\hat{B}_{N}$, 
+%il complemento algebrico dell'elemento di posto $1,1$ altro non
+%\`e che $\det \hat{B}_{N-1}$, mentre per il complemento algebrico dell'elemento
+%di posto $1,2$ si pu\`o sviluppare il calcolo lungo la prima colonna, ottenendo
+%:-$\det \hat{B}_{N-2}$, quindi 
+si ottiene
+\begin{equation}\label{eq:ao recursive}
+\det \hat{B}_{N} = \left( 2 - \varepsilon^{2} \omega^{2} \right) \det
+\hat{B}_{N-1}  - \det \hat{B}_{N-2} \eqspace .
+\end{equation}
+Questa \`e un'equazione ricorsiva lineare omogenea del secondo ordine.
+\emph{Se} trattiamo $\varepsilon$ come parametro assegnato (attenzione:
+ritorneremo dopo su questo punto) allora la ricorsione \`e  a 
+coefficienti costanti e pu\`o essere risolta esattamente.
+L'equazione algebrica caratteristica associata \`e
+\begin{displaymath}
+\lambda^{2} - \left( 2 - \varepsilon^{2} \omega^2 \right) \lambda - 1 = 0
+\eqspace ,
+\end{displaymath}
+le due radici dell'equazione caratteristica sono
+\begin{displaymath}
+\lambda_{\pm} = \frac{1}{2} \left[ 2 - \varepsilon^{2} \omega^{2} \pm  2i
+\varepsilon \omega \sqrt{  1- \frac{\varepsilon^{2} \omega^{2}}{4} } \right] = 
+1 - \frac{\varepsilon^{2} \omega^{2}}{2} \pm i\varepsilon \omega \sqrt{1 -
+\frac{\varepsilon^{2} \omega^{2}}{4}} \eqspace ,
+\eqspace, 
+\end{displaymath}
+e la soluzione generale della Eq.~\eqref{eq:ao recursive} \`e
+\begin{displaymath}
+\det \hat{B}_{N} = c_{+} \lambda_{+}^{N} + c_{-} \lambda_{-}^{N} \eqspace .
+\end{displaymath}
+Occorre determinare le costanti $c_{+}$ e $c_{-}$ in modo che  siano soddisfatte
+le condizioni iniziali della ricorsione
+\begin{displaymath}
+\det \hat{B}_{2} = 2 - \varepsilon^{2} \omega^{2} \eqspace, \qquad 
+\det \hat{B}_{3} = \left( 2 - \varepsilon^{2} \omega^{2} \right)^{2} - 1
+\eqspace .
+\end{displaymath}
+Svolgendo i calcoli,%
+\footnote{I calcoli sono piuttosto laboriosi, conviene porre $\alpha = \left( 2 -\varepsilon^{2}
+\omega^{2}\right) $ e $ \beta = 2 i \varepsilon \omega \sqrt{ 1 - \frac{\varepsilon^{2}
+\omega^{2}}{4} } = \sqrt{\alpha^{2} - 4}$. Allora $\lambda_{\pm} ^{N} = 2^{-N}
+(\alpha\pm\beta)^{N}$, inoltre $\det \hat{B}_{2} = \alpha$ e
+$\det\hat{B}_{3} = \alpha^{2} -1$.
+Si trova
+%e si tratta di risolvere il sistema lineare 
+%\begin{displaymath}
+%\left\{ \begin{array}{rcl} 
+%\left( \alpha+\beta\right)^{2} c_{+} + \left( \alpha-\beta\right)^{2} c_{-} &=&
+%4 \alpha \\ 
+%\left( \alpha+\beta\right)^{3} c_{+} + \left( \alpha-\beta\right)^{3} c_{-} &=&
+%8 \left( \alpha^{2} -1 \right) \end{array} \right.\eqspace ,
+%\end{displaymath}
+%nelle incognite $c_{+}$ e $c_{-}$.
+%Le soluzioni di questo si possono trovare in vari modi (metodo matriciale,
+%riduzione, etc) e sono 
+\begin{displaymath}
+c_{+} = 2 \frac{ \alpha^{2} + \alpha \beta - 2}{\beta \left(
+\alpha+\beta\right)^{2}} \eqspace , \qquad 
+c_{-} = 2 \frac{ \alpha^{2} - \alpha \beta -2 } {\beta \left( \alpha-
+\beta\right)^{2}} \eqspace, 
+\end{displaymath}
+e usando il fatto che $\beta^{2} = \alpha^{2} - 4$ nello sviluppo dei quadrati a
+denominatore si trova $c_{+} = -c_{-} = 1 /\beta $.}
+\begin{displaymath}
+c_{+} = -c_{-} = \left( 2 i \varepsilon \omega \sqrt{ 1 - \frac{\varepsilon^{2}
+\omega^{2}}{4}} \right)^{-1} \eqspace .
+\end{displaymath}
+Si ottiene cos\`{\i} l'espressione esatta per $\det\hat{B}_{N}$:
+\begin{eqnarray*}
+\det\hat{B}_{N} 
+&=& \frac{1}{2i\varepsilon \omega}
+\left(  1 - \frac{\varepsilon^{2} \omega^{2}}{4} \right)^{ - \frac{1}{2}}
+\left\{ 
+\left( 1 - \frac{\varepsilon^{2} \omega^{2}}{2} + i \varepsilon \omega
+\sqrt{ 1 - \frac{\varepsilon^{2} \omega^{2}}{4} } \right)^{N}  \right.
+\\
+&&{}- \left.
+\left( 1 - \frac{\varepsilon^{2} \omega^{2}}{2} - i \varepsilon \omega
+\sqrt{ 1 - \frac{\varepsilon^{2} \omega^{2}}{4} } \right)^{N} \right\} \eqspace
+.
+\end{eqnarray*}
+A questo punto per\`o subentra un punto sottile!
+
+Se siamo interessati a calcolare l'integrale Eq.~\eqref{eq:ao gN} con $\omega$ e
+$\varepsilon$ assegnati (\eg, $\varepsilon = \omega = 1$, o anche $\omega =
+\varepsilon =0 $, etc)  allora $\det \hat{B}_{N}$ calcolato sopra fornisce il
+risultato esatto.
+\begin{Exercise}
+Mostrare che  per ogni $N\in\N$, $N\geq 2$  si ha
+\begin{displaymath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1}  \udiff{y_{k}} \uexp^{ i \sum_{k=1}^{N}
+\left[  \left( y_{k} - y_{k-1} \right)^{2} - 
+y_{k}^{2} \right]} = \left(   \frac{(i\pi)^{N-1} \sqrt{3} }{2
+\sin \frac{ N \pi}{3} } \right)^{\frac{1}{2}}  \eqspace, 
+\end{displaymath}
+con $y_{0} = y_{N} = 0$.
+\begin{hint}
+L'integrale multiplo corrisponde al caso $\varepsilon = \omega = 1$, in questo
+caso
+\begin{displaymath}
+\det\hat{B}_{N} = \frac{1}{2i} \sqrt{\frac{4}{3}} \left\{ 
+\left( \frac{1}{2} + i \frac{\sqrt{3}}{2} \right)^{N} + \left( \frac{1}{2} - i
+\frac{\sqrt{3}}{2} \right)^{N} \right\} = \frac{2}{\sqrt{3}} \frac{\uexp^{i
+\frac{\pi}{3} N} - \uexp^{ -i \frac{\pi}{3} N}   }{2i}
+\eqspace \ldots 
+\end{displaymath}
+\end{hint}
+\end{Exercise}
+D'altro canto, \emph{non} \`e affatto questo il conto di cui abbiamo bisogno per
+calcolare invece il path integral!
+Ricordiamoci infatti che per calcolare il path integral siamo
+interessati in particolare a, cfr. Eq.~\eqref{eq:ao int},
+\begin{displaymath}
+\plimit \varepsilon \det \hat{B}_{N} \eqspace ,
+\end{displaymath}
+quindi per noi $\varepsilon$ non \`e assegnato indipendentemente da $N$.
+Questo non \`e un problema dell'integrale Eq.~\eqref{eq:ao gN} in s\'e, \`e un
+problema dovuto al passaggio al limite nel path integral, dove non possiamo
+eseguire i limiti $N\rightarrow+\infty$ e $\varepsilon\rightarrow 0 $
+separatamente, occorre che i due limiti siano eseguiti simultaneamente, in modo
+che la quantit\`a  $ N \varepsilon = (t''-t') $ rimanga fissata.
+
+
+Questo significa che la vera ricorsione a cui siamo interessati \`e una
+ricorsione in cui $\varepsilon = \varepsilon_{N}$, cio\`e una ricorsione del
+secondo ordine a coefficienti variabili!  Si potrebbe pensare di esprimerne la
+soluzione per mezzo della tecnica delle funzioni generatici, qui adottiamo una
+procedura approssimata che fa uso del precedente risultato ottenuto per $\det
+\hat{B}_{N}$.  Ci sono anche altri modi, \eg, nel limite $\varepsilon\rightarrow
+0 $ e $N\rightarrow+\infty$   l'equazione ricorsiva per $\det \hat{B}_{N}$ pu\`o
+essere convertita in un'equazione differenziale per
+$\varepsilon\det\hat{B}_{N}$, questo lo vediamo dopo.
+
+Introduciamo  alcune  approssimazioni:
+\begin{displaymath}
+\left( 1- \frac{\varepsilon^{2}\omega^{2}}{4} \right)^{\pm\frac{1}{2}} = 
+1 \mp \frac{\varepsilon^{2}\omega^{2}}{2} + \mathcal{O} (\varepsilon^{3})
+\eqspace, 
+\end{displaymath}
+quindi 
+\begin{eqnarray*}
+\det \hat{B}_{N} &\approx&
+\frac{1} {2i\varepsilon \omega} 
+\left( 1 + \frac{\varepsilon^{2} \omega^{2}}{2} \right) \left\{ 
+\left( 1 -
+\frac{\varepsilon^{2}\omega^{2}}{2} + i\varepsilon \omega  \right)^{N} - 
+\left( 1 -
+\frac{\varepsilon^{2}\omega^{2}}{2} - i\varepsilon \omega  \right)^{N} \right\}
+\eqspace, \\
+&=& 
+\frac{1}{2i \varepsilon \omega} \left\{ ( 1 + i \varepsilon \omega)^{N} - ( 1 -
+i \varepsilon \omega)^{N} \right\} \eqspace, 
+\end{eqnarray*}
+e ricordandoci che nel path integral consideriamo il limite a
+$\varepsilon\rightarrow 0 $, $N\rightarrow+\infty$ con $N\varepsilon= t'' -t '$
+fissato,  si ha 
+\begin{eqnarray*}
+\plimit  \varepsilon \det\hat{B}_{N}  &=& 
+\plimit \frac{1}{2i \omega} \left\{ \left( 1 + \frac{i\omega
+(t''-t')}{N}\right)^{N} - \left( 1   - \frac{i \omega (t''-t')}{N} \right)^{N}
+\right\} \\
+&=& \frac{ \uexp^{ i \omega (t''-t')} - \uexp^{ - i \omega
+(t''-t')}}{2i\omega} \\
+&=& \frac{\sin \omega (t''-t')}{\omega } \eqspace .
+\end{eqnarray*}
+Notare che 
+\begin{displaymath}
+\lim_{\omega\rightarrow 0 } \frac{\sin \omega(t''-t')}{\omega} = t''- t'
+\eqspace ,
+\end{displaymath}
+e si ottiene il risultato della particella libera (check di consistenza!).
+
+
+
+\printbibliography

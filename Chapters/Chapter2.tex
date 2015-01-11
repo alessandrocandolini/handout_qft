@@ -1,0 +1,107 @@
+
+%*******************************************************
+% Chapter 2
+%*******************************************************
+
+\myChapter{Functional methods for harmonic oscillator}
+
+Harmonic oscillator is the prototype of both canonical and path integral
+quantization of fields.
+Creation and annihilation operators allow to solve exactly in a purely
+algebraic fashion the spectrum of quantum oscillator.
+These are the ``lego'' bricks to built up the
+Fock's Hilbert space of a quantum field theory (also a non-relativistic one, as
+it sometimes costumary in statistical mechanics).
+Here, we will develop the functional tools with the aim of eventually apply
+their extension to quantum fields.
+
+
+\myChapter{Functional methods for scalar quantum fields} 
+
+
+%This chapter is devoted to the application of path integrals and functional
+%techniques to the quantum theory of relativistic scalar fields.
+
+The general strategy behind functional methods in quantum field theory is
+similar to that a statistical mechanics:
+\begin{itemize}
+   \item build up the key object of the theory, which is the \emph{generating}
+      functional
+      \begin{dmath}
+	 Z[J]  = \pathint{ \E^{ - \frac{i}{\hslash} S[\varphi]}}{\varphi}
+      \end{dmath}
+      in which the dynamics of the fields is \emph{encoded};
+   \item extract (\ie, \emph{decode}) the physical quantities from the
+      generating 
+      functional.
+\end{itemize}
+$Z(J)$ plays the role of the partition function in statistical mechanics.
+In fact, physicists are used to employ the same symbol $Z$ to denote
+both of them.
+Primary interest is on physical quantities like
+\begin{inparaenum}[a)]
+   \item scattering cross-sections,
+   \item decay rates of unstable particles,
+   \item magnetic moments, etc.
+\end{inparaenum}
+However, the theoretical calculations of these quantities usually proceed
+through  the following
+two steps:
+\begin{itemize}
+   \item first, more abstract quantities, \ie, the $n$-point correlation
+      function, are computed from the generating functional,
+   \item then the $S$ matrix which determined scattering cross-sections and
+      decay rates is related to correlation functions.
+\end{itemize}
+
+
+
+
+
+\section{Path integral quantization of scalar fields}
+
+The Lagrangian density $\Lagrangian\free$ of the non-interacting real neutral massive scalar field
+$\varphi(x)$ in the $(d+1)$-dimensional Minkowski space is%
+\footnote{Our conventions are summarized in \cref{chp:lorenz}.}
+\begin{dmath}[label={L0scalar}]
+   \Lagrangian\free \left( \varphi(x), \partial_{\mu}\varphi(x) \right) = \frac{1}{2} \left( \partial_{\mu} \varphi(x) \right) \left(
+\partial^{\mu} \varphi(x) \right) - \frac{1}{2} m^{2} \varphi^{2}(x) 
+\end{dmath}.
+It is a \emph{function} of the field and its first-order space-time
+derivatives at one space-time point $x$.
+The parameter $m$ will later be identified with the bare mass of the bosons.
+
+The corresponding action functional $S[\varphi(x)]$ is defined as usual as the space-time integral of the
+Lagrangian density, \ie, 
+\begin{equation}\label{eq:S}
+S[\varphi(x)] = \int \Lagrangian \udiff[4]{x} = 
+\int \left( \frac{1}{2} \left( \partial_{\mu} \varphi(x) \right) \left(
+\partial^{\mu} \varphi(x) \right) - \frac{1}{2}m^{2} \varphi^{2}(x) \right)
+\udiff[4]{x} \eqspace .
+\end{equation}
+$S$ is a real-valued \emph{functional} of the field configuration $\varphi$.
+
+
+
+\subsection{Path integral quantization of interacting scalar field}
+\subsection{Review of canonical quantization of scalar fields}
+
+In order to make some comparisons between path integral and operator approaches
+to the quantum theory of scalar fields, we briefly sketch a summary of canonical
+quantization of scalar fields.
+
+
+\section{Perturbation expansion of Green functions of self-interacting scalar fields}
+\section{Feynman diagrams}
+
+\begin{dmath}
+   \feyn{fs f fl flu f fs}
+   %\feyn{fs f flA fluV f fs}
+\end{dmath}
+
+\section{Troubles with perturbation theory}
+
+\section{Symmetry factors of Feynman diagrams for scalar fields}
+
+\myChapter{Functional quantization of spinor fields} 
+\myChapter{Quantum Electrodynamics}

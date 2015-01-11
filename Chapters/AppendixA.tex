@@ -1,0 +1,1061 @@
+
+%*******************************************************
+% Appendix A 
+%*******************************************************
+
+\myChapter{Gaussian integrals} 
+
+\lettrine{G}{aussian} integrals are of major practical importance in several
+fields (mathematics, probability and statistics, quantum mechanics and
+field theory, etc.). The starting point is $\Int{\cramped{\E^{-x^{2}}}}{x,\R} =
+\sqrt{\pi}$. This appendix is concerned with generalizations of this formula.
+%at
+%various levels. 
+First, univariate and multivariate real and complex Gaussian
+integration is refreshed, including the calculation of moment integrals (it will
+be shown how the latter ones can be efficiently computed in a systematic way by
+invoking Wick's theorem; in connection with this, the technique of generating
+functions of moments and comulants is discussed). The aim of this part is
+three-fold:
+\begin{inparaenum}[(a)]
+  \item recollect well-known techniques belonging to calculus courses for
+     evaluating in closed-form finite-dimensional Gaussian integrals,
+     %in closed form,
+  \item with the aim of eventually apply generalizations of these methods to
+     the 
+     infinite-dimensional case and
+  \item introducing notations and terminology borrowed from quantum field
+     theory.
+\end{inparaenum}
+%Gaussian integrals are the prototype of functional integral strategy in quantum
+%field theory.
+From the field-theoretical point of view, 
+finite-dimensional Gaussian integrals can be understood as a
+\emph{zero-dimensional}
+counterpart of a \emph{free} \emph{bosonic} field theory. 
+Moment integrals are \emph{correlation functions} (\ie, Green's functions in
+quamtum field theory). Corresponding to
+\emph{interacting} (bosonic) field
+theories are non-Gaussian integrals to be treated perturbatively; each
+contribution in the perturbation expansion takes the form of
+a moment integral which can be computed 
+by using Wick's theorem; it is also possible to introduce
+some diagrammatics (the analogous of Feynman's diagrams in quantum fields) to manage
+the terms of the
+perturbation expansion. Finally, the mathematical theory of infinite-dimensional
+Gaussian integration is discussed and applied to calculate the path integrals of
+free particle and harmonic oscillator in quantum mechanics. Non-perturbative
+treatment of certain non-Gaussian integrals via saddle-point method is discussed
+in \cref{chap:saddle} and corresponds to \emph{semiclassical} approximation.
+Gaussian integration over Grassmannian variables (useful in
+the path integral quantization of \emph{fermionic} fields) is discussed in
+\cref{chap:grassman}. This appendix is mostly inspired by
+\textcite{Zeidler:2009b}, in particular chapters from~7.8 to~7.9, and
+\textcite{Zinn-Justin:2005}, expecially chapter~1.
+
+%\begin{remark}
+%   In this appendix, the square root of a complex number should always be
+%   understood as principal value. 
+%\end{remark}
+
+\section{Basic results}
+
+\lettrine{T}{he} starting point \graffito{key identity} is 
+\begin{equation}\label{eq:pi}
+%I = \Int{\E^{-\varphi^{2}}}{\varphi,-\infty,+\infty} = \sqrt{\pi}  \; .
+%\begin{dmath}[label={pi}]
+I = \Int{\E^{-\varphi^{2}}}{\varphi,\R} = \sqrt{\pi}  
+\; .
+%\end{dmath}.
+\end{equation}
+A theorem by Liouville states that (roughly speaking) the anti-derivatives of the Gaussian function
+$\cramped{\E^{-\varphi^{2}}}$ cannot be written in terms of elementary functions%
+\footnote{See, \eg, \textcite{Boros.Moll:2004} and references therein for a
+   more precise statement and for a proof of this theorem.};
+thus the foundamental theorem of calculus does not provide help in evaluating the integral in
+\cref{eq:pi}. So, where does \cref{eq:pi} come from?
+Let us briefly refresh some arguments which leads to
+\cref{eq:pi}, skipping technical mathematical details.
+
+One of the \graffito{Proof by squaring} standard ways to prove \cref{eq:pi} is
+the following remarkable trick
+of squaring, attributed to Poisson.%
+\footnote{%
+It may be just surprising to learn that this ingenious trick is so fruitful
+``only'' in this case and there is essentially no wider applicability of it as
+an integration method. The proof of this fact can be found in R.~Dowson, \emph{On a ``Singular''
+Integration Technique of Poisson}, Am.~Math.~Monthly, 112 (2005), pp.~270--272,
+and \emph{Poisson's remarkable calculation --- a
+   method or a trick?},  Elem.~Math.~65 (2010), pp.~1--8.}
+%The basic idea is: square the original integral, convert the square
+%of the integral as a double integral and compute this double integral by
+%trasforming to polar coordinates.
+%which can be computed exactly by a suitable change of coordinates.  
+Consider the
+square the original integral
+\begin{dmath*}
+I^{2} = 
+\left( \Int{\E^{-\varphi^{2}}}{\varphi,\R} \right)
+\left( \Int{\E^{-\psi^{2}}}{\psi,\R} \right) 
+\end{dmath*},
+where, in order to avoid confusion, a different dummy variable $\psi$ has been
+introduced in place of $\varphi$ in the second integral. Fubini's theorem
+applies, allowing to convert the original product of two one-dimensional
+integrals along the real $\varphi$- and $\psi$-lines into only one double
+integral over the two-dimensional $(\varphi, \psi)$-plane:
+\begin{dmath*}
+\Style{IntegrateDisplayFunc=outset}
+I^{2} =  \MultipleIntegrate{\E^{-\left( \varphi^{2} + \psi^{2}
+      \right)}}{\varphi,\psi}{\R^{2}}{}
+%\Int{\Int{\E^{-\left(\varphi^{2} + \psi^{2}\right)}}{\varphi, -\infty, +\infty}}{\psi,
+%-\infty, +\infty}
+\end{dmath*}.
+This integral can be computed by
+going over to standard plane polar coordinates
+\begin{dmath*}
+   \begin{sistema}
+      \phi = \rho \cos \vartheta \\
+      \psi= \rho \sin \vartheta 
+   \end{sistema}
+   \condition{$\vartheta \in \interval[open]{0}{2\pi}$ and
+      $\rho\in\interval[open]{0}{+\infty}$}
+\end{dmath*}.
+We get
+\begin{dmath*}
+\Style{IntegrateDisplayFunc=outset}
+I^{2} = \Int{\Int{\rho \E^{-\rho^{2}} }{\rho, 0, +\infty}}{\vartheta, 0, 2\pi}
+\end{dmath*},
+where the factor $\rho$ comes from the Jacobian of the polar transformation.
+The last integral becomes the product of two one-dimensional
+integrals, which can be integrated immediately. We obtain in this way 
+\begin{dmath*}[compact]
+I^{2} = \left( \int_{0}^{2\pi} \udiff{\vartheta} \right) \left(
+\int_{0}^{+\infty} \rho \E^{-\rho^{2}} \udiff{\rho} \right) = 2\pi
+\lim_{b\rightarrow+\infty} \left[
+-\frac{\E^{-\rho^{2}}}{2} \right]_{\rho = 0}^{\rho = b} = \pi 
+\end{dmath*},
+hence $I = \sqrt{\pi}$.%
+\footnote{The Gaussian function is always strictly positive; by the monotony of
+   integrals, $I>0$ and so the solution
+   $I=-\sqrt{\pi}$ is not acceptable.}
+Rigorously speaking, one should take care of the
+manipulatations of double integrals over the \emph{unbounded} domain $\R^{2}$, 
+eventually 
+however Gaussian integrals are absolutely convergent and 
+no
+problem occurs in this case.%
+\footnote{A careful derivation if all integrals are understood as Henstock-Kurzweil
+integrals can be found, \eg, in: A.~Fonda,
+\emph{Lezioni sulla teoria dell'integrale}, Edizioni Goliardiche, Trieste
+(2003), chapter~2.}
+
+
+Here \graffito{Proof by differentiating under the integral sign} is another (even if a bit technical) way to prove \cref{eq:pi},
+which involves only
+one-dimensional integrals along the real line.
+It is useful in a calculus course where double integrals have not been
+covered yet.
+But it is also interesting by its own for the following reason:
+the underlying strategy is the trick of differentiating under the integral
+sign, a general strategy we shall use often (see \cref{sec:complex
+   case}).
+The argument goes as follows, skipping again technical details.
+The hint was suggested, \eg, in the book \emph{Mathematical Analysis} by Tom M.
+Apostol (problem~9-17, p.~246). Let
+$\fullfunction{A}{\interval[open]{0}{+\infty}}{\R}$ be the real-valued 
+function over the positive reals defined by
+\begin{dmath*}
+   \Style{IntegrateDisplayFunc=inset}% restoring differential at the end
+a(t) = \left( \Int{\E^{-\varphi^{2}} }{\varphi,0,t} \right)^{2} + \Int{
+\frac{\E^{-t^{2} \left( 1+\varphi^{2}  \right)}}{1+\varphi^{2}} }{\varphi,0,1} 
+\end{dmath*},
+for every  $t\in\interval[open]{0}{+\infty}$. A straight calculation shows that
+\begin{dmath*}[compact]
+\D{A(t)}{t} = 2 \E^{ -t^{2}} \Int{\E^{-\varphi^{2}} }{\varphi,0,t} - 2 t 
+\Int{ \E^{-t^{2} \left( 1 +\varphi^{2}\right)}}{\varphi,0,1} 
+= 2 t
+\E^{-t^{2}} \Int{\E^{-t^{2} \xi^{2}}}{\xi,0,1} - 2 t
+\E^{-t^{2}} \Int{\E^{-t^{2} \varphi^{2}}}{\varphi,0,1} =0 \condition{where $\xi = \varphi/t$}
+\end{dmath*}.
+(Leibniz rule has been applied to interchange derivative and integration
+symbols.)
+Therefore, $A(t)$ is constant over $\interval[open]{0}{+\infty}$  and its value 
+is found by taking  the limit $t\downarrow 0$:
+\begin{dmath*}[compact]
+\lim_{t\downarrow 0} A(t) = \Int{ \frac{1}{1+\varphi^{2}} }{\varphi,0,1} = \arctan \varphi
+\bigg|_{\varphi=0}^{\varphi=1} =
+\frac{\pi}{4} 
+\end{dmath*}.
+(Of course, you should be able to explain why it is possible to move the limit inside the
+integration.)
+Finally, 
+by taking the limit $t\rightarrow +\infty$, the integral over $\interval{0}{1}$ vanishes
+and we get
+\begin{dmath*}
+\left( \Int{
+\E^{-\varphi^{2}} }{\varphi,0,+\infty} \right)^{2} = \frac{\pi}{4}
+\end{dmath*},
+and \cref{eq:pi} is proven.%
+\footnote{\label{footnote:irresistible}There are other proofs of \cref{eq:pi}
+   based, for instance, on
+   contour integration in the complex
+   plane, different changes of variables, etc. See, \eg,
+   \textcite{Boros.Moll:2004}.}
+
+\section{Univariate Gaussian integrals}
+\label{sec:univariate gaussian integrals}
+
+\ChangeExp
+
+\lettrine{I}{n} this section, the result of the previous section is used to
+calculate the value of 
+one-dimensional Gaussian integrals with general quadratic exponent, \ie, of the
+form
+\begin{equation}\label{eq:ZaJ}
+   I(a,J) = \Int{\E^{-\frac{1}{2} a \varphi^{2} + J\varphi }}{\varphi, \R}  \; ,
+\end{equation}
+where $a,J\in\C$. The factor \slantfrac{1}{2} and the signs are conventional.
+With this conventions, the integral is (absolutely) convergent \emph{if and
+   only} $\Re a > 0$. The integral is convergent (not
+absolutely) also in the case $\Re a = 0$ (\ie, Fresnel integrals), but
+the calculation in this case needs special treatment and it will be discussed
+separately (\cref{sec:Fresnel case}).
+
+Several strategies are possible to evaluate $I(a,J)$; some are suitable for
+certain cases, some others can be applied to all circumstances. In the
+following, we shall exploit the following strategies:
+\begin{itemize}
+   \item quadratic supplement trick;
+   \item contour integration in the complex plane via Cauchy's residue theory;
+   \item Schwinger-Dyson like differential equation.
+\end{itemize}
+%We approach the following cases using different strategies:
+%\begin{itemize}
+%   \item real case, \ie, $a,J\in \R$, $a>0$ (\cref{sec:real case});
+%   \item real Fourier transform case, \ie, $a\in\R$, $a>0$, $J\in\C$
+%      (\cref{sec:Fourier case});
+%   \item complex case, \ie, $a,J\in\C$, $\Re a >0$ (\cref{sec:complex case});
+%   \item Fresnel case, \ie, $a,J\in\C$, $\Re a =0 $ (\cref{sec:Fresnel case}).
+%\end{itemize}
+
+The quadratic supplement trick is suitable for the \emph{real} case
+(\cref{sec:real case}). Naively applied to the general complex case, the
+quadratic supplement trick remarkably yields the correct result, even if
+rigorously speaking the method is no longer valid (but of course it can still
+serve for mnemonic purposes). Switching to contour integration in the complex
+domain (where one can use the powerful tool of Cauchy's residue theory) is
+useful to deal with some particular cases (\eg, Fresnel integral and the Fourier
+transform of the Gaussian function, see \cref{sec:Fourier case,sec:Fresnel
+   case}). The general case can be established by writing and solving a
+differential equation for $I(a,J)$ (\cref{sec:complex case}).
+
+\subsection{Real case and quadratic supplement trick}
+\label{sec:real case}
+
+In this section, we calculate $I(a,J)$ when $a,J\in\R$, $a>0$. First, 
+\graffito{One-dimensional real Gaussian integral with no source term}
+consider
+$J=0$. By a change of variables,
+\begin{dmath*}[compact]
+   \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
+   \sqrt{\frac{2}{a}} 
+   \Int{\E^{-\xi ^{2}} }{\xi, \R}
+   \condition{where $\xi = \displaystyle \sqrt{\frac{a}{2}} \varphi $}
+\end{dmath*},
+and applying \cref{eq:pi} to the integral on the right-hand side we get 
+\begin{dmath}[label={pia},compact]
+   I(a,0) =  \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
+   \sqrt{\frac{2\pi}{a}} 
+   \condition{$a\in\R$, $a>0$}
+\end{dmath}.
+Now, consider $J\neq 0$ (source term).
+%\graffito{One-dimensional real Gaussian integral with source term}
+\graffito{Quadratic supplement trick}
+The trick is to convert the integral to an integral of the form \cref{eq:pia} by 
+completing the square in the exponent, \ie,
+\begin{dmath*}[compact]
+   -\frac{1}{2}a\varphi^{2} + J\varphi =  - \frac{1}{2} a \left( \varphi^{2} - 2 \frac{J}{a} \varphi \right)
+=
+-\frac{1}{2}a \left[ \left( \varphi - \frac{J}{a}\right)^{2} -
+\left(\frac{J}{a}\right)^{2}\right] 
+= -\frac{1}{2} a \left( \varphi - \frac{J}{a} \right)^{2} + \frac{J^{2}}{2a} 
+\end{dmath*}.
+By shifting the integration variable and using the translation invariance
+of the integration measure and of the endpoints of the integration range, we
+finally get
+\begin{dmath*}[compact]
+   \Int{\E^{-\frac{1}{2}a\varphi^{2} + J\varphi }}{\varphi, \R} =
+   \E^{\frac{J^{2}}{2a}} \Int{\E^{-\frac{1}{2}a \left( \varphi -
+	    \frac{J}{a}\right)^{2}}} {\varphi, \R}
+   = \E^{ \frac{J^{2}}{2a}} \sqrt{\frac{2\pi}{a}} 
+\end{dmath*}.
+Therefore, 
+\graffito{One-dimensional real Gaussian integral with source term}
+\begin{dmath}[label={piaJr}, compact]
+   I(a,J) = \Int{\E^{-\frac{1}{2}a\varphi^{2}+J\varphi }}{\varphi,\R} =
+   \sqrt{\frac{2\pi}{a}}
+   \E^{\frac{J^{2}}{2a}} 
+  % \condition{$a,J\in\R$ and $a>0$}
+\end{dmath},
+for every $a,J\in\R$, $a>0$.
+As we shall see in \cref{sec:complex case}, \cref{eq:piaJr} holds
+also if
+$a,J\in\C$, $\Re a>0$, in that case
+the square root of a complex number should be
+   understood in the sense of principal value. 
+
+\Cref{eq:piaJr} \graffito{Gaussian probability distribution} in the real case is
+important in the discussion of the Gaussian probability distribution, which is
+obiquitous in probability and statistics. The Gaussian probability density
+function $p:\R\rightarrow\R$ of a real variable $x$ is  defined as
+\begin{dmath*}
+   p(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \E^{ - \frac{\left( x -
+	    \mu\right)^{2}}{2\sigma^{2}} }
+\end{dmath*},
+where $\mu$ and $\sigma$ are real parameters ($\sigma>0$).
+Using \cref{eq:piaJr}, it is easy to prove that such $p(x)$ is normalized:
+\begin{dmath*}
+   \Int{p(x)}{x, -\infty, +\infty} = 1 
+\end{dmath*}.
+We shall see later that the mean value of this distribution is $\mu$ and the
+variance is $\sigma^{2}$.
+
+\subsection{Fourier transform using Cauchy's residue theory}
+\label{sec:Fourier case}
+
+
+Consider $I(a,J)$ with complex $a,J\in\C$, $\Re a >0$. 
+\graffito{Connection with the Fourier transform}
+Let us first consider the case
+\begin{itemize}
+   \item $a\in\R$, $a>0$;
+   \item $\Re J = 0$.
+\end{itemize}
+We may write $J = -i \omega$ for some $\omega \in\R$ (the minus
+sign is conventional).
+So, we have to compute
+\begin{dmath}[label={piaJi}]
+   \tilde{I}( a, \omega) = \Int{ \E^{-\frac{1}{2}a \varphi^{2} - i \omega \varphi}}{ \varphi, \R} 
+   \condition{$a, \omega \in \R$, $a>0$}
+\end{dmath}.
+Of course, the case $\omega=0$ fits the results of \cref{sec:real case},
+so we are interested in $\omega\neq 0$.
+Notice that
+$\tilde{I}(a, \omega)$ is nothing but the Fourier transform of the (real) Gaussian function
+$\E^{-\frac{1}{2}a\varphi^{2}}$.
+
+At first sight, \graffito{Naively speaking, the quadratic supplement trick is not rigorous 
+   in the complex case} one could think to use the quadratic supplement trick as in the
+real case.
+Completing the square 
+\begin{dmath*}[compact]
+   -\frac{1}{2}a\varphi^{2} - i\omega \varphi =
+   -\frac{1}{2}a \left[  \left( \varphi + \frac{i\omega }{a} \right)^{2} - \left(
+	 \frac{i\omega}{a} \right)^{2} \right]
+   = -\frac{1}{2}a \left( \varphi + \frac{i\omega}{a} \right)^{2} -
+   \frac{\omega^{2}}{2a} 
+\end{dmath*},
+we get
+\begin{dmath*}%[label={piabi correct}]
+   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi}}{\varphi, \R} =
+   \E^{-\frac{\omega^{2}}{2a}} \Int{\E^{-\frac{1}{2}a \left( \varphi +
+	 \frac{i\omega}{a} \right)^{2}}}{\varphi, \R}
+\end{dmath*}.
+To get the previous expression, all we have used are algebraic manipulations,
+so there is nothing wrong in doing so.
+Now, we would like to change variables in the integral
+\begin{dmath}[label={change}]
+   \xi = \sqrt{\frac{a}{2}} \left( \varphi + \frac{i\omega}{a} \right) 
+\end{dmath},
+so that 
+\begin{dmath}[label={piabir}]
+   \Int{\E^{-\frac{1}{2}a\varphi^{2} -i\omega \varphi}}{\varphi, \R} =
+\E^{-\frac{\omega^{2}}{2a}} \sqrt{\frac{2\pi}{a}}
+\end{dmath}.
+Remarkably enough, \cref{eq:piabir} holds true even if, naively speaking, the
+argument we have used to prove it is \emph{not} correct. Why is the trick not
+rigorous in this case? The reason is that \cref{eq:change}, naively speaking, implies converting the
+original integral with respect to the real variable $\varphi$ into a new
+integral with respect to the new \emph{complex} variable $\xi$ ($\xi$ in general
+carries also an imaginary part). In other words, we are changing the path of
+integration in the complex plane from the real line to a line which is parallel
+to the real line. 
+
+%Why does the trick return the right
+%value even if naively speaking it should not work? As we shall show in this
+%section, when the integration path is carefully changed in the complex plane,
+%the contributions for changing the integration paths vanish.
+
+There are many ways to establish \cref{eq:piabir} on a rigorous ground.
+In this section, we give an argument using Cauchy's residue theory and contour
+integration in the complex plane. This approach will help use to understand
+better why, although naively speaking not correct, the quadratic supplement
+trick gives the right value; the reason is that the other contributions coming
+for changing the integration path in the complex plane are vanishing. In
+\cref{sec:complex case}, a more general strategy based on the use of a
+differential equation will allow us to fully rederive the results of this
+section and also to establish the value of $I(a,J)$ in the more general case
+$a,J\in\C$, $\Re a >0$. Since the results of this section will be rederived as
+a particular case in \cref{sec:complex case}, if you prefer you can skip the
+rest of this section.
+
+Consider \graffito{Proof by Cauchy's residue theory} the contour integral of the complex Gaussian function
+\begin{dmath*}%[label={picomplex}]
+   \oInt{\E^{-\frac{1}{2}az^{2}}}{z, \gamma} \condition{$a\in \R$, $a>0$}
+\end{dmath*},
+where $\gamma$ is the simple closed positively-oriented rectangular contour drawn in
+\cref{fig:gamma}.
+\begin{figure}
+\centering
+\asyinclude[inline]{Asymptote/complex_contour.asy}
+%\includegraphics{complex.2}
+\caption{Simple closed positively-oriented contour $\gamma$ in the complex
+   $z$-plane obtained by joining $\gamma_{1}$, $\gamma_{2}$, $\gamma_{3}$ and
+   $\gamma_{4}$. $\lambda$ is a positive real number which eventually will be sent
+   to infinity (we are interested in taking the limit
+   $\lambda\rightarrow+\infty$).
+   The parameters
+   $\omega$ and $a$ are the real numbers appearing in \cref{eq:piaJi}. The
+   illustration corresponds to the case $\omega>0$, but you can analogously
+   consider the 
+   picture corresponding to the case $\omega<0$. 
+\label{fig:gamma}}
+\end{figure}
+Since $\E^{-\frac{1}{2}az^{2}}$ is always an entire function of the complex variable $z$ (\ie,
+it is analytic in the whole complex $z$-plane) then 
+Cauchy-Goursat theorem applies,%
+\footnote{Cauchy-Goursat theorem can be stated as follows: 
+For any single-valued
+analytic function $f(z)$ in a simply-connected domain $\Omega$  in the complex
+plane the complex contour integral of $f$ along any simple closed positively-oriented contour
+$\Gamma$ in $\Omega$ vanishes, \ie, $\oInt{f(z) }{z,\gamma}= 0$. 
+Stated otherwise: If $f(z)$  is analytic everywhere interior to and on a simple
+closed positively-oriented contour $\Gamma$ in the complex plane, then
+$\oInt{f(z)}{z,\gamma} =0 $.%
+}
+\begin{dmath}[label={int=0}]
+   \oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma}=0
+\end{dmath},
+in particular this is true for all $\lambda$.
+Of course, this integral can be computed in another way,  namely
+\begin{dmath}[label={int=sum4}]
+   \oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma} = \sum_{i=1}^{4} \Int{
+      \E^{-\frac{1}{2}az^{2}}}{z,\gamma_{i}} 
+\end{dmath}
+where the paths $\gamma_{1}$, $\gamma_{2}$, $\gamma_{3}$ and $\gamma_{4}$ are
+that drawn in \figurename~\ref{fig:gamma}.
+These integrals can be computed once a parametric representation of
+$\gamma_{i}$'s is given. 
+%
+A parametric reprentation of $\gamma_{1}$ is the function $\fullfunction{z_{1}}{\intervalcc{-\lambda}
+   {\lambda}}{\C}$ defined by
+$z_{1}(\varphi) = \varphi$ for every
+$\varphi\in\intervalcc{-\lambda}{\lambda}$; we have that $\D{z_{1}(\varphi)}{\varphi} =
+1$ and
+\begin{dmath*}[compact]%[label={int gamma1},compact]
+   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{1}} =
+%   \Int{ \E^{-\frac{1}{2}az_{1}^{2}(\varphi)} \D{z_{1}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
+   \Int{\E^{-\frac{1}{2}a\varphi^{2}}}{\varphi, -\lambda, \lambda}
+\end{dmath*}.
+As $\lambda\rightarrow+\infty$, $\Int{\E^{-\frac{1}{2}a z^{2}}}{z, \gamma_{1}}
+\rightarrow \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} =
+\sqrt{\frac{2\pi}{a}}$.
+%
+A parametric reprentation of $\gamma_{2}$ is the function $\fullfunction{z_{2}}{\intervalcc{0}
+   {1}}{\C}$ defined by
+$z_{2}(\varphi) = \lambda + \frac{i\varphi\omega}{a} $ for every
+$\varphi\in\intervalcc{0}{1}$; we have that $\D{z_{2}(\varphi)}{\varphi} =
+\frac{i\omega}{a}$ and
+\begin{dmath*}[compact]%[label={int gamma2},compact]
+   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{2}} =
+ %  \Int{\E^{-\frac{1}{2}az_{2}^{2}(\varphi)
+ %  }\D{z_{2}(\varphi)}{\varphi}}{\varphi,0,1}
+%= 
+\frac{i\omega}{a} \Int{\E^{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
+	 \right)^{2}}}{\varphi ,0,1}
+\end{dmath*}.
+Since the modulus of this last integral is bounded by 
+\begin{dmath*}[compact]
+   \Abs{ 
+\Int{\E^{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
+	 \right)^{2}}}{\varphi ,0,1}
+} \leq   \E^{-\frac{1}{2} a \lambda^{2}} \Int{ \E^{ \varphi^{2}
+      \frac{\omega^{2} }{2a}}}{\varphi, 0, 1}
+\end{dmath*},
+which goes to zero 
+as $\lambda\rightarrow+\infty$, the integral along
+$\gamma_{2}$ gives a vanishing contribution to the integral over $\gamma$.
+In the same way, it is not difficult to confirm that also the integral along
+$\gamma_{4}$ does not contribute to $\oInt{\E^{-\frac{1}{2}az^2}}{z,\gamma}$ in the limit $\lambda\rightarrow+\infty$.
+%
+Finally, a parametric reprentation of $\gamma_{3}$ is the function $\fullfunction{z_{3}}{\intervalcc{-\lambda}
+   {\lambda}}{\C}$ defined by
+$z_{3}(\varphi) = -\varphi + \frac{i\omega}{a}$ for every
+$\varphi\in\intervalcc{-\lambda}{\lambda}$ (the minus sing accounts of the
+direction of the path); we have that $\D{z_{3}(\varphi)}{\varphi} =-1
+$ and
+\begin{dmath*}[compact]%[label={int gamma1},compact]
+   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{3}} =
+  % \Int{ \E^{-\frac{1}{2}az_{3}^{2}(\varphi)} \D{z_{3}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
+   -\Int{\E^{-\frac{1}{2}a\left( -\varphi+ \frac{i\omega}{a}
+	 \right)^{2}}}{\varphi, -\lambda, \lambda}=
+   -\E^{\frac{\omega^{2}}{2a}}
+   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+	 }{\varphi, -\lambda, \lambda} 
+\end{dmath*}.
+As $\lambda\rightarrow+\infty$, 
+%\begin{dmath*}[compact]
+   \begin{math}
+   \Int{\E^{-\frac{1}{2} a z^{2}}}{z,\gamma_{3}} \rightarrow 
+   %-\E^{\frac{\omega^{2}}{2a}}
+   %\Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+   %}{\varphi, \R} = 
+   - \E^{\frac{\omega^{2}}{2a}} \tilde{I}(a,\omega)
+\end{math}.
+\Cref{eq:int=0,eq:int=sum4} then implies
+%\end{dmath*}.
+%Since  the integral 
+%of $E^{-\frac{1}{2}az^{2}}$ 
+%along $\gamma$ must be zero,
+%$\oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma}=0$, we get
+%\begin{dmath*}
+%   \sqrt{\frac{2\pi}{a}} 
+%   -\E^{\frac{\omega^{2}}{2a}}
+%   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+%	 }{\varphi,\R}  = 0 
+%      \end{dmath*},
+%      so
+%\ChangeExp
+\begin{dmath*}
+   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+	 }{\varphi, \R}  = 
+   \E^{-\frac{\omega^{2}}{2a}}
+   \sqrt{\frac{2\pi}{a}} 
+\end{dmath*}.
+
+\subsection{Fresnel integral}
+\label{sec:Fresnel case}
+
+\RestoreExp
+
+In this section we shall prove that
+\begin{dmath}[label={fresnel}]
+   \Int{ \E^{\pm i\varphi^{2}}}{\varphi,\R} = \E^{\pm i\frac{\pi}{4}} \sqrt{\pi}
+\end{dmath}, 
+This is called ``Fresnel integral''.
+(Sometimes, the name ``Fresnel'' integral refers to the real and imaginary
+parts of the integral above.)
+It arises in many situations (\eg, the description of near field Fresnel
+diffraction in optics); we have already met it in
+\cref{chp:fundamentals}.
+
+At first sight one might wonder why the integral in \cref{eq:fresnel} is convergent.
+After all, 
+by definition
+\begin{dmath*}
+   \Int{ \E^{\pm i\varphi^{2}}}{\varphi,\R} 
+   = 
+   \Int{ \Re \E^{\pm i\varphi^{2}}}{\varphi,\R} + i 
+   \Int{ \Im \E^{\pm i\varphi^{2}}}{\varphi,\R} 
+   = 
+   \Int{ \Cos{\varphi^{2}}}{\varphi,\R} \pm i 
+   \Int{ \Sin{\varphi^{2}}}{\varphi,\R} 
+\end{dmath*},
+and the sine and cosine functions do \emph{not} even decay to zero at infinity!
+In fact, the Fresnel integral is \emph{not} absolutely
+convergent, bacause the modulus of the integral function is always equal to
+one. However, Fresnel integral do converge.
+Qualitatively speaking, this is due to cancellation of the rapid oscillations of $\cos
+\varphi^{2}$ and $\sin\varphi^{2}$ as $\varphi\rightarrow\infty$.
+Notice that this intuitive idea, togerther with 
+\cref{eq:fresnel}, are the underlying ingredients of the stationary phase method for
+asymptotic evaluation of certain rapidly oscillating parametric
+integrals\textemdash a
+method which can also be generalized even to path integrals (WKB emerge in the path
+integral formulation of non-relativistic quantum mechanics in this
+way).
+The convergence can be proven by integrating by parts. This
+strategy however does not help us in evaluating the integral.
+One method to establish \cref{eq:fresnel} is to use complex integration and
+Cauchy's residue theory.
+
+To prove \graffito{Proof of convergence} the convergence of the Fresnel integral, 
+
+Once we have proven that the integral is convergent, in order to calculate it
+we can use the tools of complex analysis.
+
+\begin{sidefigure}
+   %\includegraphics[width=\marginparwidth]{Lazarus_Immanuel_Fuchs}
+   \asyinclude[viewportwidth=\marginparwidth, inline=true]{Asymptote/fresnel.asy}%
+   \caption{%Contour used to calculate Fresnel integral
+      \label{fig:fresnel}}
+\end{sidefigure}
+
+Other proof \graffito{Proof via Laplace transform} involves making use of the
+Laplace transform and Feynman's trick of differentiating under the integral
+sign.
+
+
+
+\subsection{Complex case via differential equations and analytic continuation} 
+\label{sec:complex case}
+
+\begin{quoting}%[font=small]
+   \openquote One thing I never did learn was contour integration. I had learned
+   to do integrals by various methods shown in a book that my high school
+   physics teacher Mr.~Bader had given me.  One day he told me to stay after
+   class. <<Feynman,>> he said, <<you talk too much and you make too much noise.
+   I know why. You're bored. So I'm going to give you a book. You go up there in
+   the back, in the corner, and study this book, and when you know everything
+   that's in this book, you can talk again.>> 
+   So every physics class, I paid no
+   attention to what was going on with Pascal's Law, or whatever they were
+   doing. 
+   \omissis{}
+   I was up in the back with this book: Advanced Calculus, by Woods.
+   %\omissis{}
+   Bader knew I had studied Calculus for the Practical Man a little bit, so he
+   gave me the real works\textemdash it was for a junior or senior course in
+   college. It had Fourier series, Bessel functions, determinants, elliptic
+   functions\textemdash all kinds of wonderful stuff that I didn't know anything
+   about. 
+   That book also showed how to differentiate parameters under the
+   integral sign\textemdash it's a certain operation. It turns out that's not
+   taught very much in the universities; they don't emphasize it. But I caught
+   on how to use that method, and I used that one damn tool again and again. 
+   So
+   because 
+   I was self-taught using that book, I had peculiar methods of doing
+   integrals. 
+   \omissis{}
+   The result was, when guys at MIT or Princeton had trouble doing a
+   certain integral, it was because they couldn't do it with the standard
+   methods they had learned in school.
+   %If it was contour integration, they would
+   %have found it; if it was a simple series expansion, they would have found it.
+   %Then I come along and try differentiating under the integral sign, and often
+   %it worked. 
+   \omissis{}
+   So I got a great reputation for doing integrals, only because my
+   box of tools was different from everybody else's, and they had tried all
+   their tools on it before giving the problem to me.~\closequote
+   \begin{signature}
+       R.~F.~Feynman \\
+       \emph{Surely You're Joking, Mr.~Feynman!}\\
+       pp.~71-72, Bantam Books (1986).
+\end{signature}
+\end{quoting}
+
+\par\noindent
+In this section, we employ the trick of 
+differentiating under the integral sign (the method Feynman is referring to in
+the passage above) to evaluate exactly $I(a,J)$ in the general complex case
+when  $a,J\in\C$, $\Re a>0$.
+This trick is very
+powerful also elsewhere. Furthermore, the same trick will allow us to compute
+integrals of the moments in a very efficient manner (expecially in the
+multi-dimensional case) and will lead us to establish Wick's theorem. 
+Furthermore, its functional generalization forms the basis on which the Feynman path integral is
+used in practise in order to compute correlation functions in quantum field
+theory.
+
+\begin{theorem}
+   Let \graffito{Complex Gaussian integral with source term} $a,J\in\C$ and $\Re a> 0$.
+   Then, 
+   \begin{dmath}
+      \Int{ \E^{ -\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R} =
+      \sqrt{\frac{2\pi}{a}} \E^{\frac{J^{2}}{2a}}
+   \end{dmath},
+   where the square root should be understood as principal value.
+\end{theorem}
+%\begin{approfondimento}
+   %\paragraph{Principal value of the complex square root}.
+   \begin{remark}
+      Let \graffito{Principal value of the square root of a complex number} $z\in\C\backslash\lbrace0\rbrace$ by any non-zero complex
+      number of the form 
+      \begin{dmath*}
+	 z=\Abs{z} \E^{i\vartheta} \condition*{-\pi < \vartheta < \pi}
+      \end{dmath*}.
+      (Notice that we exclude the negative real axis.)
+      The principal value of the complex square-root of $z$ is 
+      \begin{dmath*}
+	 \sqrt{z} = \sqrt{\Abs{z}} \E^{i \frac{\vartheta}{2}}
+      \end{dmath*}.
+      In this way, $\sqrt{z}$ defines a function which is holomorphic on the
+      whole complex $z$-plane but the negative real axis, and which provides
+      the analytic continuation of $\sqrt{x}$ for positive real values $x$.
+   \end{remark}
+%\end{approfondimento}
+
+\begin{proof}
+   Let \graffito{First step: analytic continuation when no source is present} us consider $I(a,0)$, with $a\in\C$, $\Re a >0$.
+We already know that 
+\begin{dmath*}
+   I(a,0) = \sqrt{\frac{2\pi}{a}}  \condition{$a\in\R$, $a>0$}
+\end{dmath*}.
+For complex $a$, $I(a,0)$ is holomorphic in the half complex $a$-plane 
+$\Re a>0$.
+Consider the function $\sqrt{2\pi/a}$, where the square root is
+understood in the senso of principal value. Then, this function is also
+analytic in the half plane $\Re a>0$ (it is analytic everewhere but the
+negative real axis) and its value coincide with the value of
+$I(a,0)$ along the positive real axis.
+By analytic continuation, 
+\begin{dmath}[compact]%[compact, frame]
+   I(a,0) = \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi,\R} =
+   \sqrt{\frac{2\pi}{a}} \condition{$a\in\C$, $\Re a>0$}
+\end{dmath}.
+
+To \graffito{Second step: The Schwinger-Dyson differential equation} calculate $I(a,J)$, $J\in\C$, take the derivative with respect to $J$:
+\begin{dmath*}[compact]
+   \pderiv{I(a,J)}{J} = \pderiv{}{J}\Int{\E^{-\frac{1}{2} a \varphi^{2} +
+	 J\varphi}}{\varphi, \R} 
+   = 
+   \Int{ \varphi \E^{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
+\end{dmath*},
+using Leibniz rule to interchange derivative and integral symbols.
+Integrating by parts 
+\begin{dmath*}[compact]
+   \Int{ \varphi \E^{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
+   = -\frac{1}{a} \Int{ \underbrace{\left( -a \varphi \right) \E^{-\frac{1}{2} a
+	    \varphi^{2}}}_{\pderiv{}{\varphi} \E^{-\frac{1}{2}a\varphi^{2}}}
+      \E^{J\varphi}}{\varphi, \R}
+   = \frac{J}{a} \Int{ \E^{-\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R}
+   = \frac{J}{a} I(a, J) 
+\end{dmath*}.
+So, we have to solve the following differential equation:
+\begin{dmath}[label={piSD}]
+   \pderiv{I(a,J)}{J} - \frac{J}{a} I(a,J) =0
+\end{dmath},
+which can be somewhat consider the analogous of Schwinger-Dyson differential
+equations between in quantum field theory.
+\Cref{eq:piSD} is a first-order homogeneus linear partial diffential equation which be
+solved, for instance, by multiplying both sides by $\E^{-
+   \frac{J^{2}}{2a}}$ (the technique of integrating factors).
+In this way, we get
+\begin{dmath*}
+   \E^{-\frac{J^{2}}{2a}} \pderiv{I(a,J)}{J} - \frac{J}{a}
+   \E^{-\frac{J^{2}}{2a}} I(a,J) =0 
+\end{dmath*},
+\ie,
+\begin{dmath*}
+   \pderiv{}{J} \left\lbrace \E^{-\frac{J^{2}}{2a}} I(a,J) \right\rbrace =0 
+\end{dmath*},
+which means that $\E^{-\frac{J^{2}}{2a}} I(a,J)$ is a function of $a$ only (\ie, it
+does not depend on $J$).
+Since we know that for $J=0$, this function is $I(a,0) =
+\sqrt{2\pi /a}$,  we must have
+\begin{dmath*}
+   I(a,J)= \sqrt{\frac{2\pi}{a}} \E^{\frac{J^{2}}{2a}} 
+   \condition{$a,J\in\C$, $\Re a>0$}
+\end{dmath*}.
+This completes the proof.
+\end{proof}
+
+
+
+
+\subsection{Moment integrals}
+\label{sec:1D moment integrals}
+
+In this section, we focus on calculating integrals of the form
+\begin{dmath*}
+   \Int{ x^{m} \E^{ - ax^{2} + Jx} }{x, -\infty, +\infty}
+\end{dmath*},
+where $m\in\N$ and $a,J\in\C$, $\Re a>0$. 
+
+In the real case (\ie, $a,J\in\R$, $a>0$), integrals of this form arise in
+connection with the
+computation of moments of the Gaussian probability distribution.
+Let us discuss briefly this point, in the context of univariate 
+probability density functions on $\R$.
+
+%\begin{digression}[Moments of a probability distribution]
+%\begin{approfondimento}
+The \graffito{Moments of a probability distribution}  $n$\ordth-moment of a
+probability density function $\fullfunction{p}{\Omega}{\R}$
+on some (measurable) subset $\Omega\subseteq\R$ is (by definition)
+\begin{dmath*}
+   \Int{ x^{n} p (x) }{x, \Omega}
+\end{dmath*},
+provided that this integral exists.%
+\footnote{A canonical example of a ``pathological'' probability distribution
+   which does does not have finite moments is the Cauchy distribution (also known as
+   Breit-Wigner distribution in high-energy physics, or Lorenzian function),
+   whose standard form is $p(x) = \frac{1}{\pi \left( 1+x^{2} \right)}$
+   for every $x\in\R$; its first order moment does not exist and the higher
+   order moments are divergent.}
+In particular, the first moment (if it exists) is called the ``mean value'' of the probability
+distribution.
+It is easily verified that the mean value of the Gaussian distribution
+$\fullfunction{p_{\mu,
+   \sigma^{2}}}{\R}{\R}$ be the Gaussian probability density function 
+\begin{dmath*}
+   p_{\mu, \sigma^{2}}(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \E^{ - \frac{\left(
+	    x-\mu\right)^{2}}{2\sigma^{2}}} 
+\end{dmath*}.
+is equal to the parameter $\mu$.
+In analogy, it is also useful to define the $n$\ordth-moment of $p$.
+with respect to its mean value (the so-called ``central moments''):
+\begin{dmath*}
+   \Int{ \left( x-\mu\right)^{n} p (x) }{x,\Omega} 
+\end{dmath*}.
+The first moment with respect to the mean value is of course equal to zero.
+The second moment with respect to the mean value is called the variance.
+It is easily verified that the variance of the Gaussian distribution $p_{\mu,
+   \sigma^{2}}$ is equal to $\sigma^{2}$.
+
+In general,  \graffito{Expectation values  with respect to a probability
+   dstribution}
+\begin{dmath*}
+   \braket{f(x)} = \Int{f(x) p(x)}{x, \Omega}
+\end{dmath*}
+is the ``expectation value'' of the function $\fullfunction{f}{\Omega}{\R}$ with respect to the probability
+distribution $p$ (when this integral exists).
+So, moments of a distribution are expectation values of integer powers.
+%\end{approfondimento}
+%\end{digression}
+
+
+We shall see two different ways to evaluate those integrals.  The first makes
+extensively use of Euler's integral representation of the Gamma function.  This
+is very powerful to handle the one-dimensional case.  However, it does not
+easily generalize to the case of multivariate Gaussian distributions.  For this
+reason, it is helpful to recover the results using another method, which
+although being less elegant in my opinion (it involves differentiating multiple times the
+integral with respect to $J$, something that in the one-dimensional case may
+sound quite boring stuff) can be generalized without difficulties to cover
+the multi-dimensional case. This will lead us to the powerful tool of
+generating functions. Suitable adapted to quantum fields, it is the content of
+the famous and useful Wick's theorem, which we shal  discuss more lenghtly in
+the setting of higher-dimensional Gaussian integrals.
+
+The key result of this section is that such integrals are fully determined once
+\ldots, a powerful result which is well-known in probability and stochastic
+processes.
+
+
+\section{Multivariate Gaussian integrals}
+
+\lettrine{T}{he} \emph{prototype} \graffito{Prototype of multi-dimensional (real)
+   Gaussian integration} of all $N$-dimensional (real) Gaussian integrals
+($N\in\N$) is 
+\begin{equation}
+   \int_{\R^{N}} \E^{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
+   \prod_{k=1}^{N} \udiff{\varphi_{k}} \; ,
+\end{equation}
+where $\lambda_{k} \in \R$, $\lambda_{k} >0$ for $\nto{k}{1}{N}$.
+(The integral is absolutely convergent due to the fact that $\lambda_{k}$'s are
+always
+strictly positive.)
+This integral factorizes into the product of $N$ one-dimensional Gaussian
+integrals (Fubini's theorem) so
+\begin{dmath}[compact]
+   \int_{\R^{N}} \E^{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
+   \prod_{k=1}^{N} \udiff{\varphi_{k}} = \prod_{k=1}^{N} \Int{\E^{-\frac{1}{2}
+	 \lambda_{k} \varphi_{k}^{2}}}{x_{k}, \R} =   \sqrt{\frac{ \left(
+	    2\pi\right)^{N}}{ \prod_{k=1}^{N} \lambda_{k}}} 
+\end{dmath}.
+
+More generally, we consider the exponential of a \emph{real} quadratic form in
+$N$ real variables.
+Remember that any $N\times N$  real \emph{symmetric} matrix determines a
+quadratic form in $N$ variables and conservesely given any real quadratic form
+in $N$ variables its coefficients can always be arranged into an $N\times N$
+\emph{symmetric} matrix.
+When the integral is convergent, one can decouple the variables in the exponent
+by diagonalizing the matrix and
+the integral factorizes again into a product of $N$ one-dimensional
+Gaussian integrals as before. This is the content of the following theorem.
+\begin{theorem}
+   Let $A$ be any 
+   \graffito{The determinant trick}
+   %\begin{itemize}
+   \begin{inparaenum}[a)]
+      \item symmetric and 
+      \item positive-definite 
+   \end{inparaenum}
+   %\end{itemize}
+   (thus invertible) $N\times N$ \emph{real} square matrix 
+   ($N\in\N$). 
+   Then, the following integral is
+   \emph{absolutely} convergent and its
+   value is
+   \begin{dmath}[label={piA}]
+      \int_{\R^{N}} \exp\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
+	 \varphi_{l} \right) \prod_{k=1}^{N} \udiff{\varphi_{k}} = \left( \Det{ \frac{A}{2\pi}}
+      \right)^{-\frac{1}{2}} 
+   \end{dmath}.
+   Furthermore, for every $J \in \R^{N}$ the following integral is
+   absolutely convergent and its value is 
+   \begin{dmath}[label={piAJ}]
+      \int_{\R^{N}} \exp\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
+	 \varphi_{l} + \sum_{k=1}^{N} J_{k} \varphi_{k}\right)  \prod_{k=1}^{N}
+      \udiff{\varphi_{k}} =
+      \exp\left( \frac{1}{2} \sum_{k,l=1}^{N} J_{l} \Delta_{k,l} J_{k} \right) \left( \Det{ \frac{A}{2\pi}}
+      \right)^{-\frac{1}{2}} 
+   \end{dmath},
+   where $\Delta = A^{-1}$ denotes the \emph{inverse} of the matrix $A$.
+\end{theorem}
+
+First of all, \graffito{Matrix notation} it is convenient to rewrite the previous results using the more
+compact matrix notation;
+then \cref{eq:piA} reads
+\begin{dmath}[label={piAmat}]
+   \int_{\R^{N}} \E^{-\frac{1}{2} \braket{ x | Ax}  } \prod_{k=1}^{N}
+   \udiff{x_{k}} = \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
+\end{dmath}
+and \cref{eq:piAJ} reads
+\begin{dmath}[label={piAJmat}]
+   \int_{\R^{N}} \E^{-\frac{1}{2} \braket{ x | Ax}  + \braket{J|x} } \prod_{k=1}^{N}
+   \udiff{x_{k}} = \E^{-\frac{1}{2} \braket{J| \Delta J}} \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
+\end{dmath},
+where $\Delta = A^{-1}$ and $\braket{\cdot|\cdot}$ denotes the standard
+Euclidean scalar product in $\R^{N}$, \ie, in particular
+\begin{dmath*}
+   \braket{J|x} = \sum_{k=1}^{N} J_{k} x_{k}
+\end{dmath*}
+and 
+\begin{dmath*}
+   \braket{x|Ax} = \sum_{k,l=1}^{N} A_{k,l} x_{k} x_{l}
+\end{dmath*}.
+To prove the theorem and to understand the role of the hypothesis, we need some remarks on real, symmetric and positive
+definite matrices.
+
+\begin{approfondimento}
+   Let $A$ be any $N\times N$ square matric with \emph{real} or \emph{complex}
+   entries.
+   \begin{definition}
+      $A$ is said to be ``symmetric'' if
+      \begin{dmath*}
+	 A_{ij} = A_{ji}
+      \end{dmath*}
+      for all $(i,j) \in N\times N$.
+   \end{definition}
+   The definition of positive-definite matrix requires to distinghuish between
+   real and complex matrices. (Why? See explation later.)
+   \begin{definition}
+      \begin{aenumerate}
+      \item
+	 If $A$ is a \emph{real} matrix, then $A$ is defined to be
+	 ``positive-definite'' if
+	 \begin{inparaenum}[a)]
+	 \item $A$ is symmetric and
+	 \item the following holds:
+	    \begin{dmath}[label={pdm}]
+	       \braket{x|Ay} \geq 0
+	    \end{dmath} 
+	    for all $(x,y)\in\R^{N}$.
+	 \end{inparaenum}
+      \item If $A$ has \emph{complex} entries, the $A$ is defined to be
+	 ``positive-definite'' if \cref{eq:pdm}.
+      \end{aenumerate}
+   \end{definition}
+   \begin{theorem}
+      Let $A$ be positive-definite \emph{complex} matrix.
+      Then, $A$ is Hermitean.
+   \end{theorem}
+   \begin{proof}
+      The key tool here is the polarization identity.
+   \end{proof}
+
+\end{approfondimento}
+
+\begin{proof}
+   $A$ is symetric, thus (spectral theorem in $\R^{N}$) there exists and
+   orthogonal transformation which diagonalizes $A$. This means that there
+   exists a real orthogonal $N\times N$ square matrix  $O$ such
+   that $OAO^{T}=D$, where
+   \begin{dmath*}
+      D = \begin{pmatrix} \lambda_{1} \\ & \lambda_{2} \\ && \ddots \\ &&&
+	 \lambda_{N} \end{pmatrix}
+   \end{dmath*}
+   is a diagonal matrix; its diagonal entries are nothing but the eigenvalues of $A$.
+   The matrix $O$ is orthogonal, thus $O^{-1} = O^{T}$.
+   As a conseguence,
+   \begin{dmath*}[compact]
+      \Det {OO^{T}} = \det{OO^{-1}} = \det{\IdentityMatrix_{N\times N}} = 1 
+   \end{dmath*}
+   but also
+   \begin{dmath*}[compact]
+      \Det {OO^{T}} = \Det{O} \Det{O^{T}}  = \left( \Det{O} \right)^{2}
+   \end{dmath*},
+   so $\Abs{\det{O}} =1$.
+
+   Now, we change variables. Let
+
+
+
+
+
+\end{proof}
+
+
+
+
+\section{Wick theorem}
+
+We define the ``contraction''
+   %\begin{equation}
+    %  \wick{1}{<1 A >1B}
+      %\contraction{}{A}{B}{C}
+%\end{equation}
+   \begin{equation}
+   %\contraction{}{\varphi_{k_{1}}}{}{\varphi_{k_{2}}} =
+   \wick{1}{<1 \varphi_{k_{1}} >1\varphi_{k_{2}} }=
+   \braket{\varphi_{k_{1}} \varphi_{k_{2}}} = \Delta_{k_{1}k_{2}}
+\end{equation}
+We introduce the following diagrammatic representation
+%   $\feyn{\vertexlabel_a !{fA}p \vertexlabel_b}$
+\begin{dmath}[compact]
+   \wick{1}{<1 \varphi_{k_{1}} >1\varphi_{k_{2}} }=
+   \feyn{\vertexlabel^{k_{1}} !{fA}p \vertexlabel^{k_{2}}}
+\end{dmath}
+
+\begin{pabox}
+   For example%
+   \footnote{Ciao}
+   \begin{dmath}[compact]
+   \wick{1}{<1 \hat{\varphi}_{k_{1}} >1\hat{\varphi}_{k_{2}} }=
+   \feyn{\vertexlabel^{k_{1}} !{fA}p \vertexlabel^{k_{2}}}
+   \end{dmath}
+\end{pabox}
+\begin{dmath}[compact]
+   \wick{1}{<1 \hat{\varphi}_{k_{1}} >1\hat{\varphi}_{k_{2}} }=
+   \feyn{\vertexlabel^{k_{1}} !{fA}p \vertexlabel^{k_{2}}}
+\end{dmath}
+For example
+\begin{dmath}
+   \braket{\varphi_{k_{1}}\varphi_{k_{2}}\varphi_{k_{3}} \varphi_{k_{4}}}
+   = 
+   \wick{11}{<1 \varphi_{k_{1}} >1\varphi_{k_{2}} <2 \varphi_{k_{3}} >2
+      \varphi_{k_{4}}}
+   +
+   \wick{12}{<1 \varphi_{k_{1}} <2\varphi_{k_{2}} >1 \varphi_{k_{3}} >2
+      \varphi_{k_{4}}}
+%   +
+%   \wick{21}{<1 \hat{\varphi}_{k_{1}}<2 \hat{\varphi}_{k_{2}} >2
+%      \hat{\varphi}_{k_{3}} >1 \hat{\varphi}_{k_{4}}}
+\end{dmath}.
+%\begin{displaymath}
+%   \contraction{}{\hat{A}}{\hat{B}}{\hat{C}}
+%   \hat{A}\hat{B}\hat{C}D
+%\end{displaymath}
+
+\begin{dmath}
+   -i\Sigma_{\text{ope}} = \left[ \feyn{faf + fsfglffs + \cdots}\right]
+\end{dmath}
+
+\begin{dmath}
+   \feyn{\vertexlabel^{a} !{fA}p \vertexlabel^{b}} = \frac{ i}
+   {\slashed{p} -m_{0}}
+   @\delta^{abc}_{c}@ 
+\end{dmath}.
+
+\begin{dmath}
+   \pathint{\E^{\frac{i}{\hslash}S[x(t)]}}{x(t)} = 
+   \Int{\E^{\frac{i}{\hslash}S[x(t)]}}{x}
+\end{dmath}
+\begin{dmath}
+   \MultipleIntegrate{f(x,y)}{x,y,z}{\R^{2}}{}
+\end{dmath}

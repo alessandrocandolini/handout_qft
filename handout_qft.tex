@@ -1,0 +1,173 @@
+
+\documentclass[fontsize=10pt,%            % corpo del font principale
+               a4paper,%                  % formato carta A4
+               twoside,%                  % fronte-retro
+               openright,%                % apertura capitolo a fronte
+               titlepage,%                % frontespzio
+               fleqn,%                    % equazioni allineate a sinistra
+               headinclude=true,%         % testatina
+               footinclude=true,%         % pie' di pagina
+               BCOR5mm,%                  % rilegatura di 5 mm
+               numbers=noenddot,%         % niente punto dopo il numero sez
+               cleardoublepage=empty,%    % pagine vuote senza testatina etc
+               %tablecaptionabove,%       % didascalie in cima alle tabelle
+               captions=tableheading,%    % didascalie in cima alle tabelle
+               version=first,english,%
+               abstracton%
+               ]{scrreprt}                % classe report di KOMA-Script;
+               
+
+% *****************************************************************************
+% classicthesis-preamble
+% *****************************************************************************
+
+\newcommand{\myName}{Alessandro Candolini}
+\newcommand{\myTitle}{Quantum Field Theory}
+\newcommand{\mySubTitle}{Path Integral Methods and Renormalization}
+\newcommand{\myDegree}{}%Tesi di laurea}
+\newcommand{\myUni}{University of Trieste}
+\newcommand{\myFaculty}{Facolt\`a di Scienze Matematiche, Fisiche e Naturali}
+\newcommand{\myDepartment}{Department of Theoretical Physics}
+\newcommand{\myProf}{Chiar.mo Prof.~S.~Anselmo d'Aosta}
+\newcommand{\myLocation}{Trieste}
+\newcommand{\myTime}{\today}
+
+% *****************************************************************************
+%  Main packages
+% *****************************************************************************
+
+%\usepackage[applemac]{inputenc}           % Imposta la codifica dei font.
+\usepackage[T1]{fontenc}                  % La codifica dei font
+\usepackage[english]{babel}       % Attiva supporto per la lingua.
+\usepackage[babel]{csquotes}              % Consigliato se si usa biblatex.
+
+\usepackage{graphicx}                     % Per le immagini.
+
+\usepackage{mparhack}                     % Get marginpar right.
+\usepackage{fixltx2e}                     % Fixes some LaTeX stuff.
+\usepackage{relsize}                      % Font size relative to current one.
+\usepackage[final]{microtype}             % Microgiustificazione e finezze.
+
+\PassOptionsToPackage{dvipsnames,svgnames}{xcolor}
+
+\usepackage{quoting}                      % Ambiente per citazioni
+
+%\usepackage[tight,english]{minitoc}       % Mini-indici a inizio capitolo.
+%\usepackage{mtcoff}
+\usepackage{wrapfig}                      % Figures which text can flow around.
+
+\usepackage{listings}                     % Ambienti per listati di codice.
+\usepackage{ifpdf}                        % To check if pdflatex is used.
+
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}       % To include metapost files.
+\fi
+
+\usepackage{multicol}                     % Supporto per piu' colonne
+\usepackage{makeidx}                      % Supporto per l'indice analitico.
+
+\usepackage{tabularx}                     % Better tabular environment.
+\usepackage{booktabs}                     % Great tables.
+
+\usepackage{subfig}                       % Multiple figures.
+\usepackage{url}                          % Url.
+
+\usepackage{feynmp}                       % Feynman diagrams via metapost
+
+
+% *****************************************************************************
+% BIBLaTeX
+% *****************************************************************************
+\usepackage[%
+style=philosophy-modern,%
+%style=philosophy-classic,%
+%style=philosophy-verbose,%
+scauthorsbib,%
+refsection=chapter,%
+hyperref,backref,%
+backend=biber,
+square,%
+ibidtracker=true]{biblatex}
+
+\bibliography{myBibliography3}            % database di biblatex 
+
+% *****************************************************************************
+% ClassicThesis 
+% *****************************************************************************
+\PassOptionsToPackage{small}{eulervm}%
+\PassOptionsToPackage{euler-hat-accent}{eulervm}%
+\usepackage[eulerchapternumbers,%         % Numeri dei capitoli in Euler.
+            listings,%                    % Se si vuole  inserire listati.
+            pdfspacing,%                  % Miglior riempimento di linea.
+            floatperchapter,%             % Numerazione float per capitolo.
+            subfig,%                      % Compatibilita' con subfig.
+            beramono,%                    % Bera Mono font a spaziatura fissa.
+            eulermath,%                   % AMS Euler come font per matematica
+            parts,                        % Per documenti suddivisi in parti.
+            minionpro%                    % Usa Font Minion Opticals.
+            ]{classicthesis}              % Lo stile ClassicThesis
+
+\usepackage[eqno,toc,enum,bib]{tabfigures}% Per numerazione.
+
+%\usepackage{arsclassica}                  % Modifica aspetti di ClassicThesis
+
+
+
+\input{my-new-impostazioni}           % Un file personale:
+					  % permette di mantenere ordinato il
+					  % sorgente
+
+%				  
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+% *****************************************************************************
+% Materiale iniziale
+% *****************************************************************************
+\input{FrontBackmatter/Titlepage}
+\input{FrontBackmatter/Titleback}
+\input{FrontBackmatter/Dedication}
+%\input{FrontBackmatter/Sommario+Abstract}
+%\input{FrontBackmatter/Pubblicazioni}
+%\input{FrontBackmatter/Ringraziamenti}
+\pagestyle{scrheadings} 
+\input{FrontBackmatter/TableOfContents}
+\input{FrontBackmatter/Preface}
+\input{FrontBackmatter/Aphorisms}
+\cleardoublepage
+% *****************************************************************************
+% Materiale principale
+% *****************************************************************************
+\cleardoublepage
+\pagenumbering{arabic}
+\cleardoublepage
+\cleardoublepage
+%\part{Complements of non-relativistic quantum mechanics}
+\part{Functional methods}
+\input{Chapters/Chapter1}
+\input{Chapters/Chapter2}
+\cleardoublepage
+\part{Systematics of renormalization}
+%\input{Chapters/Chapter4}
+%\input{Chapters/Chapter5}
+%\input{Chapters/Chapter6}
+\cleardoublepage
+\part{Non-abelian gauge theories and the standard model}
+\input{Chapters/Chapter3}
+\cleardoublepage
+\part{Introduction to SUSY}
+\cleardoublepage
+\part{Appendices}
+\appendix
+\input{Chapters/AppendixA}
+\input{Chapters/AppendixB}
+\input{Chapters/AppendixC}
+\input{Chapters/AppendixD}
+\input{Chapters/AppendixE}
+\input{Chapters/AppendixF}
+% *****************************************************************************
+% Materiale finale
+% *****************************************************************************
+\input{FrontBackmatter/Bibliography}
+\input{FrontBackmatter/Index}
+\end{document}

@@ -1,0 +1,421 @@
+
+%*******************************************************
+% Chapter 5
+%*******************************************************
+
+\myChapter{Qualche altro integrale}
+%\minitoc\mtcskip
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{1}{1+x^{3}}  \udiff{y} \eqspace ,
+\qquad 
+\int \frac{x}{1+x^{3}} \udiff{x} \eqspace .
+%\int \frac{1}{1+x^{4}} \udiff{y} \eqspace, \qquad 
+%\int \frac{1}{1+x^{6}} \udiff{y} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Notiamo che
+\begin{displaymath}
+\frac{1}{1+ x^{3}} = \frac{1}{(1+x) (1+x^{2} - x )} \eqspace ,
+\end{displaymath}
+e cerchiamo di determinare le costanti $A,B,C$ reali tali che 
+\begin{displaymath}
+\frac{1}{(1+x) (1+x^{2}-x)} = 
+\frac{A}{1+x} + \frac{Bx +C}{1+x^{2}-x} \eqspace .
+\end{displaymath}
+Ricordiamoci che $x^{2} - x +1$ non ammette radici reali (il discriminante \`e
+negativo) quindi non \`e ulteriormente fattorizzabile in campo reale.
+Si ha
+\begin{eqnarray*}
+\frac{A}{1+x} + \frac{Bx +C}{1+x^{2}-x} &=& \frac{A + Ax^{2} -Ax + Bx +C + Bx^{2}
++ Cx}{(1+x)(1+x^{2}-x)}  \\
+&=& \frac{ (A+B) x^{2} + (-A+B+C) x + (A+C)
+}{(1+x)(1+x^{2} - x)} \eqspace, 
+\end{eqnarray*}
+per cui \`e sufficiente richiedere 
+\begin{displaymath}
+\left\{
+\begin{array}{rcl}
+A+B &=& 0 \\
+-A+B+C &=& 0 \\
+A+C &=& 1 \end{array} \right. \eqspace, 
+\end{displaymath}
+questo sistema lineare (tre equazioni e tre incognite) si pu\`o risolvere ad
+esempio per sostituzione,
+\begin{displaymath}
+\left\{ \begin{array}{rcl} 
+A &=& -B \\
+2B + C &=& 0 \\
+-B + C &=& 1 \end{array} \right. \eqspace, 
+\end{displaymath}
+per riduzione sulle ultime due equazioni si ottiene $3 B = -1$ cio\`e $B =
+-\frac{1}{3} $ e quindi $C= \frac{2}{3} $ e $A= \frac{1}{3}$, ovvero
+\begin{displaymath}
+\frac{1}{1+x^{3}} = \frac{1}{(1+x)(1+x^{2} -x)} = \frac{1}{3} \left[
+\frac{1}{1+x} - \frac{x -2}{1+x^{2}-x} \right] 
+\eqspace .
+\end{displaymath}
+Quindi
+\begin{displaymath}
+\int \frac{1}{1+x^{3}} \udiff{x} = \frac{1}{3} \int \frac{1}{1+x} \udiff{x} -
+\frac{1}{3} \int \frac{x-2}{1+x^{2} - x} \udiff{x} \eqspace .
+\end{displaymath}
+Il primo integrale \`e immediato, si tratta di un logaritmo:
+\begin{displaymath}
+\int \frac{1}{1+x} \udiff{x} = \log \Modul{ 1+ x} + c \eqspace, \qquad c\in\R
+\eqspace .
+\end{displaymath}
+Concentriamoci sul secondo integrale e scriviamo
+\begin{eqnarray*}
+\int\frac{x-2}{1+x^{2} - x} \udiff{x} &=& \frac{1}{2} \int \frac{2x -
+4}{1+x^{2}-x} \udiff{x} \\
+&=& \frac{1}{2} \left[ \int \frac{2x -1}{1+x^{2}-x} \udiff{x} -3 \int
+\frac{1}{1+x^{2} - x } \udiff{x} \right] \eqspace .
+\end{eqnarray*}
+Di questi due integrali al secondo membro, il primo \`e immediato, si tratta
+ancora una volta di un logaritmo:
+\begin{displaymath}
+\int \frac{2x-1}{1+x^{2} -x} \udiff{x} = \log \Modul{ 1+x^{2} - x} + c \eqspace,
+\qquad c\in\R \eqspace ,
+\end{displaymath}
+e questo grazie al fatto che $2x-1$ (al numeratore) \`e proprio la derivata di
+$1+x^{2} -x$  (cio\`e la derivata dell'espressione al denominatore).
+Rimane da calcolare
+\begin{displaymath}
+\int \frac{1}{1+x^{2} - x} \udiff{x} \eqspace .
+\end{displaymath}
+Per calcolare questo integrale si usa la procedura di completamento del quadrato
+al denominatore, in maniera da ricondurre l'integrale a quello di una
+arcotangente trigonometrica.
+Si ha
+\begin{displaymath}
+1 + x^{2} - x = 1 + \left( x - \frac{1}{2}\right)^{2} - \frac{1}{4} =
+\frac{3}{4} + \left( x - \frac{1}{2} \right)^{2} \eqspace, 
+\end{displaymath}
+quindi
+\begin{eqnarray*}
+\int\frac{1}{1+x^{2} - x} \udiff{x} &=& 
+\int \frac{1}{\frac{3}{4} + \left( x - \frac{1}{2} \right)^{2}} \udiff{x} \\
+&=& \frac{4}{3} \int \frac{1}{1 + \frac{4}{3} \left( x - \frac{1}{2}
+\right)^{2}} \udiff{x} \\
+&=& \frac{4}{3} \int \frac{1}{1+ \left[ \frac{2}{\sqrt{3}} \left( x -
+\frac{1}{2} \right)\right]^{2}} \udiff{x} \\
+&=& \frac{4}{3} \frac{\sqrt{3}}{2} \int \frac{1}{1+ \xi^{2}} \udiff{\xi} \qquad
+\left[ \xi = \frac{2}{\sqrt{3}} \left( x - \frac{1}{2} \right) \eqspace, \quad
+\udiff{x} = \frac{\sqrt{3}}{2} \udiff{\xi} \right] \\
+&=& \frac{2}{3} \sqrt{3} \arctan \frac{2 x - 1}{\sqrt{3}} \eqspace .
+\end{eqnarray*}
+In conclusione
+\begin{displaymath}
+\int\frac{1}{1+x^{3}} = \frac{1}{3} \log \Modul{1+x} - \frac{1}{6} \log
+\Modul{1+x^{2} - x} + \frac{\sqrt{3}}{3} \arctan \frac{2x-1}{\sqrt{3}} \eqspace
+.
+\end{displaymath}
+\par
+Per calcolare il secondo integrale \`e sufficiente riscrivere la funzione
+integranda nel modo seguente:
+\begin{displaymath}
+\int \frac{x}{1+x^{3}} \udiff{x} = \int \frac{1+x}{1+x^{3}} \udiff{x} -  \int
+\frac{1}{1+x^{3}} \udiff{x} = \int\frac{1}{1+x^{2} -x} \udiff{x} - \int
+\frac{1}{1+x^{3}}  \udiff{x}  \eqspace .
+\end{displaymath}
+Entrambi questi due ultimi integrali sono gi\`a stati calcolati precedentemente
+in questo esercizio. Il risultato \`e
+\begin{displaymath}
+\int \frac{x}{1+x^{3}} \udiff{x} = \frac{\sqrt{3}}{3} \arctan
+\frac{2x-1}{\sqrt{3}} - \frac{1}{3} \log \modul{1+x} + \frac{1}{6} \log \Modul{
+1+x^{2}-x} + c \eqspace , \qquad c\in \R \eqspace .
+\end{displaymath}
+\end{Solution}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{1}{1+x^{4}} \udiff{y} \eqspace .
+%\int \frac{1}{1+x^{6}} \udiff{y} \eqspace .
+\end{displaymath}
+\end{Exercise}
+
+\begin{Solution}
+Osserviamo che qui, diversamente dall'esercizio precedente, non possiamo usare il metodo di scomporre il denominatore,
+perch\'e l'equazione $1+x^{4} = 0$ non ammette soluzioni reali (ammette
+naturalmente soluzioni complesse).
+Si potrebbe pensare che un cambio di variabile $y = x^{2}$, $x = \sqrt{y} $ e
+$\udiff{x} = \frac{1}{2\sqrt{y}} \udiff{y} $ possa permetterci di ricondurre
+l'integrale a quello di una arcotangente, ma il risultato \`e
+\begin{displaymath}
+\int \frac{1}{1+x^{4}} \udiff{x} = \frac{1}{2} \int \frac{1}{\sqrt{y} \left( 1+
+y^{2}\right) } \udiff{y} \eqspace ,
+\end{displaymath}
+che non \`e di molto aiuto quando si ricerca le primitive della funzione
+integranda.%
+\footnote{In altri contesti, pu\`o essere utile.
+Ad esempio, se si \`e interessati a calcolare
+\begin{displaymath}
+\int_{0}^{+\infty} \frac{1}{1+x^{4}}  \udiff{y} = \frac{1}{2} \int_{0}^{+\infty}
+\frac{y^{-\frac{1}{2}}}{1+y^{2}} \udiff{y} = \frac{1}{4} \int_{0}^{1} \left(
+1 -
+\xi\right)
+^{-\frac{3}{4} } \xi ^{\frac{3}{4} -1} \udiff{\xi} = \frac{1}{4} B\left( \frac{1}{4} , 1 -
+\frac{1}{4} \right) = \frac{\pi}{\sin \frac{\pi}{4}} =\frac{\pi}{2\sqrt{2}}\eqspace, 
+\end{displaymath}
+avendo posto $\xi = \frac{1}{1+y^{2}}$, $B$ \`e la funzione beta  di
+Eulero, abbiamo fatto uso della ben nota relazione
+$B(u,v) = \Gamma(u)\Gamma(v) / \Gamma(u+v)$ e della formula di riflessione 
+$\Gamma(z) \Gamma(1-z) = \pi / \sin \pi
+z$, dove $\Gamma$ \`e la funzione gamma.
+L'integrale poteva anche calcolarsi facendo uso della teoria dei
+residui.
+Tutti questi argomenti esulano comunque dagli scopi di questa nota. }
+
+Conviene osservare piuttosto che
+\begin{displaymath}
+\frac{1}{1+x^{4}} = \frac{1}{\left( 1 + x^{2} \right)^{2} - 2x^{2}} =
+\frac{1}{\left( 1 + x^{2}  + \sqrt{2} x\right) \left( 1+x^{2} - \sqrt{2}
+x\right)} \eqspace .
+\end{displaymath}
+Usando la solita tecnica, si trova
+\begin{displaymath}
+\frac{1}{1+x^{4}} = \frac{1}{2\sqrt{2}} \left[ \frac{x+\sqrt{2}}{1 + x^{2}
++\sqrt{2} x } - \frac{ x - \sqrt{2}}{1+x^{2} - \sqrt{2} x} \right]  \eqspace .
+\end{displaymath}
+A questo punto gli integrali tra parentesi quadre si possono calcolare
+facilmente.
+ Si ha
+\begin{eqnarray*}
+\int \frac{x+\sqrt{2}}{1+x^{2} + \sqrt{2} x} \udiff{x} &=&
+\frac{1}{2} \int\frac{2 x + \sqrt{2} + \sqrt{2}}{1+x^{2} + \sqrt{2} x} \udiff{x}
+\\
+&=& \frac{1}{2} \left[ \int \frac{ 2x + \sqrt{2}}{1+x^2 + \sqrt{2} x} \udiff{x}
++ \sqrt{2} \int\frac{1}{1+x^{2} + \sqrt{2} x} \udiff{x} \right] \\
+&=& \frac{1}{2} \log \Modul{1+x^{2} + \sqrt{2} x } + \frac{\sqrt{2}}{2} \int
+\frac{1}{1+ \left( x + \frac{\sqrt{2}}{2} \right)^{2} - \frac{2}{4}} \udiff{x}
+\\
+&=& \frac{1}{2} \log \Modul{1+x^{2} + \sqrt{2} x} + \frac{\sqrt{2}}{2} \int
+\frac{1}{\frac{1}{2} \left[ 1 + 2 \left( x + \frac{\sqrt{2}}{2} \right)^{2}\right]}
+\udiff{x} \\
+&=&\frac{1}{2} \log \Modul{1+ x^{2} + \sqrt{2}} + \sqrt{2} \int \frac{1}{1 +
+\left( \sqrt{2} x + 1\right)^{2}} \udiff{x} \\
+&=& \frac{1}{2} \log \Modul{1+x^{2} + \sqrt{2} x} + \int \frac{1}{1+\xi^{2}}
+\udiff{\xi} \quad \left( \xi = \sqrt{2} x +1 \right) \\
+&=& \frac{1}{2} \log \Modul{1+x^{2}+\sqrt{2} x } + \arctan \left( \sqrt{2} x +1
+\right) + c \eqspace, \quad c \in \R \eqspace ,
+\end{eqnarray*}
+e in maniera analoga  si trova (lo si faccia per esercizio)
+\begin{displaymath}
+\int  \frac{x - \sqrt{2}}{1+x^{2}-\sqrt{2} x} \udiff{x} = \frac{1}{2} \log
+\Modul{1+x^{2} - \sqrt{2} x} - \arctan \left( \sqrt{2} x - 1\right) + c
+\eqspace, \qquad c \in \R\eqspace ,
+\end{displaymath}
+quindi
+\begin{eqnarray*}
+\int \frac{1}{1+x^{4}} \udiff{x} &=& \frac{1}{2\sqrt{2}} \left\{ \frac{1}{2} \log
+\Modul{1+x^{2} + \sqrt{2} x} + \arctan \left( \sqrt{2} x + 1\right) \right. \\
+&& \left. {} - \frac{1}{2} \log \Modul{ 1+x^{2} -\sqrt{2} x} + \arctan \left( \sqrt{2}
+x -1\right) \right\} + c \eqspace, \qquad c \in\R \eqspace .
+\end{eqnarray*}
+\end{Solution}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{1}{1+x^{6}} \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Preliminarmente, osserviamo che
+\begin{displaymath}
+\frac{1}{1+x^{6}} = \frac{1}{(1+x^{2})(1+ x^{4} - x^{2})} \eqspace ,
+\end{displaymath}
+e al solito possiamo ricercare $A,B,C,D,E,F$ reali in modo tale che
+\begin{displaymath}
+\frac{1}{1+x^{6}} = \frac{Ax + B}{1+x^{2}} + \frac{Cx^3 + Dx^2 + Ex +F}{1+ x^{4}
+- x^{2})}  \eqspace .
+\end{displaymath}
+Svolgendo i calcoli (lo si faccia per esercizio) si trova
+\begin{displaymath}
+\frac{1}{1+x^{6}} = \frac{1}{3} \left[ 
+\frac{1}{1+x^{2}} - \frac{x^{2} -2}{1+x^{4} -x^{2}} \right] \eqspace ,
+\end{displaymath}
+(in ogni caso, una volta trovata questa relazione qua sopra si pu\`o sempre
+controllare a posteriori che funzioni svolgendo il termine a destra)
+e quindi
+\begin{displaymath}
+\int \frac{1}{1+x^6} \udiff{x} = \frac{1}{3} \int \frac{1}{1+x^{2}} \udiff{x} -
+\frac{1}{3} \int \frac{x^{2} - 2}{1+x^{4} - x^{2}} \udiff{x} \eqspace .
+\end{displaymath}
+Il primo integrale nel membro di destra \`e immediato, si tratta di una
+arcotangente trigonometrica. Il problema interessante \`e calcolare il secondo
+integrale, cio\`e 
+\begin{displaymath}
+\int \frac{x^{2} -2}{1+x^{4} -x^{2}} \udiff{x} \eqspace .
+\end{displaymath}
+Si scriva
+\begin{displaymath}
+\frac{x^{2}-2}{1+x^{4} - x^{2}} =  \frac{x^{2}-2}{\left( 1+ x^{2} \right)^{2} -
+3x^{2}} = 
+\frac{x^{2} -2}{\left( 1 + x^{2} - \sqrt{3} x \right)\left( 1+x^{2} +
+\sqrt{3} x \right)} \eqspace ,
+\end{displaymath}
+e si ricercano $A,B,C,D$ reali tali che 
+\begin{displaymath}
+\frac{x^{2} -2}{\left( 1 + x^{2} - \sqrt{3} x \right)\left( 1+x^{2} +
+\sqrt{3} x \right)}  = 
+\frac{Ax +B}{1+x^{2} - \sqrt{3} x } + \frac{Cx +D}{1 +
+x^{2} + \sqrt{3} x } \eqspace .
+\end{displaymath}
+Si trova svolgendo i calcoli
+\begin{eqnarray*}
+\frac{Ax +B}{1+x^{2} - \sqrt{3} x } + \frac{Cy +D}{1 +
+x^{2} + \sqrt{3} x } &=& 
+\frac{ (A+C)x ^{3} + ( \sqrt{3} A + B + D - \sqrt{3} C ) x^2 }%
+{\left( 1+ x^{2} - \sqrt{3} x
+\right)\left(1+x^{2} + \sqrt{3} x \right)} 
+ \\
+&&{} + \frac{(A + \sqrt{3} B + C - \sqrt{3} D) x + (B+D) }%
+{\left( 1+ x^{2} - \sqrt{3} x
+\right)\left(1+x^{2} + \sqrt{3} x \right)}  \eqspace ,
+\end{eqnarray*}
+per cui 
+\begin{displaymath}
+\left\{ \begin{array}{rcl}
+A + C &=& 0 \\
+\sqrt{3} \left( A -C\right) + B + D &=& 1 \\
+A + C + \sqrt{3} \left( B -D \right) &=& 0 \\
+B+D &=& -2 
+\end{array} \right. 
+\quad \Leftrightarrow \quad 
+\left\{ \begin{array}{rcl} 
+A + C &=& 0  \\
+\sqrt{3} \left( A-C\right) -2 &=& 1 \\
+B - D &=& 0 \\
+B + D &=& -2 
+\end{array} \right. \eqspace, 
+\end{displaymath}
+dalle ultime due equazioni si ricava immediatamente 
+$B = D  = -1$, mentre dalla prime due si ricava 
+\begin{displaymath}
+\left\{ \begin{array}{rcl} A + C &=& 0 \\ A - C &=& \sqrt{3} \end{array} \right.
+\eqspace, 
+\end{displaymath}
+da cui $ A = -C = \frac{\sqrt{3}}{2}$.
+Si ha  quindi
+\begin{displaymath}
+\int 
+\frac{x^{2} -2}{\left( 1 + x^{2} - \sqrt{3} x \right)\left( 1+x^{2} +
+\sqrt{3} x \right)}  \udiff{x} =
+\int 
+\frac{\frac{\sqrt{3}}{2} x -1 }{1+x^{2} - \sqrt{3} x } \udiff{x} - \int
+\frac{\frac{\sqrt{3}}{2} x +1}{1 +
+x^{2} + \sqrt{3} x }  \udiff{x} 
+\end{displaymath}
+Calcoliamo i due integrali sul lato destro. Il primo \`e
+\begin{eqnarray*}
+\int \frac{ \frac{\sqrt{3}}{2} x - 1}{1 + x ^{2} - \sqrt{3} x}  \udiff{x} &=&
+\frac{ \sqrt{3}}{2} \int \frac{ x - \frac{2}{3} \sqrt{3}}{1 + x^{2} - \sqrt{3} x
+} \udiff{x} \\
+&=&\frac{\sqrt{3}}{4} \int \frac{ 2 x - \frac{4}{3} \sqrt{3}}{1 + x ^{2} -
+\sqrt{3} x } \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \int \frac{ 2x - \sqrt{3} - \frac{\sqrt{3}}{3} }{1 +
+x^{2} - \sqrt{3} x } \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \int \frac{ 2 x - \sqrt{3}}{1+x^{2} - \sqrt{3} x }
+\udiff{x} - \frac{1}{4} \int \frac{1}{1+x^{2} - \sqrt{3} x } \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{4} \int
+\frac{1}{1+x^{2} - \sqrt{3} x } \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{4} \int
+\frac{1}{1+\left( x - \frac{\sqrt{3}}{2} \right)^{2}  - \frac{3}{4}  } \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{4} \int
+\frac{1}{\frac{1}{4} \left[ 1 + 4 \left( x - \frac{\sqrt{3}}{2} \right)^{2}
+\right]} \udiff{x} \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \int
+\frac{1}{1 + \left( 2x - \sqrt{3} \right)^{2}} \udiff{x}  \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{2} \int
+\frac{1}{1 + \xi^{2}} \udiff{x}  \qquad \left( \xi = 2x - \sqrt{3} \right)\\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{2} 
+\arctan \left( 2 x - \sqrt{3} \right) + c \eqspace, \qquad c \in \R \eqspace .
+\end{eqnarray*}
+Per ottenere l'altro integrale, possiamo procedere come sopra oppure possiamo
+risparmiare un po' di lavoro usando un cambio di variabile che ci riporti
+all'integrale appena calcolato, ovvero
+\begin{eqnarray*}
+\int \frac{ \frac{\sqrt{3}}{2} x +1}{1 +x^{2} + \sqrt{3} x } \udiff{x} &=& -
+\int \frac{ -\frac{\sqrt{3}}{2} y +1}{1+y^{2} - \sqrt{3} y } \udiff{y} \qquad
+\left( y = -x \right) \\
+&=& \int \frac{ \frac{\sqrt{3}}{2} y - 1}{1+y^{2} - \sqrt{3} y } \udiff{y} \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{1+ x^{2} + \sqrt{3} x } + \frac{1}{2} \arctan
+\left( 2 x+ \sqrt{3} \right) +c \eqspace , \qquad c \in \R \eqspace .
+\end{eqnarray*}
+Quindi
+\begin{eqnarray*}
+\int 
+\frac{x^{2} -2}{\left( 1 + x^{2} - \sqrt{3} x \right)\left( 1+x^{2} +
+\sqrt{3} x \right)}  \udiff{x} &=&
+\int 
+\frac{\frac{\sqrt{3}}{2} x -1 }{1+x^{2} - \sqrt{3} x } \udiff{x} - \int
+\frac{\frac{\sqrt{3}}{2} x +1}{1 +
+x^{2} + \sqrt{3} x }  \udiff{x} \\
+&=& 
+ \frac{\sqrt{3}}{4} \log \Modul{ 1 + x^{2} - \sqrt{3} x } - \frac{1}{2} 
+\arctan \left( 2 x - \sqrt{3} \right)  \\
+&& {} - \frac{\sqrt{3}}{4} \log \Modul{1+ x^{2} + \sqrt{3} x } - \frac{1}{2} \arctan
+\left( 2 x+ \sqrt{3} \right) \\
+&=& \frac{\sqrt{3}}{4} \log \Modul{ \frac{ 1 + x^{2} - \sqrt{3} x }{1+x^{2} +
+\sqrt{3} x } } - \frac{1}{2} \arctan \left( 2x - \sqrt{3}\right) \\
+&& - \frac{1}{2} \arctan \left( 2
+x + \sqrt{3} \right) + c \eqspace, \qquad c \in \R \eqspace .
+\end{eqnarray*}
+e
+\begin{eqnarray*}
+\int \frac{1}{1+x^{6}} \udiff{x} &=& \frac{1}{3} \arctan x - \frac{\sqrt{3}}{12}
+\log \Modul{ \frac{1+x^{2} - \sqrt{3} x }{1+x^{2}  + \sqrt{3} x }} \\
+&&{}  + \frac{1}{6} \arctan \left(2 x - \sqrt{3} \right) + \frac{1}{6} \arctan
+\left( 2x + \sqrt{3} \right) + c \eqspace , \quad c \in \R \eqspace .
+\end{eqnarray*}
+In particolare, 
+\begin{displaymath}
+\int_{0}^{+\infty} \frac{1}{1+x^{6}} \udiff{x} = \frac{1}{3} \frac{\pi}{2} +
+\frac{2}{6} \frac{\pi}{2} - \frac{1}{6} \arctan (-\sqrt{3}) - \frac{1}{6}
+\arctan \sqrt{3} = \frac{ \pi}{6} + \frac{\pi}{6} = \frac{\pi}{3} \eqspace .
+\end{displaymath}
+\`E possibile ottenere quest'ultimo utilizzando altre tecniche (funzione
+speciale beta di Eulero, tecnica dei residui in campo complesso, propriet\`a
+della funzione ipergeometrica.) 
+\end{Solution}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{\uexp^{\tan x }}{\cos^{2} x } \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Solution}
+Si tratta di un integrale immediato, essendo 
+\begin{displaymath}
+\deriv{}{x} \tan x = \frac{1}{\cos^{2}x} \eqspace,
+\end{displaymath}
+dunque
+\begin{displaymath}
+\int \frac{\uexp^{\tan x }}{\cos^{2} x} \udiff{x} = \uexp^{\tan x} + c \eqspace,
+\qquad c \in \R \eqspace .
+\end{displaymath}
+In generale, 
+\begin{displaymath}
+\int \uexp^{f(x)} f^{\prime}(x) \udiff{x} = \uexp^{f(x)} +  c\eqspace ,\qquad c \in\R
+\eqspace .
+\end{displaymath}
+\end{Solution}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \sqrt{ 1- x^{2}} \udiff{x} \eqspace .
+\end{displaymath}
+\end{Exercise}
+\begin{Exercise}
+Calcolare
+\begin{displaymath}
+\int \frac{-x^{3} +x^{2} +x  +3}{(x+1) (x^{2}+1) ^{2}} \udiff{x} 
+\end{displaymath}
+\end{Exercise}
+
+
+
+

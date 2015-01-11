@@ -1,0 +1,60 @@
+%*******************************************************
+% Appendix E
+%*******************************************************
+
+
+\myChapter{Saddle-point method and WKB}
+
+The 
+stepeest descent method (also referred to as saddle point method) is a powerful tool to handle the problem of
+evaluating  the
+  asymptotic behavior (or at least its leading term) of parametric integrals of a certain form.
+For example, it might be useful in evaluating the asymptotic behavior of functions
+ for which a suitable integral representation is available.
+An introductory discussion of these topics is given, \eg, by
+\citet[\S~11]{king}, \citet[\S6]{ablowitz}. See also Zinn-Justin.
+\par
+Let us begin with a special case of real integrals over one real variable (this
+is known also as Laplace's method) and then generalize to contour integrals on
+a  complex domain. Generalization to an arbitrary number of variables is not
+covered here, even if such generalizations are often needed in the toolkit of
+every physicists.%
+\footnote{Stepeest  descent method  generalizes also to
+functional
+integrations and path integrals, this is very important in dealing with
+non-perturbative corrections in quantum mechanics and quantum field
+theory.}
+%we restrict to integrals with respect to a
+%\emph{real} variable 
+%(Laplace method). This is enough for example to develop the Stirling's
+%approximation of $\Gamma(x)$ for real values of $x$ as $x\rightarrow+\infty$ and thus deriving the
+%Stirling formula of $n!$.
+%Then we will move to the more general case involving contour integrals in the
+%complex
+%plane. This is the case if you seek for example the asymptotic behavior of  
+%$\Gamma(z)$
+%for complex values of $z$ as $\modul{z} \rightarrow +\infty$.
+%\par
+\section{Real case (alias, Laplace method)}
+\section{Complex case}
+Consider the complex integral  along the real line:
+\begin{equation}
+I(\lambda) = \int_{\Omega}  g(t)  \uexp^{ \lambda f(t)} \udiff{t} \eqspace, 
+\end{equation}
+where $\Omega\subseteq \R$ is an interval of the real line,
+$f:\Omega\rightarrow\R$ a \emph{real}-valued function on $\Omega$,
+$g:\Omega\rightarrow\C$a  \emph{complex}-valued function on $\Omega$ and
+$\lambda$ a \emph{positive} real parameter.
+We will study the leading term in the asymptotic expansion of integrals of such
+form as $\lambda \rightarrow+\infty$. This is more properly referred to as
+Laplace method, then we will move to the more general case of contour integrals
+in the complex plane.
+\par
+\begin{figure}
+\includegraphics{saddle}
+\caption{Saddle point}
+\end{figure}
+
+
+
+
