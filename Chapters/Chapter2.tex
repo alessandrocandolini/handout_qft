@@ -3,18 +3,6 @@
 % Chapter 2
 %*******************************************************
 
-\myChapter{Functional methods for harmonic oscillator}
-
-Harmonic oscillator is the prototype of both canonical and path integral
-quantization of fields.
-Creation and annihilation operators allow to solve exactly in a purely
-algebraic fashion the spectrum of quantum oscillator.
-These are the ``lego'' bricks to built up the
-Fock's Hilbert space of a quantum field theory (also a non-relativistic one, as
-it sometimes costumary in statistical mechanics).
-Here, we will develop the functional tools with the aim of eventually apply
-their extension to quantum fields.
-
 
 \myChapter{Functional methods for scalar quantum fields} 
 
@@ -28,7 +16,7 @@ similar to that a statistical mechanics:
    \item build up the key object of the theory, which is the \emph{generating}
       functional
       \begin{dmath}
-	 Z[J]  = \pathint{ \E^{ - \frac{i}{\hslash} S[\varphi]}}{\varphi}
+	 Z[J]  = \pathint{ \exp{ - \frac{i}{\hslash} S[\varphi]}}{\varphi}
       \end{dmath}
       in which the dynamics of the fields is \emph{encoded};
    \item extract (\ie, \emph{decode}) the physical quantities from the
@@ -74,10 +62,10 @@ The parameter $m$ will later be identified with the bare mass of the bosons.
 The corresponding action functional $S[\varphi(x)]$ is defined as usual as the space-time integral of the
 Lagrangian density, \ie, 
 \begin{equation}\label{eq:S}
-S[\varphi(x)] = \int \Lagrangian \udiff[4]{x} = 
+S[\varphi(x)] = \int \Lagrangian \d[4]{x} = 
 \int \left( \frac{1}{2} \left( \partial_{\mu} \varphi(x) \right) \left(
 \partial^{\mu} \varphi(x) \right) - \frac{1}{2}m^{2} \varphi^{2}(x) \right)
-\udiff[4]{x} \eqspace .
+\d[4]{x} \eqspace .
 \end{equation}
 $S$ is a real-valued \emph{functional} of the field configuration $\varphi$.
 
@@ -103,5 +91,3 @@ quantization of scalar fields.
 
 \section{Symmetry factors of Feynman diagrams for scalar fields}
 
-\myChapter{Functional quantization of spinor fields} 
-\myChapter{Quantum Electrodynamics}

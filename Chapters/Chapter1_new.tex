@@ -1,4 +1,9 @@
 
+% !TEX encoding = latin1
+% !TEX TS-program = pdflatex
+% !TEX root = ../handout_qft.tex
+% !TEX spellcheck = it-IT
+
 %*******************************************************
 % Chapter 1
 %*******************************************************
@@ -29,9 +34,12 @@
 
 \section{Introduction}
 
-\lettrine{T}{he} \emph{operator} formulation of non-relativistic quantum
-mechanics is based on the mathematical machinery of 
-Hilbert spaces%
+%\lettrine{T}{he} \emph{operatorial} formulation of non-relativistic quantum
+%mechanics is heavely based on the mathematical machinery of spectral theory of
+%linear operators in Hilbert spaces.%
+\lettrine{T}{he} \emph{operatorial} formulation of non-relativistic quantum
+mechanics makes extensive use of the mathematical machinery of spectral theory of
+linear operators in Hilbert spaces.%
 \footnote{%
    Originally, quantum mechanics was developed in two seemingly different ways,
    namely, the ``matrix mechanics'' of Heisenberg, Born and Jordan and the
@@ -47,34 +55,27 @@ Hilbert spaces%
    Although the use of Hilbert space is not generally questioned by newcomer
    students
    and is usually taken quite for granted, the reasons why from a physical perspective 
-   one eventually resolves in using the apparatus of linear operator in Hilbert space remains
-   somewhat
+   one eventually resorts to use the apparatus of linear operator in Hilbert space remains
+   somehow
    hidden.
    The use of Hilbert spaces can be \emph{in}duced from physical insights
    in a way suggested by
  Schwinger in its 
- lucid and deep lectures of quantum mechanics, see \textcite{Schwinger:2001}.}.
+ lucid and deep lectures of quantum mechanics, see \textcite{Schwinger:2001}.}
 The (pure) physical states of a quantum system are represented by normalized
-vectors (referred to as state vectors) belonging to a separable
+vectors (referred to as state vectors) belonging to a (topologically) separable
  complex Hilbert
 space, while the physical observables of the system are represented mathematically by
-(densely-defined) linear self-adjoint operators (often, unbounded ones) acting
-on the Hilbert space of state vectors. In this framework,
-the dynamics (in absence of measurement process) is ruled by a family of
-unitary linear evolution operators determined by the
-Hamiltonian of the quantum system (see \cref{chap:evolution}).
-The Hamiltonian encodes the dynamics of the system and specifies the evolution
-opererators through the Schr\"odinger equation. 
+(densely-defined) linear self-adjoint operators (often, unbounded ones) acting on the Hilbert space of state vectors.
 According to Feynman's words and for reasons which will become clearer in a
-while, this approach will be referred to as \emph{time-differential},
+while when discussing time evolution of a quantum theory, this approach will be referred to as \emph{time-differential},
 \emph{Hamiltonian} approach. On the contrary, Feynman's approach will happear to
-be a \emph{global space-time} and \emph{Lagrangian} approach. Furthermore, from the
+be a \emph{global space-time} and \emph{Lagrangian} approach. Further, from the
 mathematical point of view, instead of von Neumann's spectral theory of linear
-self-adjoint operators (usually, unbounded) in Hilbert spaces one has to deal with
+operators in Hilbert spaces one has to deal with
 Feynman's \emph{path integrals} (\ie, integration in functional spaces).
 
 \section{Review of the quantum time-evolution operator}
-\label{chap:evolution}
 
 \index{Time evolution operator}
 
@@ -83,13 +84,12 @@ differential equation in time, which allows us to compute the state of the
 system at a given time starting from the knowledge of the state at a previous
 time (\emph{initial} conditions).
 On the contrary, a space-time overall approach means that 
-the time-evolution is determined by the whole space-time history (\ie, boundary
-conditions in time).
- 
-To illustrate concretely this point, let 
-\graffito{Unitary time-evolution operator}
-us work in the Schr\"odinger picture, where the time dependence is
-completely carried by state vectors. The evolution forward in time of every
+%instead of initial
+%conditions at a given time, 
+the time-evolution is determined by the whole space-time history.
+%
+Let us work in the Schr\"odinger picture, where the time dependence is
+completely carried by state vectors.  The evolution forward in time of every
 (pure) state of a (closed) quantum mechanical system, in absence of measurement
 processes, is \emph{implemented} through the action of the (linear) quantum
 time-evolution operator $\hat{U}(\tend, \tstart)$ on the state vectors.
@@ -99,15 +99,14 @@ $\ket{\psi(\tend)}$ which describes the state at the later time $\tend$,
 assuming  that no measurements have been  performed on the system between
 $\tstart$ and $\tend$.  In other words, $\hat{U}(\tend, \tstart)$ pushes the
 state forward in time:
-%\begin{dmath}[label={intro:U}]
-\begin{equation}\label{eq:intro:U}
+\begin{dmath}[label={intro:U}]
    \ket{\psi(\tend)} = \hat{U}(\tend, \tstart) \ket{\psi(\tstart)}
    \condition*{\tend\geq\tstart} \; .
-\end{equation}
-\Cref{eq:intro:U} tells that the time-evolution of a quantum states is fully
+\end{dmath}
+\Cref{eq:intro:U} tells that the time-evolution of a quantum states is
 \emph{deterministic}: the knowledge of $\ket{\psi(\tstart)}$ at the initial time
 $\tstart$ implies the knowledge of $\ket{\psi(\tend)}$ at any subsequent time
-$\tend$ (if no measurements occurred in between $\tstart$ to $\tend$) The standard
+$\tend$ (if no measurements occurred from $\tstart$ to $\tend$) The standard
 interpretation of state vectors in ordinary quantum mechanics is however a
 \emph{probabilistic} one (Born interpretation), \ie, in general one is not
 able/allowed
@@ -119,16 +118,6 @@ mechanics, this probability is not a matter of our ignorance and should instead
 be understood as intrinsic
 (\ie, not epistemic).
 
-Two major remarks are in order:
-\begin{inparaenum}[a)]
-   \item general physical considerations constrain the mathematical properties 
-      of $\hat{U}$, in other words physics implies
-      restrictions on the properties of $\hat{U}$ for any system --- as we sall
-      see, $\hat{U}$ must be unitary, etc;
-   \item the exact form of $\hat{U}$ must depend on the particular system we
-      are investigating and the interactions which this system undergoes.
-\end{inparaenum}
-
 The explicit \graffito{Schr\"odinger equation} form of $\hat{U}(\tend, \tstart)$
 depends of course on
 the interactions that a particular system undergoes. Informations about the
@@ -138,7 +127,7 @@ $\hat{H}$ determines
 $\hat{U}(\tend, \tstart)$ (and so the evolution forward in time of the quantum
 system) via the following time-differential (operator) equation 
 \begin{dmath}[label={intro:Ueq}]
-   \ii \hslash \pd{\hat{U}(\tend, \tstart) }{\tend} = 
+   i\hslash \pderiv{\hat{U}(\tend, \tstart) }{\tend} = 
    \hat{H}(\tend) \hat{U}(\tend,\tstart)
 \end{dmath},
 which is the time-dependent Schr\"odinger equation for the time-evolution
@@ -146,7 +135,7 @@ operator, together with the initial condition
 \begin{dmath}[label={intro:Ut0}]
    \hat{U}(\tstart, \tstart) = \IdentityMatrix 
 \end{dmath}.
-In \cref{eq:intro:Ueq}, $\ii$ denotes (as usual) the imaginary unit and $\hslash$ is
+In \cref{eq:intro:Ueq}, $i$ denotes (as usual) the imaginary unit and $\hslash$ is
 a real parameter which has dimensions of an action and which will be later
 identified with the Plank's constant $h$ divided by $2\pi$.%
 \footnote{$\hbar$ appears in the Heisenberg canonical commutation relations.}
@@ -157,7 +146,7 @@ magnetic field which is not constant in time).
 
 So, let us summarize the main steps to compute the time evolution of a quantum
 system:
-\begin{enumerate}[(i)]
+\begin{enumerate}
    \item\label{item:evolution:H} Provide the quantum Hamiltonian operator of the
       system;
    \item\label{item:evolution:U} once $\hat{H}$ is given, solve
@@ -173,7 +162,7 @@ system:
 Brief comparison with the evolution in time of \graffito{Comparison with
    Hamiltonian dynamics} an Hamiltonian dynamical system in classical mechanics.
 At any time, the state of the system is fully specified by a point in the phase
-space of the system.  Let $( \vec{q}', \vec{p}')$ the point representing the
+space of the system.  Let $( \vec{q'}, \vec{p}')$ the point representing the
 state at the initial time $\tstart$.  The state $(\vec{q}'', \vec{p}'')$
 describing the system at the later time $\tend\geq \tstart$ is obtained by
 applying the Hamiltonian flux to $(\vec{q}_{0}, \vec{p}_{0})$.  The Hamiltonian
@@ -181,31 +170,25 @@ flux is obtained by solving the Hamilton's equations of motion.  These equations
 involve the Hamiltonian function of the system.
 
 Ad \cref{item:evolution:H}.  \graffito{How to write down the Hamiltonian of a
-   quantum system; quantization} Strictly speaking, $\hat{H}$ should be
-inferred by experimental data in principle.  Nevertheless, it might happen
+   quantum system; quantization} Strictly speaking, $\hat{H}$ could always be
+inferred by experimental data.  Nevertheless, in some situations it may happen
 that classical mechanics provides guidelines to write down the quantum
 Hamiltonian operator.  This is somewhat a strange procedure, which goes under
-the name of ``quantization''.  There is a number of ways
+the name of ``quantization'' of a classical system.  There is a number of ways
 to start with a classical system and then to construct a quantized version of
 it.  In this section, we will briefly recall the so-called ``canonical
 quantization'', which starts from the classical Hamiltonian. We shall see in the
 following sections that path integrals provide a different way to quantize a
-classical system, starting from the action functional.  There are other 
-quantization procedures.
+classical system, starting from the action functional.  There are other more
+exotic quantization procedures.
 
 \begin{remark}
 
    Do not forget that the interplay between classical and quantum mechanics is a
-   fashinating but still open topic.  There are classical theories which still
-   lack a quantum description (best example is quantum gravity), there are
-   classical theories with multiple quantum versions (\eg, when operator
-   ordering problems are encountered) and  quantum theories without classical
-   analogue. 
-   
-   %Quantization and de-quantization lead to interesting but
-   %unresolved questions; for example, what does classical mechanics can teach
-   us about quantum mechanics? 
-
+   fashinating but still open field.  There are classical theories which still
+   lack a quantum description (\eg, quantum gravity), there are classical
+   theories with multiple quantum versions (\eg, when operator ordering problems
+   are encountered) and  quantum theories without classical analogue. 
 
 \end{remark}
 
@@ -330,37 +313,19 @@ We shall focus on \graffito{The setting} the simplest quantum system: one
 \emph{spinless} particle, having no other internal
 degrees of freedom, moving in one dimension without constrains on the motion.
 Several generalizations are possible: two and three-dimensional cases,
-spherical 
-coordinates, etc%
-\footnote{For a comprehensive treatment refer to, \eg,
-   \cite{Grosche.Steiner:1998,Kleinert:2009}.}.
+particles with spin, space with curvature and torsion, \ldots
 \begin{approfondimento}
-   Notice that this leaves out even some simple quantum mechanical systems such as the
-   infinite square well (\ie, a particle in a box).
-   The reader might be wonder of that, because the Schr\"odinger equation 
-   is easily solvable in this case.
-   Its path integral treatment instead is difficult to handle. 
-   We shall show a trick to approach infinite potential well and other quantum
-   systems in a restricted domain by
-   advocating the image-point method. A proof of the applicability of the
-   method relies on
-   supersymmetric quantum mechanics, so this point will be discussed later.
-   The solution of a spinless particle in a central Coulomb potentials by means
-   of path integrals is also possible, and it will be discussed, but also in
-   this case special care is needed.
-   The extension to spin poses some problems (eventually, spin is a
-   relativistic effect) and we will discuss further the role of spin in a later
-   chapter.
+   Notice that this leaves out also some simple quantum systems such as the
+   infinite potential wells. The reader might be wonder of that.
+   We shall show (and prove) a trick to approach infinite potential well using path
+   integrals later when discussing supersymmetric quantum mechanics.
 \end{approfondimento}
-
-
-Remember that the algebra of the quantum
-operators is (almost, see remark below) fixed by  the so-called Born, Heisenberg
-and Jordan canonical commutation relations, namely
+Remember that the algebra of the
+operators is (almost) fixed by  the Born, Heisenberg and Jordan canonical commutation relations
 \begin{dmath}[label={ccr}]
-   \commutator{\hat{q}}{\hat{p}}= i\hslash 
+[\hat{q}, \hat{p} ] = i\hslash 
 \end{dmath},
-where $\hslash = \nicefrac{h}{2\pi}$ and $h$ is the Planck's constant and
+where $\hslash = \nicefrac{h}{2\pi}$ with $h$ the Planck's constant and
 $\hat{q}$ and $\hat{p}$ are the quantum mechanical position and momentum
 operators.
 
@@ -376,15 +341,15 @@ and
    Brief mathematical interlude.
    The operators $\hat{q}$ and
 $\hat{p}$ have continuous spectrum and cannot be bounded. It can be shown that
-this is necessary in order 
+this is indeed the case for 
 \cref{eq:ccr} to hold.
 To avoid such (rather technical)
 difficulties coming from working with unbounded operators, at a more rigorous
 mathematical 
-level would be that of replacing \cref{eq:ccr} with teh so-called 
-Weyl's commutation relations; refer, \eg, to \cite{Zeidler:2009c}.
+level one replaces \cref{eq:ccr} with
+Weyl's commutation relations; see, \eg, \textcite{Zeidler:2009c}.
 The eigenvectors of $\hat{q}$ and $\hat{p}$ should be understood in a
-generalized (improper) sense. 
+generalized sense. 
 von Neumann's spectral theory of (possibly unbounded) densily-defined linear
 operators in Hilbert space is a mathematically rigorous approach.
 \end{approfondimento}
@@ -425,9 +390,7 @@ $\propagator{\tend}{\qend}{\tstart}{\qstart}$  is:
 \begin{itemize}
    \item Mathematical interpretation: Matrix elements of the time-evolution
       operator in the basis of eigenstates of the position operator;%
-      \footnote{According to the previous remark, this ``basis'' has to be
-	 understood in a ``generalized'' sense. The rigorous approach would be
-	 that of introducing the spectral family of projectors, etc}
+      \footnote{This ``basis'' has to be understood in a generalized sense.}
       remember that any operator is fixed once you have prescribed its matrix
       elements with respect to some basis.
    \item Physical interpretation: Probability \emph{amplitude} 
@@ -436,19 +399,6 @@ $\propagator{\tend}{\qend}{\tstart}{\qstart}$  is:
       particle located at $\qstart$ at initial time $\tstart$ to be found at
       $\qend$ at a later time $\tend$; see \cref{fig:multiple paths}.
 \end{itemize}
-
-From a mathematical point of view,
-$\propagator{\tend}{\qend}{\tstart}{\qstart}$ is also a \emph{Green's function}
-of the Schr\"odinger equation in configuration space. Let us discuss this
-point.
-
-The Green function is not unique, because you can also add to it a solution of
-the homogeneus differential equation.
-
-
-This implies that our approch is nothing but a traditional responsive approach
-to partial differential equation. The propagator can be used as a kernel to
-construct by convolution solutions of inhomogeneus differential problems.
 
 \begin{figure}
    \centering
@@ -466,9 +416,6 @@ construct by convolution solutions of inhomogeneus differential problems.
 \end{figure}
 
 
-
-The main point is that it is possible to construct an integral representation of
-the Feynman's kernel in term  of path integrals.
 The \graffito{Computing the kernel in the standard way} computation of the
 kernel using the operatorial formulation of quantum mechanics is as follows:
 \begin{itemize}
@@ -522,7 +469,7 @@ Inserting $\n-1$ resolutions of the identity, which formally read
 between each of the $n$ terms in the product above, we get
 \begin{dmath}[label={Uprod}, frame]
 \braket{q''|\hat{U}(t'',t')| q'}  =
-\int \prod_{k=1}^{\n-1} \d{q_{k}}  \prod_{k=1}^{\n}  \braket{ q_{k}
+\int \prod_{k=1}^{\n-1} \udiff{q_{k}}  \prod_{k=1}^{\n}  \braket{ q_{k}
 | \hat{U}(t_{k} , t_{k-1})|q_{k-1}} 
 \end{dmath}
 with the additional notations $\ket{q_{0}} = \ket{q'} $ and $\ket{q_{\n}} =
@@ -548,11 +495,11 @@ In the case of \cref{eq:H}, the propagator of the $k$\ordth{} sub-interval (the
 short-time kernel), using \cref{eq:intro:U:exp}, is
 \begin{dmath*}
 \Braket{q_{k} | \hat{U}(t_{k}, t_{k-1}) | q_{k-1}} =
- \Braket{q_{k} | \exp{\frac{i}{\hslash} \hat{H} (t_{k} - t_{k-1}) } | q_{k-1}}
+ \Braket{q_{k} | \exp{-\frac{i}{\hslash} \hat{H} (t_{k} - t_{k-1}) } | q_{k-1}}
 =
-\Braket{ q_{k} | \exp{\frac{i}{\hslash} \Delta t \left(
+\Braket{ q_{k} | \exp{- \frac{i}{\hslash} \Delta t \left(
 	 \frac{\hat{p}^{2}}{2m}+
-	 \hat{V}(\hat{q}) \right) } | q_{k-1}} 
+\hat{V}(\hat{q}) \right) } | q_{k-1}} 
 \end{dmath*}.
 At this point, it would be nice if it were possible to write something like
 \begin{dmath*}
@@ -567,7 +514,7 @@ Remember that in general
 \exp{\hat{A}+\hat{B}} = \exp{\hat{A}} \exp{\hat{B}} 
 \end{dmath*}
 does \emph{not} hold when $\hat{A}$ and $\hat{B}$ does \emph{not} commute.
-An explicit expression for $\exp*{\left( \hat{A}+\hat{B}\right)}$ is known in the form of 
+An explicit expression for $\exp \left( \hat{A}+\hat{B}\right)$ is known in the form of 
 Baker-Campbell-Hausdorff formula
 \begin{dmath*}
 \exp{A+B} = \exp{\hat{C}} 
@@ -631,37 +578,24 @@ The path integral representation of the kernel is given by
 \begin{dmath}[label={particella libera}]
 K(x'', t''|x',t') =
 \pathint{%
-   \exp{\frac{i}{\hbar} \Int{\frac{1}{2} m \dot{x}^{2}}{t, t', t''} }}
+   \E^{\frac{i}{\hbar} \Int{\frac{1}{2} m \dot{x}^{2}}{t, t', t''} }}
 {x(t), x(t')=x', x(t'')=x''}  =
 \lim \left( \frac{m}{2\pi i \hbar \varepsilon} \right)^{\frac{N}{2}}
-\int_{\R^{N-1}} \prod_{k=1}^{N-1} x_{k} \exp{ \frac{i}{\hbar}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} x_{k} \E^{ \frac{i}{\hbar}
 \sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
 \right)^{2} \varepsilon }  
 \end{dmath}
 The multiple integral is
-%\begin{dmath}
-%\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
-%\sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
-%\right)^{2} \varepsilon }  = 
-%\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
-%\frac{m}{2\varepsilon}
-%\sum_{k=1}^{N} \left(  x_{k} - x_{k-1} \right)^{2} } \eqspace .
-%\end{dmath}
-\section{Path integral treatment of harmonic potential}
-\begin{advanced}
-\section{Path integral treatment of Coulomb potential}
-\section{Path integral treatment of finite square well potential}
-\end{advanced}
-\section{WKB from a path integral perspective}
-\section{What's the use of all this?}
-
+\begin{dmath}
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\sum_{k=1}^{N} \frac{1}{2} m \left( \frac{x_{k} - x_{k-1}}{\varepsilon}
+\right)^{2} \varepsilon }  = 
+\int_{\R^{N-1}} \prod_{k=1}^{N-1} \udiff{x_{k}} \uexp^{ \frac{i}{\hbar}
+\frac{m}{2\varepsilon}
+\sum_{k=1}^{N} \left(  x_{k} - x_{k-1} \right)^{2} } \eqspace .
+\end{dmath}
+\section{Exact path integral treatment of Coulomb potential}
 \endinput
-
-
-
-
-
-
 \begin{remark}
 \`E importante rilevare che questo \`e un comunissimo integrale multiplo in
 $\R^{N-1}$ del tipo che si incontra nei corsi introduttivi di analisi, non c'\`e
@@ -673,7 +607,7 @@ integration variables:
 \begin{dmath*}
 y_{k} = \left( \frac{m}{2\hbar \varepsilon} \right)^{\frac{1}{2}} x_{k}
 \end{dmath*}
-Let us also introduce analogous notations for the endpoints:
+Let's also introduce analogous notations for the endpoints:
 $x_{0} =x'$ and $x_{N} = x''$m bring in mind however that we are not
 integrating over initial and final positions.
 

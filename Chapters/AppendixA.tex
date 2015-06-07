@@ -7,7 +7,7 @@
 
 \lettrine{G}{aussian} integrals are of major practical importance in several
 fields (mathematics, probability and statistics, quantum mechanics and
-field theory, etc.). The starting point is $\Int{\cramped{\E^{-x^{2}}}}{x,\R} =
+field theory, etc.). The starting point is $\Int{\cramped{\exp{x^{2}}}}{x,\R} =
 \sqrt{\pi}$. This appendix is concerned with generalizations of this formula.
 %at
 %various levels. 
@@ -62,14 +62,14 @@ the path integral quantization of \emph{fermionic} fields) is discussed in
 
 \lettrine{T}{he} starting point \graffito{key identity} is 
 \begin{equation}\label{eq:pi}
-%I = \Int{\E^{-\varphi^{2}}}{\varphi,-\infty,+\infty} = \sqrt{\pi}  \; .
+%I = \Int{\exp{-\varphi^{2}}}{\varphi,-\infty,+\infty} = \sqrt{\pi}  \; .
 %\begin{dmath}[label={pi}]
-I = \Int{\E^{-\varphi^{2}}}{\varphi,\R} = \sqrt{\pi}  
+I = \Int{\exp{-\varphi^{2}}}{\varphi,\R} = \sqrt{\pi}  
 \; .
 %\end{dmath}.
 \end{equation}
 A theorem by Liouville states that (roughly speaking) the anti-derivatives of the Gaussian function
-$\cramped{\E^{-\varphi^{2}}}$ cannot be written in terms of elementary functions%
+$\cramped{\exp{-\varphi^{2}}}$ cannot be written in terms of elementary functions%
 \footnote{See, \eg, \textcite{Boros.Moll:2004} and references therein for a
    more precise statement and for a proof of this theorem.};
 thus the foundamental theorem of calculus does not provide help in evaluating the integral in
@@ -95,8 +95,8 @@ Consider the
 square the original integral
 \begin{dmath*}
 I^{2} = 
-\left( \Int{\E^{-\varphi^{2}}}{\varphi,\R} \right)
-\left( \Int{\E^{-\psi^{2}}}{\psi,\R} \right) 
+\left( \Int{\exp{-\varphi^{2}}}{\varphi,\R} \right)
+\left( \Int{\exp{-\psi^{2}}}{\psi,\R} \right) 
 \end{dmath*},
 where, in order to avoid confusion, a different dummy variable $\psi$ has been
 introduced in place of $\varphi$ in the second integral. Fubini's theorem
@@ -105,9 +105,9 @@ integrals along the real $\varphi$- and $\psi$-lines into only one double
 integral over the two-dimensional $(\varphi, \psi)$-plane:
 \begin{dmath*}
 \Style{IntegrateDisplayFunc=outset}
-I^{2} =  \MultipleIntegrate{\E^{-\left( \varphi^{2} + \psi^{2}
+I^{2} =  \MultipleIntegrate{\exp{-\left( \varphi^{2} + \psi^{2}
       \right)}}{\varphi,\psi}{\R^{2}}{}
-%\Int{\Int{\E^{-\left(\varphi^{2} + \psi^{2}\right)}}{\varphi, -\infty, +\infty}}{\psi,
+%\Int{\Int{\exp{-\left(\varphi^{2} + \psi^{2}\right)}}{\varphi, -\infty, +\infty}}{\psi,
 %-\infty, +\infty}
 \end{dmath*}.
 This integral can be computed by
@@ -123,16 +123,16 @@ going over to standard plane polar coordinates
 We get
 \begin{dmath*}
 \Style{IntegrateDisplayFunc=outset}
-I^{2} = \Int{\Int{\rho \E^{-\rho^{2}} }{\rho, 0, +\infty}}{\vartheta, 0, 2\pi}
+I^{2} = \Int{\Int{\rho \exp{-\rho^{2}} }{\rho, 0, +\infty}}{\vartheta, 0, 2\pi}
 \end{dmath*},
 where the factor $\rho$ comes from the Jacobian of the polar transformation.
 The last integral becomes the product of two one-dimensional
 integrals, which can be integrated immediately. We obtain in this way 
 \begin{dmath*}[compact]
-I^{2} = \left( \int_{0}^{2\pi} \udiff{\vartheta} \right) \left(
-\int_{0}^{+\infty} \rho \E^{-\rho^{2}} \udiff{\rho} \right) = 2\pi
+I^{2} = \left( \int_{0}^{2\pi} \d{\vartheta} \right) \left(
+\int_{0}^{+\infty} \rho \exp{-\rho^{2}} \d{\rho} \right) = 2\pi
 \lim_{b\rightarrow+\infty} \left[
--\frac{\E^{-\rho^{2}}}{2} \right]_{\rho = 0}^{\rho = b} = \pi 
+-\frac{\exp{-\rho^{2}}}{2} \right]_{\rho = 0}^{\rho = b} = \pi 
 \end{dmath*},
 hence $I = \sqrt{\pi}$.%
 \footnote{The Gaussian function is always strictly positive; by the monotony of
@@ -166,16 +166,16 @@ $\fullfunction{A}{\interval[open]{0}{+\infty}}{\R}$ be the real-valued
 function over the positive reals defined by
 \begin{dmath*}
    \Style{IntegrateDisplayFunc=inset}% restoring differential at the end
-a(t) = \left( \Int{\E^{-\varphi^{2}} }{\varphi,0,t} \right)^{2} + \Int{
-\frac{\E^{-t^{2} \left( 1+\varphi^{2}  \right)}}{1+\varphi^{2}} }{\varphi,0,1} 
+a(t) = \left( \Int{\exp{-\varphi^{2}} }{\varphi,0,t} \right)^{2} + \Int{
+\frac{\exp{-t^{2} \left( 1+\varphi^{2}  \right)}}{1+\varphi^{2}} }{\varphi,0,1} 
 \end{dmath*},
 for every  $t\in\interval[open]{0}{+\infty}$. A straight calculation shows that
 \begin{dmath*}[compact]
-\D{A(t)}{t} = 2 \E^{ -t^{2}} \Int{\E^{-\varphi^{2}} }{\varphi,0,t} - 2 t 
-\Int{ \E^{-t^{2} \left( 1 +\varphi^{2}\right)}}{\varphi,0,1} 
+\D{A(t)}{t} = 2 \exp{ -t^{2}} \Int{\exp{-\varphi^{2}} }{\varphi,0,t} - 2 t 
+\Int{ \exp{-t^{2} \left( 1 +\varphi^{2}\right)}}{\varphi,0,1} 
 = 2 t
-\E^{-t^{2}} \Int{\E^{-t^{2} \xi^{2}}}{\xi,0,1} - 2 t
-\E^{-t^{2}} \Int{\E^{-t^{2} \varphi^{2}}}{\varphi,0,1} =0 \condition{where $\xi = \varphi/t$}
+\exp{-t^{2}} \Int{\exp{-t^{2} \xi^{2}}}{\xi,0,1} - 2 t
+\exp{-t^{2}} \Int{\exp{-t^{2} \varphi^{2}}}{\varphi,0,1} =0 \condition{where $\xi = \varphi/t$}
 \end{dmath*}.
 (Leibniz rule has been applied to interchange derivative and integration
 symbols.)
@@ -193,7 +193,7 @@ by taking the limit $t\rightarrow +\infty$, the integral over $\interval{0}{1}$ 
 and we get
 \begin{dmath*}
 \left( \Int{
-\E^{-\varphi^{2}} }{\varphi,0,+\infty} \right)^{2} = \frac{\pi}{4}
+\exp{-\varphi^{2}} }{\varphi,0,+\infty} \right)^{2} = \frac{\pi}{4}
 \end{dmath*},
 and \cref{eq:pi} is proven.%
 \footnote{\label{footnote:irresistible}There are other proofs of \cref{eq:pi}
@@ -205,14 +205,13 @@ and \cref{eq:pi} is proven.%
 \section{Univariate Gaussian integrals}
 \label{sec:univariate gaussian integrals}
 
-\ChangeExp
 
 \lettrine{I}{n} this section, the result of the previous section is used to
 calculate the value of 
 one-dimensional Gaussian integrals with general quadratic exponent, \ie, of the
 form
 \begin{equation}\label{eq:ZaJ}
-   I(a,J) = \Int{\E^{-\frac{1}{2} a \varphi^{2} + J\varphi }}{\varphi, \R}  \; ,
+   I(a,J) = \Int{\exp{-\frac{1}{2} a \varphi^{2} + J\varphi }}{\varphi, \R}  \; ,
 \end{equation}
 where $a,J\in\C$. The factor \slantfrac{1}{2} and the signs are conventional.
 With this conventions, the integral is (absolutely) convergent \emph{if and
@@ -257,14 +256,14 @@ In this section, we calculate $I(a,J)$ when $a,J\in\R$, $a>0$. First,
 consider
 $J=0$. By a change of variables,
 \begin{dmath*}[compact]
-   \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
+   \Int{\exp{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
    \sqrt{\frac{2}{a}} 
-   \Int{\E^{-\xi ^{2}} }{\xi, \R}
+   \Int{\exp{-\xi ^{2}} }{\xi, \R}
    \condition{where $\xi = \displaystyle \sqrt{\frac{a}{2}} \varphi $}
 \end{dmath*},
 and applying \cref{eq:pi} to the integral on the right-hand side we get 
 \begin{dmath}[label={pia},compact]
-   I(a,0) =  \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
+   I(a,0) =  \Int{\exp{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} = 
    \sqrt{\frac{2\pi}{a}} 
    \condition{$a\in\R$, $a>0$}
 \end{dmath}.
@@ -284,17 +283,17 @@ By shifting the integration variable and using the translation invariance
 of the integration measure and of the endpoints of the integration range, we
 finally get
 \begin{dmath*}[compact]
-   \Int{\E^{-\frac{1}{2}a\varphi^{2} + J\varphi }}{\varphi, \R} =
-   \E^{\frac{J^{2}}{2a}} \Int{\E^{-\frac{1}{2}a \left( \varphi -
+   \Int{\exp{-\frac{1}{2}a\varphi^{2} + J\varphi }}{\varphi, \R} =
+   \exp{\frac{J^{2}}{2a}} \Int{\exp{-\frac{1}{2}a \left( \varphi -
 	    \frac{J}{a}\right)^{2}}} {\varphi, \R}
-   = \E^{ \frac{J^{2}}{2a}} \sqrt{\frac{2\pi}{a}} 
+   = \exp{ \frac{J^{2}}{2a}} \sqrt{\frac{2\pi}{a}} 
 \end{dmath*}.
 Therefore, 
 \graffito{One-dimensional real Gaussian integral with source term}
 \begin{dmath}[label={piaJr}, compact]
-   I(a,J) = \Int{\E^{-\frac{1}{2}a\varphi^{2}+J\varphi }}{\varphi,\R} =
+   I(a,J) = \Int{\exp{-\frac{1}{2}a\varphi^{2}+J\varphi }}{\varphi,\R} =
    \sqrt{\frac{2\pi}{a}}
-   \E^{\frac{J^{2}}{2a}} 
+   \exp{\frac{J^{2}}{2a}} 
   % \condition{$a,J\in\R$ and $a>0$}
 \end{dmath},
 for every $a,J\in\R$, $a>0$.
@@ -309,7 +308,7 @@ important in the discussion of the Gaussian probability distribution, which is
 obiquitous in probability and statistics. The Gaussian probability density
 function $p:\R\rightarrow\R$ of a real variable $x$ is  defined as
 \begin{dmath*}
-   p(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \E^{ - \frac{\left( x -
+   p(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{ - \frac{\left( x -
 	    \mu\right)^{2}}{2\sigma^{2}} }
 \end{dmath*},
 where $\mu$ and $\sigma$ are real parameters ($\sigma>0$).
@@ -335,14 +334,14 @@ We may write $J = -i \omega$ for some $\omega \in\R$ (the minus
 sign is conventional).
 So, we have to compute
 \begin{dmath}[label={piaJi}]
-   \tilde{I}( a, \omega) = \Int{ \E^{-\frac{1}{2}a \varphi^{2} - i \omega \varphi}}{ \varphi, \R} 
+   \tilde{I}( a, \omega) = \Int{ \exp{-\frac{1}{2}a \varphi^{2} - i \omega \varphi}}{ \varphi, \R} 
    \condition{$a, \omega \in \R$, $a>0$}
 \end{dmath}.
 Of course, the case $\omega=0$ fits the results of \cref{sec:real case},
 so we are interested in $\omega\neq 0$.
 Notice that
 $\tilde{I}(a, \omega)$ is nothing but the Fourier transform of the (real) Gaussian function
-$\E^{-\frac{1}{2}a\varphi^{2}}$.
+$\exp{-\frac{1}{2}a\varphi^{2}}$.
 
 At first sight, \graffito{Naively speaking, the quadratic supplement trick is not rigorous 
    in the complex case} one could think to use the quadratic supplement trick as in the
@@ -357,8 +356,8 @@ Completing the square
 \end{dmath*},
 we get
 \begin{dmath*}%[label={piabi correct}]
-   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi}}{\varphi, \R} =
-   \E^{-\frac{\omega^{2}}{2a}} \Int{\E^{-\frac{1}{2}a \left( \varphi +
+   \Int{\exp{-\frac{1}{2}a\varphi^{2} - i\omega \varphi}}{\varphi, \R} =
+   \exp{-\frac{\omega^{2}}{2a}} \Int{\exp{-\frac{1}{2}a \left( \varphi +
 	 \frac{i\omega}{a} \right)^{2}}}{\varphi, \R}
 \end{dmath*}.
 To get the previous expression, all we have used are algebraic manipulations,
@@ -369,8 +368,8 @@ Now, we would like to change variables in the integral
 \end{dmath},
 so that 
 \begin{dmath}[label={piabir}]
-   \Int{\E^{-\frac{1}{2}a\varphi^{2} -i\omega \varphi}}{\varphi, \R} =
-\E^{-\frac{\omega^{2}}{2a}} \sqrt{\frac{2\pi}{a}}
+   \Int{\exp{-\frac{1}{2}a\varphi^{2} -i\omega \varphi}}{\varphi, \R} =
+\exp{-\frac{\omega^{2}}{2a}} \sqrt{\frac{2\pi}{a}}
 \end{dmath}.
 Remarkably enough, \cref{eq:piabir} holds true even if, naively speaking, the
 argument we have used to prove it is \emph{not} correct. Why is the trick not
@@ -401,7 +400,7 @@ rest of this section.
 
 Consider \graffito{Proof by Cauchy's residue theory} the contour integral of the complex Gaussian function
 \begin{dmath*}%[label={picomplex}]
-   \oInt{\E^{-\frac{1}{2}az^{2}}}{z, \gamma} \condition{$a\in \R$, $a>0$}
+   \oInt{\exp{-\frac{1}{2}az^{2}}}{z, \gamma} \condition{$a\in \R$, $a>0$}
 \end{dmath*},
 where $\gamma$ is the simple closed positively-oriented rectangular contour drawn in
 \cref{fig:gamma}.
@@ -421,7 +420,7 @@ where $\gamma$ is the simple closed positively-oriented rectangular contour draw
    picture corresponding to the case $\omega<0$. 
 \label{fig:gamma}}
 \end{figure}
-Since $\E^{-\frac{1}{2}az^{2}}$ is always an entire function of the complex variable $z$ (\ie,
+Since $\exp{-\frac{1}{2}az^{2}}$ is always an entire function of the complex variable $z$ (\ie,
 it is analytic in the whole complex $z$-plane) then 
 Cauchy-Goursat theorem applies,%
 \footnote{Cauchy-Goursat theorem can be stated as follows: 
@@ -434,113 +433,114 @@ closed positively-oriented contour $\Gamma$ in the complex plane, then
 $\oInt{f(z)}{z,\gamma} =0 $.%
 }
 \begin{dmath}[label={int=0}]
-   \oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma}=0
+   \oInt{\exp{-\frac{1}{2}az^{2}}}{z,\gamma}=0
 \end{dmath},
 in particular this is true for all $\lambda$.
 Of course, this integral can be computed in another way,  namely
 \begin{dmath}[label={int=sum4}]
-   \oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma} = \sum_{i=1}^{4} \Int{
-      \E^{-\frac{1}{2}az^{2}}}{z,\gamma_{i}} 
+   \oInt{\exp{-\frac{1}{2}az^{2}}}{z,\gamma} = \sum_{i=1}^{4} \Int{
+      \exp{-\frac{1}{2}az^{2}}}{z,\gamma_{i}} 
 \end{dmath}
 where the paths $\gamma_{1}$, $\gamma_{2}$, $\gamma_{3}$ and $\gamma_{4}$ are
 that drawn in \figurename~\ref{fig:gamma}.
 These integrals can be computed once a parametric representation of
 $\gamma_{i}$'s is given. 
 %
-A parametric reprentation of $\gamma_{1}$ is the function $\fullfunction{z_{1}}{\intervalcc{-\lambda}
-   {\lambda}}{\C}$ defined by
+A parametric reprentation of $\gamma_{1}$ is the function
+$\fullfunction{z_{1}}{\interval{-\lambda}{\lambda}}{\C}$ defined by
 $z_{1}(\varphi) = \varphi$ for every
-$\varphi\in\intervalcc{-\lambda}{\lambda}$; we have that $\D{z_{1}(\varphi)}{\varphi} =
+$\varphi\in\interval{-\lambda}{\lambda}$; we have that $\D{z_{1}(\varphi)}{\varphi} =
 1$ and
 \begin{dmath*}[compact]%[label={int gamma1},compact]
-   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{1}} =
-%   \Int{ \E^{-\frac{1}{2}az_{1}^{2}(\varphi)} \D{z_{1}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
-   \Int{\E^{-\frac{1}{2}a\varphi^{2}}}{\varphi, -\lambda, \lambda}
+   \Int{\exp{-\frac{1}{2}az^{2}}}{z, \gamma_{1}} =
+%   \Int{ \exp{-\frac{1}{2}az_{1}^{2}(\varphi)} \D{z_{1}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
+   \Int{\exp{-\frac{1}{2}a\varphi^{2}}}{\varphi, -\lambda, \lambda}
 \end{dmath*}.
-As $\lambda\rightarrow+\infty$, $\Int{\E^{-\frac{1}{2}a z^{2}}}{z, \gamma_{1}}
-\rightarrow \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} =
+As $\lambda\rightarrow+\infty$, $\Int{\exp{-\frac{1}{2}a z^{2}}}{z, \gamma_{1}}
+\rightarrow \Int{\exp{-\frac{1}{2} a\varphi^{2}}}{\varphi, \R} =
 \sqrt{\frac{2\pi}{a}}$.
 %
-A parametric reprentation of $\gamma_{2}$ is the function $\fullfunction{z_{2}}{\intervalcc{0}
+A parametric reprentation of $\gamma_{2}$ is the function
+$\fullfunction{z_{2}}{\interval{0}
    {1}}{\C}$ defined by
 $z_{2}(\varphi) = \lambda + \frac{i\varphi\omega}{a} $ for every
-$\varphi\in\intervalcc{0}{1}$; we have that $\D{z_{2}(\varphi)}{\varphi} =
+$\varphi\in\interval{0}{1}$; we have that $\D{z_{2}(\varphi)}{\varphi} =
 \frac{i\omega}{a}$ and
 \begin{dmath*}[compact]%[label={int gamma2},compact]
-   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{2}} =
- %  \Int{\E^{-\frac{1}{2}az_{2}^{2}(\varphi)
+   \Int{\exp{-\frac{1}{2}az^{2}}}{z, \gamma_{2}} =
+ %  \Int{\exp{-\frac{1}{2}az_{2}^{2}(\varphi)
  %  }\D{z_{2}(\varphi)}{\varphi}}{\varphi,0,1}
 %= 
-\frac{i\omega}{a} \Int{\E^{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
+\frac{i\omega}{a} \Int{\exp{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
 	 \right)^{2}}}{\varphi ,0,1}
 \end{dmath*}.
 Since the modulus of this last integral is bounded by 
 \begin{dmath*}[compact]
    \Abs{ 
-\Int{\E^{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
+\Int{\exp{-\frac{1}{2}a\left( \lambda  + \frac{i\varphi \omega}{a}
 	 \right)^{2}}}{\varphi ,0,1}
-} \leq   \E^{-\frac{1}{2} a \lambda^{2}} \Int{ \E^{ \varphi^{2}
+} \leq   \exp{-\frac{1}{2} a \lambda^{2}} \Int{ \exp{ \varphi^{2}
       \frac{\omega^{2} }{2a}}}{\varphi, 0, 1}
 \end{dmath*},
 which goes to zero 
 as $\lambda\rightarrow+\infty$, the integral along
 $\gamma_{2}$ gives a vanishing contribution to the integral over $\gamma$.
 In the same way, it is not difficult to confirm that also the integral along
-$\gamma_{4}$ does not contribute to $\oInt{\E^{-\frac{1}{2}az^2}}{z,\gamma}$ in the limit $\lambda\rightarrow+\infty$.
+$\gamma_{4}$ does not contribute to $\oInt{\exp{-\frac{1}{2}az^2}}{z,\gamma}$ in the limit $\lambda\rightarrow+\infty$.
 %
-Finally, a parametric reprentation of $\gamma_{3}$ is the function $\fullfunction{z_{3}}{\intervalcc{-\lambda}
+Finally, a parametric reprentation of $\gamma_{3}$ is the function
+$\fullfunction{z_{3}}{\interval{-\lambda}
    {\lambda}}{\C}$ defined by
 $z_{3}(\varphi) = -\varphi + \frac{i\omega}{a}$ for every
-$\varphi\in\intervalcc{-\lambda}{\lambda}$ (the minus sing accounts of the
+$\varphi\in\interval{-\lambda}{\lambda}$ (the minus sing accounts of the
 direction of the path); we have that $\D{z_{3}(\varphi)}{\varphi} =-1
 $ and
 \begin{dmath*}[compact]%[label={int gamma1},compact]
-   \Int{\E^{-\frac{1}{2}az^{2}}}{z, \gamma_{3}} =
-  % \Int{ \E^{-\frac{1}{2}az_{3}^{2}(\varphi)} \D{z_{3}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
-   -\Int{\E^{-\frac{1}{2}a\left( -\varphi+ \frac{i\omega}{a}
+   \Int{\exp{-\frac{1}{2}az^{2}}}{z, \gamma_{3}} =
+  % \Int{ \exp{-\frac{1}{2}az_{3}^{2}(\varphi)} \D{z_{3}(\varphi)}{\varphi}}{\varphi, -\lambda, \lambda} =  
+   -\Int{\exp{-\frac{1}{2}a\left( -\varphi+ \frac{i\omega}{a}
 	 \right)^{2}}}{\varphi, -\lambda, \lambda}=
-   -\E^{\frac{\omega^{2}}{2a}}
-   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+   -\exp{\frac{\omega^{2}}{2a}}
+   \Int{\exp{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
 	 }{\varphi, -\lambda, \lambda} 
 \end{dmath*}.
 As $\lambda\rightarrow+\infty$, 
 %\begin{dmath*}[compact]
    \begin{math}
-   \Int{\E^{-\frac{1}{2} a z^{2}}}{z,\gamma_{3}} \rightarrow 
-   %-\E^{\frac{\omega^{2}}{2a}}
-   %\Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+   \Int{\exp{-\frac{1}{2} a z^{2}}}{z,\gamma_{3}} \rightarrow 
+   %-\exp{\frac{\omega^{2}}{2a}}
+   %\Int{\exp{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
    %}{\varphi, \R} = 
-   - \E^{\frac{\omega^{2}}{2a}} \tilde{I}(a,\omega)
+   - \exp{\frac{\omega^{2}}{2a}} \tilde{I}(a,\omega)
 \end{math}.
 \Cref{eq:int=0,eq:int=sum4} then implies
 %\end{dmath*}.
 %Since  the integral 
 %of $E^{-\frac{1}{2}az^{2}}$ 
 %along $\gamma$ must be zero,
-%$\oInt{\E^{-\frac{1}{2}az^{2}}}{z,\gamma}=0$, we get
+%$\oInt{\exp{-\frac{1}{2}az^{2}}}{z,\gamma}=0$, we get
 %\begin{dmath*}
 %   \sqrt{\frac{2\pi}{a}} 
-%   -\E^{\frac{\omega^{2}}{2a}}
-%   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+%   -\exp{\frac{\omega^{2}}{2a}}
+%   \Int{\exp{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
 %	 }{\varphi,\R}  = 0 
 %      \end{dmath*},
 %      so
 %\ChangeExp
 \begin{dmath*}
-   \Int{\E^{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
+   \Int{\exp{-\frac{1}{2}a\varphi^{2} - i\omega \varphi }
 	 }{\varphi, \R}  = 
-   \E^{-\frac{\omega^{2}}{2a}}
+   \exp{-\frac{\omega^{2}}{2a}}
    \sqrt{\frac{2\pi}{a}} 
 \end{dmath*}.
 
 \subsection{Fresnel integral}
 \label{sec:Fresnel case}
 
-\RestoreExp
 
 In this section we shall prove that
 \begin{dmath}[label={fresnel}]
-   \Int{ \E^{\pm i\varphi^{2}}}{\varphi,\R} = \E^{\pm i\frac{\pi}{4}} \sqrt{\pi}
+   \Int{ \exp{\pm i\varphi^{2}}}{\varphi,\R} = \exp{\pm i\frac{\pi}{4}} \sqrt{\pi}
 \end{dmath}, 
 This is called ``Fresnel integral''.
 (Sometimes, the name ``Fresnel'' integral refers to the real and imaginary
@@ -553,13 +553,13 @@ At first sight one might wonder why the integral in \cref{eq:fresnel} is converg
 After all, 
 by definition
 \begin{dmath*}
-   \Int{ \E^{\pm i\varphi^{2}}}{\varphi,\R} 
+   \Int{ \exp{\pm i\varphi^{2}}}{\varphi,\R} 
    = 
-   \Int{ \Re \E^{\pm i\varphi^{2}}}{\varphi,\R} + i 
-   \Int{ \Im \E^{\pm i\varphi^{2}}}{\varphi,\R} 
+   \Int{ \Re \exp{\pm i\varphi^{2}}}{\varphi,\R} + i 
+   \Int{ \Im \exp{\pm i\varphi^{2}}}{\varphi,\R} 
    = 
-   \Int{ \Cos{\varphi^{2}}}{\varphi,\R} \pm i 
-   \Int{ \Sin{\varphi^{2}}}{\varphi,\R} 
+   \Int{ \cos{\varphi^{2}}}{\varphi,\R} \pm i 
+   \Int{ \sin{\varphi^{2}}}{\varphi,\R} 
 \end{dmath*},
 and the sine and cosine functions do \emph{not} even decay to zero at infinity!
 In fact, the Fresnel integral is \emph{not} absolutely
@@ -584,12 +584,12 @@ To prove \graffito{Proof of convergence} the convergence of the Fresnel integral
 Once we have proven that the integral is convergent, in order to calculate it
 we can use the tools of complex analysis.
 
-\begin{sidefigure}
+\begin{figure}
    %\includegraphics[width=\marginparwidth]{Lazarus_Immanuel_Fuchs}
    \asyinclude[viewportwidth=\marginparwidth, inline=true]{Asymptote/fresnel.asy}%
-   \caption{%Contour used to calculate Fresnel integral
+   \caption{Contour used to calculate Fresnel integral
       \label{fig:fresnel}}
-\end{sidefigure}
+\end{figure}
 
 Other proof \graffito{Proof via Laplace transform} involves making use of the
 Laplace transform and Feynman's trick of differentiating under the integral
@@ -611,9 +611,8 @@ sign.
    So every physics class, I paid no
    attention to what was going on with Pascal's Law, or whatever they were
    doing. 
-   \omissis{}
+   \textelp{}
    I was up in the back with this book: Advanced Calculus, by Woods.
-   %\omissis{}
    Bader knew I had studied Calculus for the Practical Man a little bit, so he
    gave me the real works\textemdash it was for a junior or senior course in
    college. It had Fourier series, Bessel functions, determinants, elliptic
@@ -627,7 +626,7 @@ sign.
    because 
    I was self-taught using that book, I had peculiar methods of doing
    integrals. 
-   \omissis{}
+   \textelp{}
    The result was, when guys at MIT or Princeton had trouble doing a
    certain integral, it was because they couldn't do it with the standard
    methods they had learned in school.
@@ -635,7 +634,7 @@ sign.
    %have found it; if it was a simple series expansion, they would have found it.
    %Then I come along and try differentiating under the integral sign, and often
    %it worked. 
-   \omissis{}
+   \textelp{}
    So I got a great reputation for doing integrals, only because my
    box of tools was different from everybody else's, and they had tried all
    their tools on it before giving the problem to me.~\closequote
@@ -663,8 +662,8 @@ theory.
    Let \graffito{Complex Gaussian integral with source term} $a,J\in\C$ and $\Re a> 0$.
    Then, 
    \begin{dmath}
-      \Int{ \E^{ -\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R} =
-      \sqrt{\frac{2\pi}{a}} \E^{\frac{J^{2}}{2a}}
+      \Int{ \exp{ -\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R} =
+      \sqrt{\frac{2\pi}{a}} \exp{\frac{J^{2}}{2a}}
    \end{dmath},
    where the square root should be understood as principal value.
 \end{theorem}
@@ -674,12 +673,12 @@ theory.
       Let \graffito{Principal value of the square root of a complex number} $z\in\C\backslash\lbrace0\rbrace$ by any non-zero complex
       number of the form 
       \begin{dmath*}
-	 z=\Abs{z} \E^{i\vartheta} \condition*{-\pi < \vartheta < \pi}
+	 z=\Abs{z} \exp{i\vartheta} \condition*{-\pi < \vartheta < \pi}
       \end{dmath*}.
       (Notice that we exclude the negative real axis.)
       The principal value of the complex square-root of $z$ is 
       \begin{dmath*}
-	 \sqrt{z} = \sqrt{\Abs{z}} \E^{i \frac{\vartheta}{2}}
+	 \sqrt{z} = \sqrt{\Abs{z}} \exp{i \frac{\vartheta}{2}}
       \end{dmath*}.
       In this way, $\sqrt{z}$ defines a function which is holomorphic on the
       whole complex $z$-plane but the negative real axis, and which provides
@@ -702,25 +701,25 @@ negative real axis) and its value coincide with the value of
 $I(a,0)$ along the positive real axis.
 By analytic continuation, 
 \begin{dmath}[compact]%[compact, frame]
-   I(a,0) = \Int{\E^{-\frac{1}{2} a\varphi^{2}}}{\varphi,\R} =
+   I(a,0) = \Int{\exp{-\frac{1}{2} a\varphi^{2}}}{\varphi,\R} =
    \sqrt{\frac{2\pi}{a}} \condition{$a\in\C$, $\Re a>0$}
 \end{dmath}.
 
 To \graffito{Second step: The Schwinger-Dyson differential equation} calculate $I(a,J)$, $J\in\C$, take the derivative with respect to $J$:
 \begin{dmath*}[compact]
-   \pderiv{I(a,J)}{J} = \pderiv{}{J}\Int{\E^{-\frac{1}{2} a \varphi^{2} +
+   \pderiv{I(a,J)}{J} = \pderiv{}{J}\Int{\exp{-\frac{1}{2} a \varphi^{2} +
 	 J\varphi}}{\varphi, \R} 
    = 
-   \Int{ \varphi \E^{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
+   \Int{ \varphi \exp{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
 \end{dmath*},
 using Leibniz rule to interchange derivative and integral symbols.
 Integrating by parts 
 \begin{dmath*}[compact]
-   \Int{ \varphi \E^{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
-   = -\frac{1}{a} \Int{ \underbrace{\left( -a \varphi \right) \E^{-\frac{1}{2} a
-	    \varphi^{2}}}_{\pderiv{}{\varphi} \E^{-\frac{1}{2}a\varphi^{2}}}
-      \E^{J\varphi}}{\varphi, \R}
-   = \frac{J}{a} \Int{ \E^{-\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R}
+   \Int{ \varphi \exp{-\frac{1}{2}a\varphi^{2} + J\varphi}}{\varphi, \R}
+   = -\frac{1}{a} \Int{ \underbrace{\left( -a \varphi \right) \exp{-\frac{1}{2} a
+	    \varphi^{2}}}_{\pderiv{}{\varphi} \exp{-\frac{1}{2}a\varphi^{2}}}
+      \exp{J\varphi}}{\varphi, \R}
+   = \frac{J}{a} \Int{ \exp{-\frac{1}{2} a \varphi^{2} + J\varphi}}{\varphi, \R}
    = \frac{J}{a} I(a, J) 
 \end{dmath*}.
 So, we have to solve the following differential equation:
@@ -730,23 +729,23 @@ So, we have to solve the following differential equation:
 which can be somewhat consider the analogous of Schwinger-Dyson differential
 equations between in quantum field theory.
 \Cref{eq:piSD} is a first-order homogeneus linear partial diffential equation which be
-solved, for instance, by multiplying both sides by $\E^{-
+solved, for instance, by multiplying both sides by $\exp{-
    \frac{J^{2}}{2a}}$ (the technique of integrating factors).
 In this way, we get
 \begin{dmath*}
-   \E^{-\frac{J^{2}}{2a}} \pderiv{I(a,J)}{J} - \frac{J}{a}
-   \E^{-\frac{J^{2}}{2a}} I(a,J) =0 
+   \exp{-\frac{J^{2}}{2a}} \pderiv{I(a,J)}{J} - \frac{J}{a}
+   \exp{-\frac{J^{2}}{2a}} I(a,J) =0 
 \end{dmath*},
 \ie,
 \begin{dmath*}
-   \pderiv{}{J} \left\lbrace \E^{-\frac{J^{2}}{2a}} I(a,J) \right\rbrace =0 
+   \pderiv{}{J} \left\lbrace \exp{-\frac{J^{2}}{2a}} I(a,J) \right\rbrace =0 
 \end{dmath*},
-which means that $\E^{-\frac{J^{2}}{2a}} I(a,J)$ is a function of $a$ only (\ie, it
+which means that $\exp{-\frac{J^{2}}{2a}} I(a,J)$ is a function of $a$ only (\ie, it
 does not depend on $J$).
 Since we know that for $J=0$, this function is $I(a,0) =
 \sqrt{2\pi /a}$,  we must have
 \begin{dmath*}
-   I(a,J)= \sqrt{\frac{2\pi}{a}} \E^{\frac{J^{2}}{2a}} 
+   I(a,J)= \sqrt{\frac{2\pi}{a}} \exp{\frac{J^{2}}{2a}} 
    \condition{$a,J\in\C$, $\Re a>0$}
 \end{dmath*}.
 This completes the proof.
@@ -760,7 +759,7 @@ This completes the proof.
 
 In this section, we focus on calculating integrals of the form
 \begin{dmath*}
-   \Int{ x^{m} \E^{ - ax^{2} + Jx} }{x, -\infty, +\infty}
+   \Int{ x^{m} \exp{ - ax^{2} + Jx} }{x, -\infty, +\infty}
 \end{dmath*},
 where $m\in\N$ and $a,J\in\C$, $\Re a>0$. 
 
@@ -791,7 +790,7 @@ It is easily verified that the mean value of the Gaussian distribution
 $\fullfunction{p_{\mu,
    \sigma^{2}}}{\R}{\R}$ be the Gaussian probability density function 
 \begin{dmath*}
-   p_{\mu, \sigma^{2}}(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \E^{ - \frac{\left(
+   p_{\mu, \sigma^{2}}(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{ - \frac{\left(
 	    x-\mu\right)^{2}}{2\sigma^{2}}} 
 \end{dmath*}.
 is equal to the parameter $\mu$.
@@ -841,8 +840,8 @@ processes.
    Gaussian integration} of all $N$-dimensional (real) Gaussian integrals
 ($N\in\N$) is 
 \begin{equation}
-   \int_{\R^{N}} \E^{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
-   \prod_{k=1}^{N} \udiff{\varphi_{k}} \; ,
+   \int_{\R^{N}} \exp{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
+   \prod_{k=1}^{N} \d{\varphi_{k}} \; ,
 \end{equation}
 where $\lambda_{k} \in \R$, $\lambda_{k} >0$ for $\nto{k}{1}{N}$.
 (The integral is absolutely convergent due to the fact that $\lambda_{k}$'s are
@@ -851,8 +850,8 @@ strictly positive.)
 This integral factorizes into the product of $N$ one-dimensional Gaussian
 integrals (Fubini's theorem) so
 \begin{dmath}[compact]
-   \int_{\R^{N}} \E^{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
-   \prod_{k=1}^{N} \udiff{\varphi_{k}} = \prod_{k=1}^{N} \Int{\E^{-\frac{1}{2}
+   \int_{\R^{N}} \exp{ - \frac{1}{2} \sum_{k=1}^{N} \lambda_{k} \varphi_{k}^{2} }
+   \prod_{k=1}^{N} \d{\varphi_{k}} = \prod_{k=1}^{N} \Int{\exp{-\frac{1}{2}
 	 \lambda_{k} \varphi_{k}^{2}}}{x_{k}, \R} =   \sqrt{\frac{ \left(
 	    2\pi\right)^{N}}{ \prod_{k=1}^{N} \lambda_{k}}} 
 \end{dmath}.
@@ -882,17 +881,18 @@ Gaussian integrals as before. This is the content of the following theorem.
    \emph{absolutely} convergent and its
    value is
    \begin{dmath}[label={piA}]
-      \int_{\R^{N}} \exp\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
-	 \varphi_{l} \right) \prod_{k=1}^{N} \udiff{\varphi_{k}} = \left( \Det{ \frac{A}{2\pi}}
+      \int_{\R^{N}} \exp{\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
+	    \varphi_{l} \right)} \prod_{k=1}^{N} \d{\varphi_{k}} = \left( \Det{ \frac{A}{2\pi}}
       \right)^{-\frac{1}{2}} 
    \end{dmath}.
    Furthermore, for every $J \in \R^{N}$ the following integral is
    absolutely convergent and its value is 
    \begin{dmath}[label={piAJ}]
-      \int_{\R^{N}} \exp\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
-	 \varphi_{l} + \sum_{k=1}^{N} J_{k} \varphi_{k}\right)  \prod_{k=1}^{N}
-      \udiff{\varphi_{k}} =
-      \exp\left( \frac{1}{2} \sum_{k,l=1}^{N} J_{l} \Delta_{k,l} J_{k} \right) \left( \Det{ \frac{A}{2\pi}}
+      \int_{\R^{N}} \exp{\left( -\frac{1}{2} \sum_{k,l=1}^{N} \varphi_{k} A_{k,l}
+	    \varphi_{l} + \sum_{k=1}^{N} J_{k} \varphi_{k}\right)}  \prod_{k=1}^{N}
+      \d{\varphi_{k}} =
+      \exp{\left( \frac{1}{2} \sum_{k,l=1}^{N} J_{l} \Delta_{k,l} J_{k} \right)
+      }\left( \Det{ \frac{A}{2\pi}}
       \right)^{-\frac{1}{2}} 
    \end{dmath},
    where $\Delta = A^{-1}$ denotes the \emph{inverse} of the matrix $A$.
@@ -902,13 +902,13 @@ First of all, \graffito{Matrix notation} it is convenient to rewrite the previou
 compact matrix notation;
 then \cref{eq:piA} reads
 \begin{dmath}[label={piAmat}]
-   \int_{\R^{N}} \E^{-\frac{1}{2} \braket{ x | Ax}  } \prod_{k=1}^{N}
-   \udiff{x_{k}} = \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
+   \int_{\R^{N}} \exp{-\frac{1}{2} \braket{ x | Ax}  } \prod_{k=1}^{N}
+   \d{x_{k}} = \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
 \end{dmath}
 and \cref{eq:piAJ} reads
 \begin{dmath}[label={piAJmat}]
-   \int_{\R^{N}} \E^{-\frac{1}{2} \braket{ x | Ax}  + \braket{J|x} } \prod_{k=1}^{N}
-   \udiff{x_{k}} = \E^{-\frac{1}{2} \braket{J| \Delta J}} \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
+   \int_{\R^{N}} \exp{-\frac{1}{2} \braket{ x | Ax}  + \braket{J|x} } \prod_{k=1}^{N}
+   \d{x_{k}} = \exp{-\frac{1}{2} \braket{J| \Delta J}} \left( \Det{ \frac{A}{2\pi}} \right)^{-\frac{1}{2}} 
 \end{dmath},
 where $\Delta = A^{-1}$ and $\braket{\cdot|\cdot}$ denotes the standard
 Euclidean scalar product in $\R^{N}$, \ie, in particular
@@ -1014,7 +1014,6 @@ We introduce the following diagrammatic representation
 
 \begin{pabox}
    For example%
-   \footnote{Ciao}
    \begin{dmath}[compact]
    \wick{1}{<1 \hat{\varphi}_{k_{1}} >1\hat{\varphi}_{k_{2}} }=
    \feyn{\vertexlabel^{k_{1}} !{fA}p \vertexlabel^{k_{2}}}
@@ -1053,8 +1052,8 @@ For example
 \end{dmath}.
 
 \begin{dmath}
-   \pathint{\E^{\frac{i}{\hslash}S[x(t)]}}{x(t)} = 
-   \Int{\E^{\frac{i}{\hslash}S[x(t)]}}{x}
+   \pathint{\exp{\frac{i}{\hslash}S[x(t)]}}{x(t)} = 
+   \Int{\exp{\frac{i}{\hslash}S[x(t)]}}{x}
 \end{dmath}
 \begin{dmath}
    \MultipleIntegrate{f(x,y)}{x,y,z}{\R^{2}}{}

@@ -12,7 +12,7 @@ evaluating  the
 For example, it might be useful in evaluating the asymptotic behavior of functions
  for which a suitable integral representation is available.
 An introductory discussion of these topics is given, \eg, by
-\citet[\S~11]{king}, \citet[\S6]{ablowitz}. See also Zinn-Justin.
+\cite[\S~11]{king}, \cite[\S6]{ablowitz}. See also Zinn-Justin.
 \par
 Let us begin with a special case of real integrals over one real variable (this
 is known also as Laplace's method) and then generalize to contour integrals on
@@ -38,9 +38,9 @@ theory.}
 \section{Real case (alias, Laplace method)}
 \section{Complex case}
 Consider the complex integral  along the real line:
-\begin{equation}
-I(\lambda) = \int_{\Omega}  g(t)  \uexp^{ \lambda f(t)} \udiff{t} \eqspace, 
-\end{equation}
+\begin{dmath}
+   I(\lambda) = \Int{ g(t)  \exp{ \lambda f(t)}}{t,\Omega} 
+\end{dmath},
 where $\Omega\subseteq \R$ is an interval of the real line,
 $f:\Omega\rightarrow\R$ a \emph{real}-valued function on $\Omega$,
 $g:\Omega\rightarrow\C$a  \emph{complex}-valued function on $\Omega$ and
@@ -51,7 +51,8 @@ Laplace method, then we will move to the more general case of contour integrals
 in the complex plane.
 \par
 \begin{figure}
-\includegraphics{saddle}
+   \centering
+%\includegraphics{saddle}
 \caption{Saddle point}
 \end{figure}
 
